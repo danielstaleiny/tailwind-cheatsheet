@@ -5,7 +5,9 @@
 {% set lang = lang | default(site.lang) %}
 
 {% block headStyles %}
+    {% include "partials/styles-critical.njk" %}
     {% include "partials/styles.njk" %}
+    {% include "partials/scripts.njk" %}
 {% endblock %}
 
 {% block headMisc %}
@@ -20,8 +22,6 @@
 {% endblock %}
 
 {% block bodyScripts %}
-    {% include "partials/scripts.njk" %}
-
     <script type="text/javascript">
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
@@ -36,5 +36,9 @@
             });
         }
     </script>
+
+    {% if config.env === 'development' %}
+        {% include "partials/browser-sync.dev.njk" %}
+    {% endif %}
 
 {% endblock %}
