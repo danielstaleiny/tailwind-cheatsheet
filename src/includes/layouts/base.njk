@@ -10,7 +10,7 @@
 
 {% block headMisc %}
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="apple-touch-icon" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="/assets/img/icon.png">
 {% endblock %}
 
 {% block body %}
@@ -36,4 +36,10 @@
             });
         }
     </script>
+
+
+    {% if config.env === 'development' %}
+        {% include "partials/scripts.browser-sync.njk" %}
+    {% endif %}
+
 {% endblock %}

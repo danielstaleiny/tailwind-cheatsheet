@@ -1,14 +1,14 @@
-"use strict";
+'use strict'
 
 /**
  * The browser-sync configuration.
- * 
+ *
  * For a full list of options, see: http://www.browsersync.io/docs/options/
  */
 module.exports = {
     serveStatic: ['./dist'],
     serveStaticOptions: {
-        extensions: ['html']
+        extensions: ['html', 'js']
     },
     https: false,
     open: false,
@@ -16,5 +16,5 @@ module.exports = {
     watchOptions: {
         ignoreInitial: true
     },
-    ignore: [],
-};
+    ignore: []
+}
