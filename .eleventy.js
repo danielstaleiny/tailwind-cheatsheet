@@ -43,6 +43,8 @@ module.exports = eleventyConfig => {
     // Make all files pass through to cache
     eleventyConfig.setTemplateFormats(exts)
 
+    eleventyConfig.addPassthroughCopy(`${dirs.input}/admin`)
+
     return {
         // Set the path from the root of the deploy domain
         // i.e, example.com + "/"
