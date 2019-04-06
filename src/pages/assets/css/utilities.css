@@ -1,0 +1,7 @@
+.pointer {
+    @apply cursor-pointer;
+}
+.caps {
+    @apply uppercase;
+    @apply tracking-wide;
+}

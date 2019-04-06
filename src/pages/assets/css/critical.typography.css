@@ -1,0 +1,47 @@
+html {
+    @apply font-sans;
+}
+@media (min-width: 46.25em) and (max-width: 50em){
+    html {
+        font-size: 1.0625em;
+    }
+}
+@media (min-width: 50em) and (max-width: 63.75em) {
+    html {
+        font-size: 1.125em;
+    }
+}
+@media (min-width: 63.75em) and (max-width: 79em) {
+    html {
+        font-size: 1.1875em;
+    }
+}
+@media (min-width: 79em) and (max-width: 125em) {
+    html {
+        font-size: 1.25em;
+    }
+}
+@media (min-width: 125em) and (max-width: 200em) {
+    html {
+        font-size: 1.3125em;
+    }
+}
+@media (min-width: 200em) and (max-width: 400em) {
+    html {
+        font-size: 1.375em;
+    }
+}
+@media (min-width: 400em) {
+    html {
+        font-size: 1.5em;
+    }
+}
+body {
+    font-size-adjust: 0.5;
+    @apply text-black leading-normal;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" on;
+}
+

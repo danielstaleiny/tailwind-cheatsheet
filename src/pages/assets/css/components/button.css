@@ -1,0 +1,23 @@
+.btn {
+    @apply no-underline pt-1/2-em px-2-em shadow;
+    padding-bottom: 0.49em;
+    transition: all 0.2s ease 0s;
+}
+.btn-black {
+    @apply text-white bg-black border-2 border-transparent;
+    fill: config('colors.white');
+}
+.btn-black:hover,
+.btn-black:active {
+    @apply text-black bg-white border-2 border-black;
+    fill: config('colors.black');
+}
+
+.btn-underline {
+    @apply text-black bg-white border-2 border-black;
+    fill: config('colors.black');
+}
+.btn-underline:hover,
+.btn-underline:active {
+    @apply underline;
+}
