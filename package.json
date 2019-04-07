@@ -26,6 +26,7 @@
     "pulp:repl": "pulp --psc-package repl",
     "pulp:build": "pulp --psc-package build -o src/pages/assets/js/pure --no-check-main --skip-entry-point",
     "pulp:watch": "pulp --psc-package --watch build -o src/pages/assets/js/pure --no-check-main --skip-entry-point ",
+    "serve": "serve -l 3000 dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
