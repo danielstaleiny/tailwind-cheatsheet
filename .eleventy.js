@@ -45,6 +45,10 @@ module.exports = eleventyConfig => {
 
     eleventyConfig.addPassthroughCopy(`${dirs.input}/admin`)
 
+    // Because of Purescript pure/ folder we need to ignore it for git but pass it through the 11ty
+    // .eleventyignore Only source of ignoring files for 11ty
+    eleventyConfig.setUseGitIgnore(false)
+
     return {
         // Set the path from the root of the deploy domain
         // i.e, example.com + "/"

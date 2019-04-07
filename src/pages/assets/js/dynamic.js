@@ -1,3 +1,3 @@
 export function run() {
-    console.log('Dynamicaly loaded')
+    console.log('Dynamicaly loaded  ...')
 }

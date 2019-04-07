@@ -64,6 +64,16 @@ typings/
 .tern-port
 **/.tern-port
 
-dist/
+# purescript
+.pulp-cache/
+generated-docs/
+.psc-package/
+.psc*
+.purs*
+.psa*
 
+output/
+src/pages/assets/js/pure/
+dist/
 .tmp/
+
