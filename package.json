@@ -50,7 +50,11 @@
     "nunjucks": "^3.1.7",
     "parcel-bundler": "^1.12.3",
     "postcss-easy-import": "^3.0.0",
+    "psc-package": "^3.0.1",
+    "pulp": "^12.3.1",
+    "purescript": "^0.12.3",
     "rimraf": "^2.6.3",
+    "serve": "^11.0.0",
     "tailwindcss": "^0.7.4",
     "workbox-build": "^4.2.0"
   },
