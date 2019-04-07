@@ -60,7 +60,7 @@ Eleventy is used as a text-preprocessor, allowing you to use Nunjucks, or a vari
 
 In most cases, this is HTML.
 
-Any files found in `src/assets` whose extensions match [supported template formats](https://www.11ty.io/docs/languages/) will be post-processed, and then copied to `.tmp/11ty`.
+Any files found in `src/pages` whose extensions match [supported template formats](https://www.11ty.io/docs/languages/) will be post-processed, and then copied to `.tmp/11ty`.
 
 _Any file extensions not supported by Eleventy's templates will be copied over to `.tmp/11ty` as-is._
 
@@ -110,26 +110,26 @@ Parcel modifies the module resolution for JavaScript files, as well as the URL r
 
 **For JavaScript:**
 - Support for requiring/importing [all supported asset types](https://parceljs.org/assets.html) is added.
-- Relative paths beginning with `/` are resolved from `src/assets/`.
+- Relative paths beginning with `/` are resolved from `src/pages/`.
 - Relative paths beginning with `~` will be resolve from the root of a matching package, allowing you to require files from outside your assets folder.
 - Glob support is added, allowing you to do things like: `require('./**/*.js')`;
 - [Aliases](https://parceljs.org/module_resolution.html#aliases) can be created, allowing you to:
   - Swap out one module for another, e.g. `react` => `preact`
-  - Create a shortcut to a local module, e.g. `./src/assets/` => `assets/`. 
+  - Create a shortcut to a local module, e.g. `./src/pages/` => `pages/`. 
 
 **For HTML and CSS:**
 - Relative paths beginning with `./` are resolved from the current file's directory.
 - Relative paths beginning with `../` are resolved up one directory from the current file, and `../` may be repeated.
-- Relative paths beginning with `/` are resolved from `src/assets/`.
+- Relative paths beginning with `/` are resolved from `src/pages/`.
 - Relative paths beginning with `~` will be resolve from the root of a matching package, allowing you to require files from outside your assets folder.
 
 ### Isomorphic Nunjucks
 
-Any Nunjucks templates found in `src/assets/` or `src/includes/` can be `require()`'d or `import`'d into your JavaScript assets, and be used to render HTML client-side.
+Any Nunjucks templates found in `src/pages/` or `src/includes/` can be `require()`'d or `import`'d into your JavaScript assets, and be used to render HTML client-side.
 
 E.g, if you wanted to access the `html5boilerplate` extend in your JavaScript:
 
-In `src/assets/js/index.js`:
+In `src/pages/assets/js/index.js`:
 
 ```
 const nunjucks = require('nunjucks/browser/nunjucks-slim');
@@ -171,7 +171,7 @@ Eleventy allows you to output _any_ type of text-based file. You can use a Nunju
 
 To do so, you simply change the `permalink` setting in the frontmatter of the file.
 
-E.g, to have `src/assets/index.njk` output to valid JSON to `src/assets/index.json` instead of outputting HTML to `src/assets/index.html`, simply do:
+E.g, to have `src/pages/index.njk` output to valid JSON to `src/pages/index.json` instead of outputting HTML to `src/pages/index.html`, simply do:
 
 ```
 ---
@@ -197,7 +197,7 @@ To do so, add a `pagination` object to your template's front matter, with the pr
 - `size`: is the number of items to pass to the template in each loop
 - `alias`: the key you wish to access the pagination data for each set of the loop
 
-E.g, in `src/assets/blog.njk`
+E.g, in `src/pages/blog.njk`
 
 ```
 ---
@@ -215,7 +215,7 @@ Pagination can be used to generate multiple pages using the same template, but w
 
 The `permalink` key is processed using the template's parser, allowing you to use any data available to the template to change the permalink of the page during pagination, allowing you to generate many unique pages.
 
-E.g, in `src/assets/blog.njk`:
+E.g, in `src/pages/blog.njk`:
 
 ```
 ---
@@ -234,7 +234,7 @@ Pagination can also be used to output multiple file formats for a given page, su
 
 To output a different file type for each iteration of the loop, you can do something like:
 
-In `src/assets/index.njk`:
+In `src/pages/index.njk`:
 ```
 ---
 outputTypes:
@@ -261,7 +261,7 @@ The generation supports two strategies for generating a service worker:
 
 | Key | Name | Description |
 | `0` | Generate | Automatically generates a fully-functioning service worker with precaching at `dist/sw.js` |
-| `1` | Inject | Automatically inject a service worker configuration into an existing service worker file at `src/assets/sw.js` |
+| `1` | Inject | Automatically inject a service worker configuration into an existing service worker file at `src/pages/sw.js` |
 
 The strategy can be configured by:
 
@@ -281,7 +281,7 @@ The strategy can be configured by:
 
 Generating gives you the most basic service worker, allowing your site/app to be available offline when network connection is not available.
 
-This method always overwrites the content of `src/assets/sw.js`.
+This method always overwrites the content of `src/pages/sw.js`.
 
 The options available to generation can be [found here](https://developers.google.com/web/tools/workbox/modules/workbox-build#generatesw_mode).
 
@@ -289,7 +289,7 @@ The options available to generation can be [found here](https://developers.googl
 
 Injection allows you to fully customize your service worker, and enable custom functionality like push notifications and preloading.
 
-This method uses the asset found at `src/assets/sw.js`, which is already pre-configured for injection.
+This method uses the asset found at `src/pages/sw.js`, which is already pre-configured for injection.
 
 APIs for configuring and adding features to your custom `sw.js` can be [found here](https://developers.google.com/web/tools/workbox/modules/workbox-sw).
 
@@ -450,13 +450,13 @@ module.exports = (slot, value1, value2) {
 
 ## Common pitfalls
 
-## Getting 404s for files in `src/assets/`
+## Getting 404s for files in `src/pages/`
 
 #### Problems with HTML
 
 Ensure when referencing assets in your HTML, you're using the permalink of the file, not the original extension!
 
-E.g, `src/assets/index.njk` becomes `/index.html`.
+E.g, `src/pages/index.njk` becomes `/index.html`.
 
 #### Changes to assets aren't showing up on my dev server?
 
