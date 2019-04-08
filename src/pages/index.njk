@@ -2,15 +2,29 @@
 layout: layouts/base.njk
 title: Hello world!
 ---
-<h1>{{ title }}</h1>
+<main class="container">
+    <section class="mx-auto max-w-md">
+    <h1>{{ title }}</h1>
 
-<h2>All pages</h2>
-<ul>
-    {% for page in collections.all %}
-        <li>
-            <a href="{{ page.url }}">
-                {{ page.data.title | default(page.url) }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+    <h2>All pages</h2>
+    <ul>
+        {% for page in collections.all %}
+            <li>
+                <a href="{{ page.url }}">
+                    {{ page.data.title | default(page.url) }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="text">
+        <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl.
+        </p>
+    </div>
+
+    </section>
+</main>

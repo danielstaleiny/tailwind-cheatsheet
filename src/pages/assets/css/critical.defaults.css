@@ -1,13 +1,5 @@
-input::placeholder, textarea::placeholder {
-    @apply font-sans;
-}
-
 blockquote, dl, dd, h1, h2, h3, h4, h5, h6, figure, p, pre{
     @apply mb-1;
-}
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-    @apply tracking-tight;
 }
 
 h1, .h1 {
