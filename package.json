@@ -28,6 +28,7 @@
     "pulp:build": "pulp --psc-package build -o src/pages/assets/js/pure --no-check-main --skip-entry-point",
     "pulp:watch": "pulp --psc-package --watch build -o src/pages/assets/js/pure --no-check-main --skip-entry-point ",
     "serve": "serve -l 3000 dist",
+    "storybook": "start-storybook",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
@@ -45,6 +46,7 @@
     "cash-cp": "^0.2.0",
     "chokidar-cli": "^1.2.1",
     "date-fns": "^2.0.0-alpha.27",
+    "fast-glob": "^2.2.6",
     "fs-extra": "^7.0.1",
     "globby": "^9.0.0",
     "htm": "^2.1.1",
@@ -64,6 +66,8 @@
     "@babel/core": "^7.4.3",
     "@babel/plugin-transform-strict-mode": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
+    "@storybook/html": "^5.0.6",
+    "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.3",
     "parcel-plugin-copy-unbundled": "file:lib/parcel/parcel-plugin-copy-unbundled",
     "parcel-plugin-eleventy-sync": "file:lib/parcel/parcel-plugin-eleventy-sync",
