@@ -77,3 +77,8 @@ dist/
 .tmp/
 
 **/*.purs
+
+# ignore .org files
+*.org
+eachMarkdownToOrg.sh
+pandoc.sh

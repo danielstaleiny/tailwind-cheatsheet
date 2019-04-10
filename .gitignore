@@ -77,3 +77,10 @@ src/pages/assets/js/pure/
 dist/
 .tmp/
 
+# ignore .org files
+*.org
+eachMarkdownToOrg.sh
+pandoc.sh
+
+
+
