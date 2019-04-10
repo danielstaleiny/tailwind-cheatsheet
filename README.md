@@ -66,7 +66,7 @@ of modern programming practices.
 It does this by post-processing, pre-processing, and bundling a group of
 ***assets***, or files, in 4 steps:
 
-### 1. Pre-processing with Eleventy
+### 1\. Pre-processing with Eleventy
 
 Eleventy is used as a text-preprocessor, allowing you to use Nunjucks,
 or a variety of other template formats, to generate text-based
@@ -81,7 +81,7 @@ post-processed, and then copied to `.tmp/11ty`.
 *Any file extensions not supported by Eleventy's templates will be
 copied over to `.tmp/11ty` as-is.*
 
-### 2. Parsing with Parcel Bundler
+### 2\. Parsing with Parcel Bundler
 
 Then, all output HTML assets in `.tmp/11ty` are parsed by Parcel
 Bundler.
@@ -92,36 +92,36 @@ assets are assembled, and prepared for processing.
 *Any assets in `.tmp/11ty` that are not referenced in your HTML output
 are copied over to the `dist/` folder as-is.*
 
-### 3. Pre-processing with Parcel Bundler
+### 3\. Pre-processing with Parcel Bundler
 
 Parcel is then used to pre-process supported assets, including CSS and
 JS.
 
--   [Sass is pre-processed into CSS](https://parceljs.org/scss.html)
--   [Less is pre-processed into CSS](https://parceljs.org/less.html)
--   [Stylus is pre-processed into CSS](https://parceljs.org/stylus.html)
--   Inline style tags of type `text/sass`, `text/scss`, `text/less`,
+  - [Sass is pre-processed into CSS](https://parceljs.org/scss.html)
+  - [Less is pre-processed into CSS](https://parceljs.org/less.html)
+  - [Stylus is pre-processed into CSS](https://parceljs.org/stylus.html)
+  - Inline style tags of type `text/sass`, `text/scss`, `text/less`,
     `text/stylus` are transformed into CSS
--   [Typescript is pre-processed into
+  - [Typescript is pre-processed into
     JS](https://parceljs.org/typeScript.html)
--   [Coffeescript is pre-processed into
+  - [Coffeescript is pre-processed into
     JS](https://parceljs.org/coffeeScript.html)
--   [ReasonML is pre-procesed into
+  - [ReasonML is pre-procesed into
     JS](https://parceljs.org/reasonML.html)
 
-### 4. Post-processing with Parcel Bundler
+### 4\. Post-processing with Parcel Bundler
 
 Parcel is then used on all of the pre-processed assets to do final
 post-processing:
 
--   [HTML is post-processed with
+  - [HTML is post-processed with
     PostHTML](https://parceljs.org/html.html)
--   [CSS is post-processed with PostCSS](https://parceljs.org/css.html)
--   [JS is post-processed with
+  - [CSS is post-processed with PostCSS](https://parceljs.org/css.html)
+  - [JS is post-processed with
     Babel](https://parceljs.org/javascript.html)
--   Inline script tags of the type type `application/javascript` and
+  - Inline script tags of the type type `application/javascript` and
     `text/javascript` are post-processed with Babel
--   [Images are post-processed with Imagemin](#)
+  - [Images are post-processed with Imagemin](#)
 
 ## Advanced Features
 
@@ -147,12 +147,13 @@ asset types](https://parceljs.org/assets.html) is added. - Relative
 paths beginning with `/` are resolved from `src/pages/`. - Relative
 paths beginning with `~` will be resolve from the root of a matching
 package, allowing you to require files from outside your assets folder.
-- Glob support is added, allowing you to do things like:
-`require('./**/*.js')`; -
-[Aliases](https://parceljs.org/module_resolution.html#aliases) can be
-created, allowing you to: - Swap out one module for another, e.g.
-`react` `> =preact` - Create a shortcut to a local module, e.g.
-`./src/pages/` `> =pages/`.
+
+  - Glob support is added, allowing you to do things like:
+    `require('./**/*.js')`; -
+    [Aliases](https://parceljs.org/module_resolution.html#aliases) can
+    be created, allowing you to: - Swap out one module for another, e.g.
+    `react` `> =preact` - Create a shortcut to a local module, e.g.
+    `./src/pages/` `> =pages/`.
 
 **For HTML and CSS:** - Relative paths beginning with `./` are resolved
 from the current file's directory. - Relative paths beginning with `../`
@@ -183,14 +184,15 @@ const html = nunjucks.render('/src/includes/extends/html5boilerplate.njk', {
 console.log(html);
 ```
 
-\#+BEGINQUOTE \*\* Want to create an Nunjucks template for client-use
-only?
+\#+BEGIN<sub>QUOTE</sub>
 
-That's easy! Simply set `permalink` to `false` in the template's front
+## Want to create an Nunjucks template for client-use only?
+
+That's easy\! Simply set `permalink` to `false` in the template's front
 matter, and it will not be output as a file, but will stil be available
-to your JS!
+to your JS\!
 
-\#+ENDQUOTE
+\#+END<sub>QUOTE</sub>
 
 ### Isomorphic Data Files
 
@@ -199,10 +201,10 @@ JavaScript, allowing you to access the data as JavaScript types.
 
 Currently you can import:
 
--   [YAML](https://parceljs.org/yaml.html)
--   [TOML](https://parceljs.org/toml.html)
--   [JSON](https://parceljs.org/json.html)
--   JS
+  - [YAML](https://parceljs.org/yaml.html)
+  - [TOML](https://parceljs.org/toml.html)
+  - [JSON](https://parceljs.org/json.html)
+  - JS
 
 E.g, if you wanted to use the data in `src/data/site.yml`:
 
@@ -250,10 +252,10 @@ template multiple times, in order to generate different pages or assets.
 To do so, add a `pagination` object to your template's front matter,
 with the properties:
 
--   `data`: is the key for any variable accessible to the template (e.g,
+  - `data`: is the key for any variable accessible to the template (e.g,
     from frontmatter, data files, or collections)
--   `size`: is the number of items to pass to the template in each loop
--   `alias`: the key you wish to access the pagination data for each set
+  - `size`: is the number of items to pass to the template in each loop
+  - `alias`: the key you wish to access the pagination data for each set
     of the loop
 
 E.g, in `src/pages/blog.njk`
@@ -269,18 +271,18 @@ pagination:
 ```
 
 1.  Generating an archive
-
+    
     Pagination can be used to generate multiple pages using the same
     template, but with different data, allowing you to get similar
     functionality to server-side rendered pages.
-
+    
     The `permalink` key is processed using the template's parser,
     allowing you to use any data available to the template to change the
     permalink of the page during pagination, allowing you to generate
     many unique pages.
-
+    
     E.g, in `src/pages/blog.njk`:
-
+    
     ``` example
     ---
     pagination:
@@ -293,15 +295,15 @@ pagination:
     ```
 
 2.  Generating multiple file types from a single template
-
+    
     Pagination can also be used to output multiple file formats for a
     given page, such as outputting JSON representations for all pages.
-
+    
     To output a different file type for each iteration of the loop, you
     can do something like:
-
+    
     In `src/pages/index.njk`:
-
+    
     ``` example
     ---
     outputTypes:
@@ -330,16 +332,16 @@ and makes them available when offline.
 The generation supports two strategies for generating a service worker:
 
 | Key | Name     | Description                                                                                                   |
-|-----|----------|---------------------------------------------------------------------------------------------------------------|
+| --- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | `0` | Generate | Automatically generates a fully-functioning service worker with precaching at `dist/sw.js`                    |
 | `1` | Inject   | Automatically inject a service worker configuration into an existing service worker file at `src/pages/sw.js` |
 
 The strategy can be configured by:
 
--   Creating a `package` key in `package.json` with the following…
--   Creating a `.workboxrc` with a JSON configuration with the
+  - Creating a `package` key in `package.json` with the following…
+  - Creating a `.workboxrc` with a JSON configuration with the
     following..
--   Creating a `.workbox.js` that exports a valid configuration object
+  - Creating a `.workbox.js` that exports a valid configuration object
     with the following…
 
 <!-- -->
@@ -409,7 +411,7 @@ module.exports = (content, inputPath, outputPath) => {
 ```
 
 E.g, add a natural language linter to markdown files, to ensure
-off-brand langauge isn't used!
+off-brand langauge isn't used\!
 
 ``` example
 module.exports = (content, inputPath, outputPath) => {
@@ -464,9 +466,9 @@ module.exports = (content, outputPath) => {
 
 Custom filters and shortcodes can be added for use in your templates:
 
--   **Filters** allow you to modify a value, such as changing a string
+  - **Filters** allow you to modify a value, such as changing a string
     or converting an array to a delimited list
--   **Shortcodes** return content (a JavaScript string or template
+  - **Shortcodes** return content (a JavaScript string or template
     literal) that is injected into the template. They can also take
     paramaters to customize their output.
 
@@ -556,7 +558,7 @@ module.exports = (slot, value1, value2) {
 Problems with HTML
 
 Ensure when referencing assets in your HTML, you're using the permalink
-of the file, not the original extension!
+of the file, not the original extension\!
 
 E.g, `src/pages/index.njk` becomes `/index.html`.
 
@@ -564,16 +566,16 @@ Changes to assets aren't showing up on my dev server?
 
 This is likely caused by either:
 
--   If your having issues with pre-processed CSS or JS assets like Sass
+  - If your having issues with pre-processed CSS or JS assets like Sass
     or Typescript, your assets are likely not being referenced in your
     HTML documents. Assets that require any pre or post-processing must
     be referenced in an HTML document, or a supported asset format that
     *is* referenced in an HTML document.
 
--   The service worker is caching your assets. You can:
-
-    -   [Disable the service
+  - The service worker is caching your assets. You can:
+    
+      - [Disable the service
         worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#Developer_tools)
         in your browser's developer tools
-    -   Force a hard refresh of the page (this is usually done by
+      - Force a hard refresh of the page (this is usually done by
         pressing `ctrl` + `shift` + `R`).
