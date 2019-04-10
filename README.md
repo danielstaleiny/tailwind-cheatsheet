@@ -576,3 +576,12 @@ This is likely caused by either:
         in your browser's developer tools
     -   Force a hard refresh of the page (this is usually done by
         pressing `ctrl` + `shift` + `R`).
+        
+        
+## Lazy loading
+
+Note: There seems to be 10KB overhead on every file. 
+
+That means, use regular import when importing utilities, small functions.
+
+Use lazy loading when you need big chuck of js and you want to utilize chaching. 

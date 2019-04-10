@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@11ty/eleventy": "^0.8.0",
+    "@babel/polyfill": "^7.4.3",
     "@fullhuman/postcss-purgecss": "^1.1.0",
     "autoprefixer": "^9.5.0",
     "cash-cp": "^0.2.0",
@@ -60,11 +61,14 @@
     "workbox-build": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-transform-strict-mode": "^7.2.0",
+    "@babel/preset-env": "^7.4.3",
     "browser-sync": "^2.26.3",
-    "prettier": "^1.16.4",
     "parcel-plugin-copy-unbundled": "file:lib/parcel/parcel-plugin-copy-unbundled",
     "parcel-plugin-eleventy-sync": "file:lib/parcel/parcel-plugin-eleventy-sync",
     "parcel-plugin-nunjucks-precompile": "file:lib/parcel/parcel-plugin-nunjucks-precompile",
-    "parcel-plugin-service-worker": "file:lib/parcel/parcel-plugin-service-worker"
+    "parcel-plugin-service-worker": "file:lib/parcel/parcel-plugin-service-worker",
+    "prettier": "^1.16.4"
   }
 }
