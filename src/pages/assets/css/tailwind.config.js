@@ -3,8 +3,8 @@
 let colors = {
     transparent: 'transparent',
 
-    black: '#000',
-    blackish: '#22292f',
+    'black-black': '#000',
+    black: '#22292f',
     'grey-darkest': '#3d4852',
     'grey-darker': '#0a3039',
     'grey-dark': '#8795a1',
@@ -141,15 +141,15 @@ module.exports = {
 
     // .text-{size}
     textSizes: {
-        xs: '.75rem', // 12px
-        sm: '.875rem', // 14px
-        base: '1rem', // 16px
-        lg: '1.125rem', // 18px
-        xl: '1.25rem', // 20px
-        h4: '1.5rem', // 24px
-        h3: '1.875rem', // 30px
-        h2: '2.25rem', // 36px
-        h1: '3rem', // 48px
+        xs: '.75rem', // 12px // 15px
+        sm: '.875rem', // 14px // 17.5px
+        base: '1rem', // 16px // 20px
+        lg: '1.125rem', // 18px // 22.5px
+        xl: '1.25rem', // 20px // 25px
+        h4: '1.5rem', // 24px // 30px
+        h3: '1.875rem', // 30px // 37.5px
+        h2: '2.25rem', // 36px // 45px
+        h1: '3rem', // 48px // 60px
         'xs-px': '12px', // 12px
         'sm-px': '14px', // 14px
         'base-px': '16px', // 16px
@@ -163,24 +163,26 @@ module.exports = {
 
     // .font-{weight}
     fontWeights: {
-        // hairline: 100,
-        // thin: 200,
+        hairline: 100,
+        thin: 200,
         light: 300,
         normal: 400,
         medium: 500,
         semibold: 600,
-        bold: 700
-        // extrabold: 800,
-        // black: 900
+        bold: 700,
+        extrabold: 800,
+        black: 900
     },
 
     // .leading-{size}
     leading: {
         none: 1,
+        '1.3': '1.3',
+        '1.4': '1.4',
         normal: 1.5,
-        '1': '1.5rem',
-        '2': '2.25rem',
-        '3': '3rem'
+        '1.6': '1.6',
+        '1.7': '1.7',
+        '1.8': '1.8'
     },
 
     // .tracking-{size}
@@ -209,13 +211,13 @@ module.exports = {
     borderWidths: {
         default: '1px',
         '0': '0',
-        '2': '2px'
-        // '4': '4px',
-        // '8': '8px'
+        '2': '2px',
+        '4': '4px',
+        '8': '8px'
     },
 
     // .border-{color}
-    borderColors: global.Object.assign({ default: colors['blackish'] }, colors),
+    borderColors: global.Object.assign({ default: colors['black'] }, colors),
 
     // .rounded{-side?}{-size?}
     borderRadius: {
@@ -229,21 +231,23 @@ module.exports = {
     // .w-{size}
     width: {
         auto: 'auto',
-        // px: '1px',
-        '025': '0.25rem',
-        '05': '0.5rem',
-        '075': '0.75rem',
+        px: '1px',
+        '0.25': '0.25rem',
+        '0.5': '0.5rem',
+        '0.75': '0.75rem',
         '1': '1rem',
-        '125': '1.25rem',
-        '15': '1.5rem',
+        '1.25': '1.25rem',
+        '1.5': '1.5rem',
         '2': '2rem',
-        '25': '2.5rem',
+        '2.5': '2.5rem',
         '3': '3rem',
         '4': '4rem',
         '6': '6rem',
         '8': '8rem',
-        '120': '12rem',
-        '160': '16rem',
+        '10': '10rem',
+        '12': '12rem',
+        '14': '14rem',
+        '16': '16rem',
         '1/2': '50%',
         '1/3': '33.33333%',
         '2/3': '66.66667%',
@@ -262,20 +266,26 @@ module.exports = {
     // .h-{size}
     height: {
         auto: 'auto',
-        // px: '1px',
-        '025': '0.25rem',
-        '05': '0.5rem',
-        '075': '0.75rem',
+        px: '1px',
+        '0.25': '0.25rem',
+        '0.5': '0.5rem',
+        '0.75': '0.75rem',
         '1': '1rem',
-        '125': '1.25rem',
-        '15': '1.5rem',
+        '1.25': '1.25rem',
+        '1.5': '1.5rem',
         '2': '2rem',
-        '25': '2.5rem',
+        '2.5': '2.5rem',
         '3': '3rem',
         '4': '4rem',
         '5': '5rem',
         '6': '6rem',
         '8': '8rem',
+        '10': '10rem',
+        '12': '12rem',
+        '14': '14rem',
+        '16': '16rem',
+        '18': '18rem',
+        '20': '20rem',
         full: '100%',
         screen: '100vh',
         width: '100vw',
@@ -297,15 +307,16 @@ module.exports = {
 
     // .max-w-{size}
     maxWidth: {
-        xs: '20rem',
-        sm: '30rem',
-        md: '40rem',
-        lg: '50rem',
-        xl: '60rem',
-        '2xl': '70rem',
-        '3xl': '80rem',
-        '4xl': '90rem',
-        '5xl': '100rem',
+        '20': '20rem',
+        '30': '30rem',
+        '35': '35rem',
+        '40': '40rem',
+        '50': '50rem',
+        '60': '60rem',
+        '70': '70rem',
+        '80': '80rem',
+        '90': '90rem',
+        '100': '100rem',
         full: '100%'
     },
 
@@ -319,32 +330,44 @@ module.exports = {
     padding: {
         px: '1px',
         '0': '0',
-        '1/4': '0.375rem',
-        '1/2': '0.75rem',
-        '3/4': '0.125rem',
-        '1': '1.5rem',
-        '5/4': '1.875rem',
-        '3/2': '2.25rem',
-        '2': '3rem',
-        '5/2': '3.75rem',
-        '3': '4.5rem',
-        '4': '6rem',
-        '5': '7.5rem',
-        '6': '9rem',
-        '8': '12rem',
-        '10': '15rem',
-        '1/2-em': '0.5em',
-        '3/4-em': '0.75em',
+        '1/4-line': '0.375rem',
+        '1/2-line': '0.75rem',
+        '3/4-line': '0.125rem',
+        '1-line': '1.5rem',
+        '5/4-line': '1.875rem',
+        '3/2-line': '2.25rem',
+        '2-line': '3rem',
+        '5/2-line': '3.75rem',
+        '3-line': '4.5rem',
+        '4-line': '6rem',
+        '5-line': '7.5rem',
+        '6-line': '9rem',
+        '8-line': '12rem',
+        '10-line': '15rem',
+        '0.25': '0.25rem',
+        '0.5': '0.5rem',
+        '0.75': '0.75rem',
+        '1': '1rem',
+        '1.25': '1.25rem',
+        '1.5': '1.5rem',
+        '2': '2rem',
+        '2.5': '2.5rem',
+        '3': '3rem',
+        '4': '4rem',
+        '5': '5rem',
+        '6': '6rem',
+        '8': '8rem',
+        '10': '10rem',
+        '0.25-em': '0.25em',
+        '0.5-em': '0.5em',
+        '0.75-em': '0.75em',
         '1-em': '1em',
-        '5/4-em': '1.25em',
-        '3/2-em': '1.5em',
+        '1.25-em': '1.25em',
+        '1.5-em': '1.5em',
         '2-em': '2em',
-        '5/2-em': '2.5em',
+        '2.5-em': '2.5em',
         '3-em': '3em',
-        '4-em': '4em',
-        '5-em': '5em',
-        '6-em': '6em',
-        '8-em': '8em'
+        '4-em': '4em'
     },
 
     //  .m{side?}-{size}
@@ -352,40 +375,67 @@ module.exports = {
         auto: 'auto',
         px: '1px',
         '0': '0',
-        '1/4': '0.375rem',
-        '1/2': '0.75rem',
-        '3/4': '0.125rem',
-        '1': '1.5rem',
-        '5/4': '1.875rem',
-        '3/2': '2.25rem',
-        '2': '3rem',
-        '5/2': '3.75rem',
-        '3': '4.5rem',
-        '4': '6rem',
-        '5': '7.5rem',
-        '6': '9rem',
-        '8': '12rem',
-        '10': '15rem'
+        '1/4-line': '0.375rem',
+        '1/2-line': '0.75rem',
+        '3/4-line': '0.125rem',
+        '1-line': '1.5rem',
+        '5/4-line': '1.875rem',
+        '3/2-line': '2.25rem',
+        '2-line': '3rem',
+        '5/2-line': '3.75rem',
+        '3-line': '4.5rem',
+        '4-line': '6rem',
+        '5-line': '7.5rem',
+        '6-line': '9rem',
+        '8-line': '12rem',
+        '10-line': '15rem',
+        '0.25': '0.25rem',
+        '0.5': '0.5rem',
+        '0.75': '0.75rem',
+        '1': '1rem',
+        '1.25': '1.25rem',
+        '1.5': '1.5rem',
+        '2': '2rem',
+        '2.5': '2.5rem',
+        '3': '3rem',
+        '4': '4rem',
+        '5': '5rem',
+        '6': '6rem',
+        '8': '8rem',
+        '10': '10rem',
+        '15': '15rem',
+        '20': '20rem',
+        '0.25-em': '0.25em',
+        '0.5-em': '0.5em',
+        '0.75-em': '0.75em',
+        '1-em': '1em',
+        '1.25-em': '1.25em',
+        '1.5-em': '1.5em',
+        '2-em': '2em',
+        '2.5-em': '2.5em',
+        '3-em': '3em',
+        '4-em': '4em'
     },
 
     // .-m{side?}-{size}
-    // negativeMargin: {
-    // px: '1px',
-    // '0': '0',
-    // '1': '0.25rem',
-    // '2': '0.5rem',
-    // '3': '0.75rem',
-    // '4': '1rem',
-    // '5': '1.25rem',
-    // '6': '1.5rem',
-    // '8': '2rem',
-    // '10': '2.5rem',
-    // '12': '3rem',
-    // '16': '4rem',
-    // '20': '5rem',
-    // '24': '6rem',
-    // '32': '8rem'
-    // },
+    negativeMargin: {
+        px: '1px',
+        '0': '0',
+        '0.25': '0.25rem',
+        '0.5': '0.5rem',
+        '0.75': '0.75rem',
+        '1': '1rem',
+        '1.25': '1.25rem',
+        '1.5': '1.5rem',
+        '2': '2rem',
+        '2.5': '2.5rem',
+        '3': '3rem',
+        '4': '4rem',
+        '5': '5rem',
+        '6': '6rem',
+        '8': '8rem',
+        '10': '8rem'
+    },
 
     // .shadow-{size?}
     shadows: {
@@ -402,11 +452,16 @@ module.exports = {
         auto: 'auto',
         '-1': -1,
         '0': 0,
-        '10': 10,
-        '20': 20,
-        '30': 30,
-        '40': 40,
-        '50': 50
+        '1': 10,
+        '2': 20,
+        '3': 30,
+        '4': 40,
+        '5': 50,
+        '6': 60,
+        '7': 70,
+        '8': 80,
+        '9': 90,
+        '10': 100
     },
 
     // .opacity-{name}
@@ -463,7 +518,7 @@ module.exports = {
         maxWidth: [],
         minHeight: [],
         minWidth: [],
-        negativeMargin: false,
+        negativeMargin: [],
         objectFit: [],
         objectPosition: [],
         opacity: ['responsive', 'group-hover'],
@@ -484,7 +539,7 @@ module.exports = {
         tracking: [],
         userSelect: [],
         verticalAlign: [],
-        visibility: ['responsive'],
+        visibility: ['responsive', 'hover', 'focus'],
         whitespace: [],
         width: [],
         zIndex: []

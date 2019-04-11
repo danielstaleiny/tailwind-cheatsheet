@@ -36,6 +36,7 @@ html {
         font-size: 1.5em;
     }
 }
+
 body {
     font-size-adjust: 0.5;
     line-height: 1.5;
@@ -45,7 +46,6 @@ body {
     font-feature-settings: "liga" on;
     @apply text-black;
 }
-
 @media (min-width: 46.25em) and (max-width: 50em){
     body {
         line-height: 1.7;
@@ -82,44 +82,17 @@ body {
     }
 }
 
+input, textarea {
+    font-size: inherit;
+    line-height: inherit;
+}
+
 input::placeholder, textarea::placeholder {
     @apply font-sans;
 }
 
-p {
-    @apply max-w-md;
-}
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-    @apply tracking-tight;
-}
-
-blockquote, dl, dd, h1, h2, h3, h4, h5, h6, figure, p, pre{
-    @apply mb-1;
-}
-
-h1, .h1 {
-    @apply mt-3 mb-1 text-h1 leading-3;
-}
-h2, .h2{
-    @apply mt-2 mb-1/2 text-h2 leading-2;
-}
-h3, .h3 {
-    @apply mt-2 mb-1/2 text-h3 leading-2;
-}
-h4, .h4{
-    @apply mt-1 mb-0 text-h4 leading-1;
-}
-h5, .h5{
-    @apply mt-1 mb-0 text-xl leading-1;
-}
-h6, .h6{
-    @apply mt-1 mb-0 text-lg leading-1;
-}
-
-
 ul, ol {
-    @apply pl-0 mb-2;
+    @apply pl-0;
     list-style-position: outside;
 }
 li {
