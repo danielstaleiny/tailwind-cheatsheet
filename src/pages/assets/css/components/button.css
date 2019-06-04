@@ -1,6 +1,7 @@
 .btn {
-    @apply no-underline pt-1/2-em px-2-em shadow;
-    padding-bottom: 0.49em;
+    /* @apply no-underline pt-1/2 px-2 shadow; */
+    @apply no-underline shadow;
+    padding: 0.5em 2em 0.49em;
     transition: all 0.2s ease 0s;
 }
 .btn-black {
