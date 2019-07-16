@@ -10,9 +10,9 @@ const path = require('path')
  */
 module.exports = eleventyConfig => {
     const paths = {
-        filters: path.join(process.cwd(), 'src/filters/*.js'),
-        shortcodes: path.join(process.cwd(), 'src/shortcodes/*.js'),
-        transforms: path.join(process.cwd(), 'src/transforms/*.js')
+        filters: path.join(process.cwd(), 'lib/filters/*.js'),
+        shortcodes: path.join(process.cwd(), 'lib/shortcodes/*.js'),
+        transforms: path.join(process.cwd(), 'lib/transforms/*.js')
     }
     const dirs = {
         input: 'src/pages/',
@@ -27,17 +27,23 @@ module.exports = eleventyConfig => {
 
     // Add all found filters
     filters.forEach(filter =>
-        eleventyConfig.addFilter(resolveNameFromPath(filter), filter)
+        eleventyConfig.addFilter(resolveNameFromPath(filter), require(filter))
     )
 
     // Add all found shortcodes
     shortcodes.forEach(shortcode =>
-        eleventyConfig.addShortcode(resolveNameFromPath(shortcode), shortcode)
+        eleventyConfig.addShortcode(
+            resolveNameFromPath(shortcode),
+            require(shortcode)
+        )
     )
 
     // Add all found transforms
     transforms.forEach(transform =>
-        eleventyConfig.addTransform(resolveNameFromPath(transform), transform)
+        eleventyConfig.addTransform(
+            resolveNameFromPath(transform),
+            require(transform)
+        )
     )
 
     // Make all files pass through to cache
@@ -67,6 +73,6 @@ module.exports = eleventyConfig => {
     }
 }
 
-function resolveNameFromPath(path) {
-    return path.basename(path)
+function resolveNameFromPath(pth) {
+    return path.basename(pth, '.js')
 }
