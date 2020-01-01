@@ -585,3 +585,14 @@ Note: There seems to be 10KB overhead on every file.
 That means, use regular import when importing utilities, small functions.
 
 Use lazy loading when you need big chuck of js and you want to utilize chaching. 
+
+## Note for purescript
+
+If it fails to initially run, you need to get .psc-package folder from init. 
+
+
+```shell
+mkdir psc-temp && cd psc-temp && pulp --psc-package init && cd .. && cp -r psc-temp/.psc-package . && rm -rf psc-temp
+```
+
+
