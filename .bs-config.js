@@ -6,7 +6,7 @@
  * For a full list of options, see: http://www.browsersync.io/docs/options/
  */
 module.exports = {
-    serveStatic: ['./dist'],
+    serveStatic: ['./_site'],
     serveStaticOptions: {
         extensions: ['html', 'js']
     },

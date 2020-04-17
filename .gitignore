@@ -73,8 +73,9 @@ generated-docs/
 .psa*
 
 output/
-src/pages/assets/js/pure/
+pages/assets/js/pure/
 dist/
+_site/
 .tmp/
 
 # ignore .org files

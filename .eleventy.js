@@ -15,9 +15,9 @@ module.exports = eleventyConfig => {
         transforms: path.join(process.cwd(), 'lib/transforms/*.js')
     }
     const dirs = {
-        input: 'src/pages/',
-        data: `../data/`,
-        includes: `../includes/`
+        input: 'pages/',
+        data: `../src/data/`,
+        includes: `../src/includes/`
     }
     const files = glob.sync(path.join(process.cwd(), dirs.input, '**/*'))
     const exts = files.map(file => path.extname(file).replace('.', ''))

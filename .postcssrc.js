@@ -7,7 +7,7 @@ class TailwindExtractor {
 module.exports = {
     plugins: [
         require('postcss-easy-import'),
-        require('tailwindcss')('./src/pages/assets/css/tailwind.config.js'),
+        require('tailwindcss')('./pages/assets/css/tailwind.config.js'),
         process.env.NODE_ENV === 'production'
             ? require('@fullhuman/postcss-purgecss')({
                   content: ['./.tmp/parcel/**/*.html'],
