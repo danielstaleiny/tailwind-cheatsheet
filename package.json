@@ -72,10 +72,6 @@
         "babel-loader": "^8.1.0",
         "browser-sync": "^2.26.7",
         "npm-check-updates": "^4.1.2",
-        "parcel-plugin-copy-unbundled": "file:lib/parcel/parcel-plugin-copy-unbundled",
-        "parcel-plugin-eleventy-sync": "file:lib/parcel/parcel-plugin-eleventy-sync",
-        "parcel-plugin-nunjucks-precompile": "file:lib/parcel/parcel-plugin-nunjucks-precompile",
-        "parcel-plugin-service-worker": "file:lib/parcel/parcel-plugin-service-worker",
         "prettier": "^2.0.4"
     }
 }

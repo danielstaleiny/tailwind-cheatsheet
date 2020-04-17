@@ -74,7 +74,7 @@ generated-docs/
 
 output/
 dist/
-_site
+_site/
 .tmp/
 
 **/*.purs

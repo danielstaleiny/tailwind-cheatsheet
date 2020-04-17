@@ -16,8 +16,9 @@ module.exports = eleventyConfig => {
     }
     const dirs = {
         input: 'pages/',
-        data: `../src/data/`,
-        includes: `../src/includes/`
+        data: `../src/_data/`,
+        includes: `../src/includes/`,
+        layouts: `../src/layouts/`
     }
     const files = glob.sync(path.join(process.cwd(), dirs.input, '**/*'))
     const exts = files.map(file => path.extname(file).replace('.', ''))
@@ -48,12 +49,17 @@ module.exports = eleventyConfig => {
 
     // Make all files pass through to cache
     eleventyConfig.setTemplateFormats(exts)
+    eleventyConfig.setWatchJavaScriptDependencies(false)
 
-    eleventyConfig.addPassthroughCopy(`${dirs.input}/admin`)
+    // eleventyConfig.addPassthroughCopy(`${dirs.input}/assets`)
 
     // Because of Purescript pure/ folder we need to ignore it for git but pass it through the 11ty
     // .eleventyignore Only source of ignoring files for 11ty
     eleventyConfig.setUseGitIgnore(false)
+
+    eleventyConfig.setBrowserSyncConfig({
+        notify: true
+    });
 
     return {
         // Set the path from the root of the deploy domain
