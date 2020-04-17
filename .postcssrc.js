@@ -1,9 +1,3 @@
-class TailwindExtractor {
-    static extract(content) {
-        return content.match(/[A-Za-z0-9-_:\.\/]+/g) || []
-    }
-}
-
 module.exports = {
     plugins: [
         require('postcss-easy-import'),
@@ -13,7 +7,7 @@ module.exports = {
                   content: ['./.tmp/parcel/**/*.html'],
                   extractors: [
                       {
-                          extractor: TailwindExtractor,
+                          extractor: content => content.match(/[A-Za-z0-9-_:\.\/]+/g) || [],
                           extensions: ['html', 'js']
                       }
                   ]
