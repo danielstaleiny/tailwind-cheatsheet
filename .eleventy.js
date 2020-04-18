@@ -57,9 +57,9 @@ module.exports = eleventyConfig => {
     // .eleventyignore Only source of ignoring files for 11ty
     eleventyConfig.setUseGitIgnore(false)
 
-    eleventyConfig.setBrowserSyncConfig({
-        notify: true
-    });
+    // eleventyConfig.setBrowserSyncConfig({
+    //     notify: true
+    // });
 
     return {
         // Set the path from the root of the deploy domain
