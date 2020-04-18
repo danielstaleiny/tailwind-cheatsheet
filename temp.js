@@ -1,6 +1,12 @@
 const resolve = require('tailwindcss/resolveConfig')
-const tailwindConfig = require('../../pages/assets/css/tailwind.config.js')
+const tailwindConfig = require('./pages/assets/css/tailwind.config.js')
 const config = resolve(tailwindConfig)
+
+// console.log(config.prefix)
+// console.log(config.important)
+// console.log(config.separator)
+// console.log(config.corePlugins)
+// console.log(config.plugins)
 
 const {
     screens,
@@ -185,8 +191,8 @@ const visibility_ = gen('', {
 const zindex_ = gen('z-', zIndex)
 
 // console.log(breakpoint_names)
-//
-// LAYOUT
+
+// Layout
 // console.log(breakpoint)
 //
 // console.log(container_)
@@ -202,7 +208,7 @@ const zindex_ = gen('z-', zIndex)
 // console.log(visibility_)
 // console.log(zindex_)
 
-module.exports = {
+return {
     container: container_,
     'box-sizing': boxsizing_,
     display: display_,
@@ -216,3 +222,59 @@ module.exports = {
     visibility: visibility_,
     'z-index': zindex_,
 }
+
+// Flexbox
+//
+// console.log(zindex_)
+
+// .font-{name}
+// const font = gen('font', fontSize)
+// const font2 = gen('font', fontWeight)
+//     // textColor,
+// const text = gen('text', textColor)
+// console.log(font, font2)
+
+// .text-{size}
+// .font-{weight}
+// .leading-{size}
+// .tracking-{size}
+// .text-{color}
+// .bg-{color}
+// .bg-{size}
+// .border{-side?}{-width?}
+// .border-{color}
+// .rounded{-side?}{-size?}
+// .w-{size}
+// .h-{size}
+// .min-w-{size}
+// .min-h-{size}
+// .max-w-{size}
+// .max-h-{size}
+// .p{side?}-{size}
+// .m{side?}-{size}
+// .-m{side?}-{size}
+// .shadow-{size?}
+// .z-{index}
+// .opacity-{name}
+// .fill-{name}
+// .stroke-{name}
+
+// console.log(Object.keys(themes))
+const variants = config.variants
+
+// Object.entries(themes)
+//     .filter((val, index) => (index > 1 ? false : true))
+//     .map(([name, theme]) => {
+//         if (typeof theme === 'object') {
+//             Object.entries(theme).map(([variable, value]) => {
+//                 if (typeof value === 'object') {
+//                     Object.entries(value).map(([parameter, paramvalue]) => {
+//                         console.log(
+//                             `TODO ${name}-${variable}-${parameter}: ${paramvalue}`
+//                         )
+//                     })
+//                 } else console.log(`TODO ${name}-${variable}: ${value}`)
+//             })
+//         }
+//         return
+//     })

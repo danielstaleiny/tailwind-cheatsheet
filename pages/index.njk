@@ -4,7 +4,7 @@ title: Tailwind CSS Cheatsheet!
 ---
 <main class="container">
     <section class="mx-auto max-w-md">
-    <h1>{{ title }}</h1>
+    <h1 class="h1">{{ title }}</h1>
 
     <!-- <h2>All pages</h2> -->
     <!-- <ul> -->
@@ -17,9 +17,31 @@ title: Tailwind CSS Cheatsheet!
     <!--     {% endfor %} -->
     <!-- </ul> -->
 
-    <div class="text">
-        {{ tailwind.theme }}
-    </div>
+    <section>
+        {% for sec,obj  in tailwind %}
+        <h3 class="h3"> {{sec}} </h3>
+        <ul class="ul">
+
+        {% for item  in obj %}
+        {% for name,code  in item %}
+        <li class="li">
+            <div class="tooltip">
+            <span class="tooltiptext">{{code}}</span>
+                {{name}}
+            </div>
+        </li>
+        {% endfor %}
+        {% endfor %}
+        </ul>
+        {% endfor %}
+    </section>
+
+
+
+
+    <!-- <div class="text"> -->
+    <!--     {{ tailwind.theme | json}} -->
+    <!-- </div> -->
     <!-- <div class="text"> -->
     <!--     {{ tailwind.variants }} -->
     <!-- </div> -->

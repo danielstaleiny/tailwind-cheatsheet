@@ -12,6 +12,10 @@ p {
     @apply max-w-40;
 }
 
+code {
+    @apply bg-gray-300 p-0.5 font-sans;
+}
+
 .h1,
 .h2,
 .h3,
