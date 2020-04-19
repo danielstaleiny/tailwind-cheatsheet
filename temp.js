@@ -301,6 +301,7 @@ const flexshrink_ = gen(
 
 const order_ = gen('order', order, (n, v) => `order: ${v}`)
 
+// Flexbox
 // console.log(displayflex_)
 // console.log(flexdirection_)
 // console.log(flexwrap_)
@@ -311,13 +312,159 @@ const order_ = gen('order', order, (n, v) => `order: ${v}`)
 // console.log(flex_)
 // console.log(flexgrow_)
 // console.log(flexshrink_)
-console.log(order_)
+// console.log(order_)
 
-// const zindex_ = gen('z', zIndex)
+// return {
+//     display: displayflex_,
+//     'flex-direction': flexdirection_,
+//     'flex-wrap': flexwrap_,
+//     'align-items': alignitems_,
+//     'align-content': aligncontent_,
+//     'align-self': alignself_,
+//     'justify-content': justifycontent_,
+//     flex: flex_,
+//     'flex-grow': flexgrow_,
+//     'flex-shrink': flexshrink_,
+//     order: order_,
+// }
 
-// Flexbox
+// Grid
+const gridtemplatecolumn_ = gen(
+    'grid-cols',
+    gridTemplateColumns,
+    (n, v) => `grid-template-columns: ${v}`
+)
+
+const gridcolumn_ = gen('col', gridColumn, (n, v) => `grid-column: ${v}`)
+
+const gridcolumnstart_ = gen(
+    'col-start',
+    gridColumnStart,
+    (n, v) => `grid-column-start: ${v}`
+)
+const gridcolumnend_ = gen(
+    'col-end',
+    gridColumnEnd,
+    (n, v) => `grid-column-end: ${v}`
+)
+
+const gridtemplate_ = gen(
+    'grid-rows',
+    gridTemplateRows,
+    (n, v) => `grid-template-rows: ${v}`
+)
+
+const gridrow_ = gen('row', gridRow, (n, v) => `grid-row: ${v}`)
+
+const gridrowstart_ = gen(
+    'row-start',
+    gridRowStart,
+    (n, v) => `grid-row-start: ${v}`
+)
+const gridrowend_ = gen('row-end', gridRowEnd, (n, v) => `grid-row-end: ${v}`)
+
+const gap_ = gen('gap', gap, (n, v) => `gap: ${v}`)
+
+const gridflow_ = gen('grid-flow', {
+    row: 'grid-auto-flow: row',
+    col: 'grid-auto-flow: column',
+    'row-dense': 'grid-auto-flow: row dense',
+    'col-dense': 'grid-auto-flow: column dens',
+})
+
+// Grid
 //
-// console.log(zindex_)
+// console.log(gridtemplatecolumn_)
+// console.log(gridcolumn_)
+// console.log(gridcolumnstart_)
+// console.log(gridcolumnend_)
+// console.log(gridtemplate_)
+// console.log(gridrow_)
+// console.log(gap_)
+// console.log(gridflow_)
+
+// return {
+//     'grid-tempate-columns': gridtemplatecolumn_,
+//     'grid-column, start/end': {
+//         ...gridcolumn_,
+//         ...gridcolumnstart_,
+//         ...gridcolumnend_,
+//     },
+//     'grid-temptale-rows': gridtemplate_,
+//     'grid-row, start/end': { ...gridrow_, ...gridrowstart_, ...gridrowend_ },
+//     gap: gap_,
+//     'grid-auto-flow': gridflow_,
+// }
+
+//Spacing
+
+const padding_ = gen('p', padding, (n, v) => `padding: ${v}`)
+const paddingx_ = gen(
+    'px',
+    padding,
+    (n, v) => `padding-right: ${v};
+padding-left: ${v};`
+)
+const paddingy_ = gen(
+    'py',
+    padding,
+    (n, v) => `padding-top: ${v};
+padding-bottom: ${v};`
+)
+const paddingr_ = gen('pr', padding, (n, v) => `padding-right: ${v}`)
+const paddingl_ = gen('pl', padding, (n, v) => `padding-left: ${v}`)
+const paddingt_ = gen('pt', padding, (n, v) => `padding-top: ${v}`)
+const paddingb_ = gen('pb', padding, (n, v) => `padding-bottom: ${v}`)
+
+const margin_ = gen('m', margin, (n, v) => `margin: ${v}`)
+const marginx_ = gen(
+    'mx',
+    margin,
+    (n, v) => `margin-right: ${v};
+margin-left: ${v};`
+)
+const marginy_ = gen(
+    'my',
+    margin,
+    (n, v) => `padding-top: ${v};
+margin-bottom: ${v};`
+)
+const marginr_ = gen('mr', margin, (n, v) => `margin-right: ${v}`)
+const marginl_ = gen('ml', margin, (n, v) => `margin-left: ${v}`)
+const margint_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
+const marginb_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
+const marginrminus_ = gen('-mr', margin, (n, v) => `margin-right: -${v}`)
+const marginlminus_ = gen('-ml', margin, (n, v) => `margin-left: -${v}`)
+const margintminus_ = gen('-mt', margin, (n, v) => `margin-top: -${v}`)
+const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
+
+// Spacing
+// return {
+//     padding: {
+//         ...padding_,
+//         ...paddingx_,
+//         ...paddingy_,
+//         ...paddingr_,
+//         ...paddingl_,
+//         ...paddingt_,
+//         ...paddingb_,
+//     },
+//     margin: {
+//         ...margin_,
+//         ...marginx_,
+//         ...marginy_,
+//         ...marginr_,
+//         ...marginl_,
+//         ...margint_,
+//         ...marginb_,
+//         ...marginrminus_,
+//         ...marginlminus_,
+//         ...margintminus_,
+//         ...marginbminus_,
+//     },
+// }
+
+// const padding_ = gen('p', padding, (n, v) => `padding: ${v}`)
 
 // .font-{name}
 // const font = gen('font', fontSize)
