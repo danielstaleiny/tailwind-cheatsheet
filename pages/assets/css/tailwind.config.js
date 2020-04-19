@@ -3,6 +3,11 @@ module.exports = {
     important: false,
     separator: ':',
     theme: {
+        // Sets default parameters for container
+        container: {
+            padding: '2rem',
+            center: true,
+        },
         // .{screen}:{utility}
         screens: {
             t: '50em', // 800px tablet or medium size
@@ -198,10 +203,6 @@ module.exports = {
             outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
             none: 'none',
         },
-        container: {
-            padding: '2rem',
-            center: true,
-        },
         cursor: {
             auto: 'auto',
             default: 'default',
@@ -360,23 +361,6 @@ module.exports = {
             '75': '0.75',
             '100': '1',
         },
-        order: {
-            first: '-9999',
-            last: '9999',
-            none: '0',
-            '1': '1',
-            '2': '2',
-            '3': '3',
-            '4': '4',
-            '5': '5',
-            '6': '6',
-            '7': '7',
-            '8': '8',
-            '9': '9',
-            '10': '10',
-            '11': '11',
-            '12': '12',
-        },
         padding: (theme) => theme('spacing'),
         stroke: {
             current: 'currentColor',
@@ -414,6 +398,15 @@ module.exports = {
             full: '100%',
             screen: '100vw',
         }),
+        zIndex: {
+            auto: 'auto',
+            '0': '0',
+            '10': '10',
+            '20': '20',
+            '30': '30',
+            '40': '40',
+            '50': '50',
+        },
     },
     variants: {
         alignContent: ['responsive'],

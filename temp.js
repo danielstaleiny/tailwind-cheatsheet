@@ -19,7 +19,7 @@ const {
     borderRadius,
     borderWidth,
     boxShadow,
-    container,
+    // container, this modifies defaults, it doesn't create classes
     cursor,
     fill,
     flex,
@@ -78,12 +78,22 @@ const breakpoint = Object.entries(screens).map(([name, value]) => {
     }
 })
 
-const gen = (prefix, data) =>
+const gen = (prefix, data, fn = (n, v) => v) =>
     Object.entries(data).map(([name, value]) => {
-        return { [`.${prefix}${name}`]: value }
+        return {
+            [`.${prefix}${
+                name == 'default' ? '' : prefix != '' ? '-' + name : name
+            }`]: fn(name, value),
+        }
     })
 
-const container_ = gen('container-', container)
+const container_ = gen('', {
+    container: `None 	width: 100%;
+sm (640px) 	max-width: 640px;
+md (768px) 	max-width: 768px;
+lg (1024px) 	max-width: 1024px;
+xl (1280px) 	max-width: 1280px;`,
+})
 
 const boxsizing_ = gen('', {
     'box-border': 'box-sizing: border-box',
@@ -116,13 +126,13 @@ const float_ = gen('', {
 }`,
 })
 
-const clear_ = gen('clear-', {
+const clear_ = gen('clear', {
     left: 'clear: left',
     right: 'clear: right',
     both: 'clear: both',
 })
 
-const objectfit_ = gen('object-', {
+const objectfit_ = gen('object', {
     contain: 'object-fit: contain',
     cover: 'object-fit: cover',
     fill: 'object-fit: fill',
@@ -130,9 +140,13 @@ const objectfit_ = gen('object-', {
     'scale-down': 'object-fit: scale-down',
 })
 
-const objectposition_ = gen('object-', objectPosition)
+const objectposition_ = gen(
+    'object',
+    objectPosition,
+    (n, v) => `object-position: ${v}`
+)
 
-const overflow_ = gen('overflow-', {
+const overflow_ = gen('overflow', {
     auto: 'overflow: auto',
     'x-auto': 'overflow-x: auto',
     'y-auto': 'overflow-y: auto',
@@ -188,7 +202,7 @@ const visibility_ = gen('', {
     invisible: 'visibility: hidden',
 })
 
-const zindex_ = gen('z-', zIndex)
+const zindex_ = gen('z', zIndex, (n, v) => `z-index: ${v}`)
 
 // console.log(breakpoint_names)
 
@@ -208,20 +222,98 @@ const zindex_ = gen('z-', zIndex)
 // console.log(visibility_)
 // console.log(zindex_)
 
-return {
-    container: container_,
-    'box-sizing': boxsizing_,
-    display: display_,
-    float: float_,
-    clear: clear_,
-    'object-fit': objectfit_,
-    'object-position': objectposition_,
-    overflow: overflow_,
-    position: position_,
-    'top,right,bottom,left': trbl_,
-    visibility: visibility_,
-    'z-index': zindex_,
-}
+// return {
+//     container: container_,
+//     'box-sizing': boxsizing_,
+//     display: display_,
+//     float: float_,
+//     clear: clear_,
+//     'object-fit': objectfit_,
+//     'object-position': objectposition_,
+//     overflow: overflow_,
+//     position: position_,
+//     'top,right,bottom,left': trbl_,
+//     visibility: visibility_,
+//     'z-index': zindex_,
+// }
+
+// Flexbox
+
+const displayflex_ = gen('', {
+    flex: 'display: flex',
+    'inline-flex': 'display: inline-flex',
+})
+
+const flexdirection_ = gen('flex', {
+    row: 'flex-direction: row',
+    'row-reverse': 'flex-direction: row-reverse',
+    col: 'flex-direction: column',
+    'col-reverse': 'flex-direction: column-reverse',
+})
+
+const flexwrap_ = gen('flex', {
+    'no-wrap': 'flex-wrap: nowrap',
+    wrap: 'flex-wrap: wrap',
+    'wrap-reverse': 'flex-wrap: wrap-reverse',
+})
+
+const alignitems_ = gen('items', {
+    stretch: 'align-items: stretch',
+    start: 'align-items: flex-start',
+    center: 'align-items: center',
+    end: 'align-items: flex-end',
+    baseline: 'align-items: baseline',
+})
+
+const aligncontent_ = gen('content', {
+    start: 'align-content: flex-start',
+    center: 'align-content: center',
+    end: 'align-content: flex-end',
+    between: 'align-content: space-between',
+    around: 'align-content: space-around',
+})
+
+const alignself_ = gen('self', {
+    auto: 'align-self: auto',
+    start: 'align-self: flex-start',
+    center: 'align-self: center',
+    end: 'align-self: flex-end',
+    stretch: 'align-self: stretch',
+})
+
+const justifycontent_ = gen('justify', {
+    start: 'justify-content: flex-start',
+    center: 'justify-content: center',
+    end: 'justify-content: flex-end',
+    between: 'justify-content: stretch',
+    around: 'justify-content: stretch',
+})
+
+const flex_ = gen('flex', flex, (n, v) => `flex: ${v}`)
+
+const flexgrow_ = gen('flex-grow', flexGrow, (n, v) => `flex-grow: ${v}`)
+
+const flexshrink_ = gen(
+    'flex-shrink',
+    flexShrink,
+    (n, v) => `flex-shrink: ${v}`
+)
+
+const order_ = gen('order', order, (n, v) => `order: ${v}`)
+
+// console.log(displayflex_)
+// console.log(flexdirection_)
+// console.log(flexwrap_)
+// console.log(alignitems_)
+// console.log(aligncontent_)
+// console.log(alignself_)
+// console.log(justifycontent_)
+// console.log(flex_)
+// console.log(flexgrow_)
+// console.log(flexshrink_)
+console.log(order_)
+
+// const zindex_ = gen('z', zIndex)
 
 // Flexbox
 //
