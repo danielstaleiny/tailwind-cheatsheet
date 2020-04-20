@@ -327,10 +327,6 @@ module.exports = {
             ...theme('spacing'),
             ...negative(theme('spacing')),
         }),
-        maxHeight: {
-            full: '100%',
-            screen: '100vh',
-        },
         maxWidth: {
             '20': '20rem',
             '30': '30rem',
@@ -343,15 +339,6 @@ module.exports = {
             '80': '80rem',
             '90': '90rem',
             '100': '100rem',
-            full: '100%',
-        },
-        minHeight: {
-            '0': '0',
-            full: '100%',
-            screen: '100vh',
-        },
-        minWidth: {
-            '0': '0',
             full: '100%',
         },
         opacity: {

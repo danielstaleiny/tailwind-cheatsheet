@@ -464,7 +464,22 @@ const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
 //     },
 // }
 
-// const padding_ = gen('p', padding, (n, v) => `padding: ${v}`)
+// Sizing
+const width_ = gen('w', width, (n, v) => `width: ${v}`)
+const minwidth_ = gen('min-w', minWidth, (n, v) => `min-width: ${v}`)
+const maxwidth_ = gen('max-w', maxWidth, (n, v) => `max-width: ${v}`)
+const height_ = gen('h', height, (n, v) => `height: ${v}`)
+const minheight_ = gen('min-h', minHeight, (n, v) => `min-height: ${v}`)
+const maxheight_ = gen('max-h', maxHeight, (n, v) => `max-height: ${v}`)
+
+// return {
+//     width: width_,
+//     'min-width': minwidth_,
+//     'max-width': maxwidth_,
+//     height: height_,
+//     'min-height': minheight_,
+//     'max-height': maxheight_,
+// }
 
 // .font-{name}
 // const font = gen('font', fontSize)
