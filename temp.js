@@ -612,26 +612,70 @@ text-overflow: ellipsis;
 white-space: nowrap;`,
 })
 
-// fontWeight,
+// return {
+//     color: color_,
+//     'font-family': fontfamily_,
+//     'font-size': fontsize_,
+//     'font-smoothing': fontsmoothing_,
+//     'font-style': fontstyle_,
+//     'font-weight': fontweight_,
+//     'letter-spacing': letterspacing_,
+//     'line-height': lineheight_,
+//     'list-style-type': liststyletype_,
+//     'list-style-position': liststyleposition_,
+//     '::placeholder color': placeholdercolor_,
+//     'text-align': textalign_,
+//     'text-decoration': textdecoration_,
+//     'text-transform': texttransformation_,
+//     'vertical-align': verticalalign_,
+//     'white-space': whitespace_,
+//     'word-break': wordbreak_,
+// }
 
+// Backgrounds
+
+const backattachment_ = gen(
+    'bg',
+    { fixed: 'fixed', local: 'local', scroll: 'scroll' },
+    (n, v) => `background-attachment: ${v}`
+)
+
+const backcolor_ = gen(
+    'bg',
+    backgroundColor,
+    (n, v) => `background-color: ${v}`
+)
+
+const backposition_ = gen(
+    'bg',
+    backgroundPosition,
+    (n, v) => `background-position: ${v}`
+)
+
+const backrepeat_ = gen(
+    'bg',
+    {
+        repeat: 'repeat',
+        'no-repeat': 'no-repeat',
+        'repeat-x': 'repeat-x',
+        'repeat-y': 'repeat-y',
+        'repeat-round': 'repeat-round',
+        'repeat-space': 'repeat-space',
+    },
+    (n, v) => `background-repeat: ${v}`
+)
+
+const backsize_ = gen('bg', backgroundSize, (n, v) => `background-size: ${v}`)
+
+// backgroundSize,
+
+// console.log(backsize_)
 return {
-    color: color_,
-    'font-family': fontfamily_,
-    'font-size': fontsize_,
-    'font-smoothing': fontsmoothing_,
-    'font-style': fontstyle_,
-    'font-weight': fontweight_,
-    'letter-spacing': letterspacing_,
-    'line-height': lineheight_,
-    'list-style-type': liststyletype_,
-    'list-style-position': liststyleposition_,
-    '::placeholder color': placeholdercolor_,
-    'text-align': textalign_,
-    'text-decoration': textdecoration_,
-    'text-transform': texttransformation_,
-    'vertical-align': verticalalign_,
-    'white-space': whitespace_,
-    'word-break': wordbreak_,
+    'background-attachment': backattachment_,
+    'background-color': backcolor_,
+    'background-position': backposition_,
+    'background-repeat': backrepeat_,
+    'background-size': backsize_,
 }
 
 // console.log(color_)
