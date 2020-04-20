@@ -95,11 +95,13 @@ const gen = (prefix, data, fn = (n, v) => v) =>
                 })
             } else {
                 return {
-                    [`.${prefix}${
+                    [`.${name[0] === '-' ? '-' + prefix : prefix}${
                         name == 'default'
                             ? ''
                             : prefix != ''
-                            ? '-' + name
+                            ? name[0] === '-'
+                                ? name
+                                : '-' + name
                             : name
                     }`]: fn(name, value),
                 }
@@ -812,14 +814,48 @@ const tablelayout_ = gen(
 // Tables
 // return { 'border-collapse': bordercollapse_, 'table-layout': tablelayout_ }
 
-// console.log(color_)
+// Transitions
+const scale_ = gen(
+    'scale',
+    scale,
+    (n, v) => `--transform-scale-x: ${v};
+--transform-scale-y: ${v}`
+)
 
-// .font-{name}
-// const font = gen('font', fontSize)
-// const font2 = gen('font', fontWeight)
-//     // textColor,
-// const text = gen('text', textColor)
-// console.log(font, font2)
+const scalex_ = gen('scale-x', scale, (n, v) => `--transform-scale-x: ${v}`)
+
+const scaley_ = gen('scale-y', scale, (n, v) => `--transform-scale-y: ${v}`)
+
+const rotate_ = gen('rotate', rotate, (n, v) => `--transform-rotate: ${v}`)
+
+const translatex_ = gen(
+    'translate-x',
+    translate,
+    (n, v) => `--transform-translate-x: ${v}`
+)
+const translatey_ = gen(
+    'translate-y',
+    translate,
+    (n, v) => `--transform-translate-y: ${v}`
+)
+
+const skewx_ = gen('skew-x', skew, (n, v) => `--transform-skew-x: ${v}`)
+
+const skewy_ = gen('skew-y', skew, (n, v) => `--transform-skew-y: ${v}`)
+
+const transformorigin_ = gen(
+    'origin',
+    transformOrigin,
+    (n, v) => `transform-origin: ${v}`
+)
+
+return {
+    scale: [...scale_, ...scalex_, ...scaley_],
+    rotate: rotate_,
+    translate: [...translatex_, ...translatey_],
+    skew: [...skewx_, ...skewy_],
+    'transform-origin': transformorigin_,
+}
 
 // .text-{size}
 // .font-{weight}
