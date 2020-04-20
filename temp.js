@@ -11,7 +11,7 @@ const config = resolve(tailwindConfig)
 const {
     screens,
     colors,
-    spacing,
+    // spacing,
     backgroundColor,
     backgroundPosition,
     backgroundSize,
@@ -191,33 +191,26 @@ const position_ = gen('', {
     sticky: 'position: sticky',
 })
 
-const trbl_ = gen('', {
-    'inset-0': `
-	top: 0;
-right: 0;
-bottom: 0;
-left: 0;`,
-    'inset-y-0': `top: 0;
-bottom: 0;`,
-    'inset-x-0': `right: 0;
-left: 0;`,
-    'top-0': 'top: 0',
-    'right-0': 'right: 0',
-    'bottom-0': 'bottom: 0',
-    'left-0': 'left: 0',
-    'inset-auto': `top: auto;
-right: auto;
-bottom: auto;
-left: auto;`,
-    'inset-y-auto': `top: auto;
-bottom: auto;`,
-    'inset-x-auto': `right: auto;
-left: auto;`,
-    'top-auto': 'top: auto',
-    'right-auto': 'right: auto',
-    'bottom-auto': 'bottom: auto',
-    'left-auto': 'left: auto',
-})
+const trbl_ = gen(
+    'inset',
+    inset,
+    (n, v) => `top: ${v};
+right: ${v};
+bottom: ${v};
+left: ${v};`
+)
+const trblx_ = gen(
+    'inset-x',
+    inset,
+    (n, v) => `right: ${v};
+left: ${v};`
+)
+const trbly_ = gen(
+    'inset-y',
+    inset,
+    (n, v) => `top: ${v};
+bottom: ${v};`
+)
 
 const visibility_ = gen('', {
     visible: 'visibility: visible',
@@ -231,33 +224,21 @@ const zindex_ = gen('z', zIndex, (n, v) => `z-index: ${v}`)
 // Layout
 // console.log(breakpoint)
 //
-// console.log(container_)
-// console.log(boxsizing_)
-// console.log(display_)
-// console.log(float_)
-// console.log(clear_)
-// console.log(objectfit_)
-// console.log(objectposition_)
-// console.log(overflow_)
-// console.log(position_)
-// console.log(trbl_)
-// console.log(visibility_)
-// console.log(zindex_)
 
-// return {
-//     container: container_,
-//     'box-sizing': boxsizing_,
-//     display: display_,
-//     float: float_,
-//     clear: clear_,
-//     'object-fit': objectfit_,
-//     'object-position': objectposition_,
-//     overflow: overflow_,
-//     position: position_,
-//     'top,right,bottom,left': trbl_,
-//     visibility: visibility_,
-//     'z-index': zindex_,
-// }
+const Layout = {
+    container: container_,
+    'box-sizing': boxsizing_,
+    display: display_,
+    float: float_,
+    clear: clear_,
+    'object-fit': objectfit_,
+    'object-position': objectposition_,
+    overflow: overflow_,
+    position: position_,
+    'top,right,bottom,left': [...trbl_, ...trblx_, ...trbly_],
+    visibility: visibility_,
+    'z-index': zindex_,
+}
 
 // Flexbox
 
@@ -324,31 +305,19 @@ const flexshrink_ = gen(
 const order_ = gen('order', order, (n, v) => `order: ${v}`)
 
 // Flexbox
-// console.log(displayflex_)
-// console.log(flexdirection_)
-// console.log(flexwrap_)
-// console.log(alignitems_)
-// console.log(aligncontent_)
-// console.log(alignself_)
-// console.log(justifycontent_)
-// console.log(flex_)
-// console.log(flexgrow_)
-// console.log(flexshrink_)
-// console.log(order_)
-
-// return {
-//     display: displayflex_,
-//     'flex-direction': flexdirection_,
-//     'flex-wrap': flexwrap_,
-//     'align-items': alignitems_,
-//     'align-content': aligncontent_,
-//     'align-self': alignself_,
-//     'justify-content': justifycontent_,
-//     flex: flex_,
-//     'flex-grow': flexgrow_,
-//     'flex-shrink': flexshrink_,
-//     order: order_,
-// }
+const Flexbox = {
+    display: displayflex_,
+    'flex-direction': flexdirection_,
+    'flex-wrap': flexwrap_,
+    'align-items': alignitems_,
+    'align-content': aligncontent_,
+    'align-self': alignself_,
+    'justify-content': justifycontent_,
+    flex: flex_,
+    'flex-grow': flexgrow_,
+    'flex-shrink': flexshrink_,
+    order: order_,
+}
 
 // Grid
 const gridtemplatecolumn_ = gen(
@@ -405,18 +374,18 @@ const gridflow_ = gen('grid-flow', {
 // console.log(gap_)
 // console.log(gridflow_)
 
-// return {
-//     'grid-tempate-columns': gridtemplatecolumn_,
-//     'grid-column, start/end': [
-//         ...gridcolumn_,
-//         ...gridcolumnstart_,
-//         ...gridcolumnend_,
-//     ],
-//     'grid-temptale-rows': gridtemplate_,
-//     'grid-row, start/end': [ ...gridrow_, ...gridrowstart_, ...gridrowend_ ],
-//     gap: gap_,
-//     'grid-auto-flow': gridflow_,
-// }
+const Grid = {
+    'grid-tempate-columns': gridtemplatecolumn_,
+    'grid-column, start/end': [
+        ...gridcolumn_,
+        ...gridcolumnstart_,
+        ...gridcolumnend_,
+    ],
+    'grid-temptale-rows': gridtemplate_,
+    'grid-row, start/end': [...gridrow_, ...gridrowstart_, ...gridrowend_],
+    gap: gap_,
+    'grid-auto-flow': gridflow_,
+}
 
 //Spacing
 
@@ -461,30 +430,30 @@ const margintminus_ = gen('-mt', margin, (n, v) => `margin-top: -${v}`)
 const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
 
 // Spacing
-// return {
-//     padding: [
-//         ...padding_,
-//         ...paddingx_,
-//         ...paddingy_,
-//         ...paddingr_,
-//         ...paddingl_,
-//         ...paddingt_,
-//         ...paddingb_,
-//     ],
-//     margin: [
-//         ...margin_,
-//         ...marginx_,
-//         ...marginy_,
-//         ...marginr_,
-//         ...marginl_,
-//         ...margint_,
-//         ...marginb_,
-//         ...marginrminus_,
-//         ...marginlminus_,
-//         ...margintminus_,
-//         ...marginbminus_,
-//     ],
-// }
+const Spacing = {
+    padding: [
+        ...padding_,
+        ...paddingx_,
+        ...paddingy_,
+        ...paddingr_,
+        ...paddingl_,
+        ...paddingt_,
+        ...paddingb_,
+    ],
+    margin: [
+        ...margin_,
+        ...marginx_,
+        ...marginy_,
+        ...marginr_,
+        ...marginl_,
+        ...margint_,
+        ...marginb_,
+        ...marginrminus_,
+        ...marginlminus_,
+        ...margintminus_,
+        ...marginbminus_,
+    ],
+}
 
 // Sizing
 const width_ = gen('w', width, (n, v) => `width: ${v}`)
@@ -494,18 +463,18 @@ const height_ = gen('h', height, (n, v) => `height: ${v}`)
 const minheight_ = gen('min-h', minHeight, (n, v) => `min-height: ${v}`)
 const maxheight_ = gen('max-h', maxHeight, (n, v) => `max-height: ${v}`)
 
-// return {
-//     width: width_,
-//     'min-width': minwidth_,
-//     'max-width': maxwidth_,
-//     height: height_,
-//     'min-height': minheight_,
-//     'max-height': maxheight_,
-// }
+const Sizing = {
+    width: width_,
+    'min-width': minwidth_,
+    'max-width': maxwidth_,
+    height: height_,
+    'min-height': minheight_,
+    'max-height': maxheight_,
+}
 
 // TYPOGRAPHY
 
-const color_ = gen('text', colors, (n, v) => `color: ${v}`)
+const color_ = gen('text', textColor, (n, v) => `color: ${v}`)
 const fontfamily_ = Object.entries(fontFamily).map(([name, value]) => {
     return {
         [`font-${name}`]: `font-family: ${value.join(', ')}`,
@@ -535,11 +504,11 @@ const letterspacing_ = gen(
 
 const lineheight_ = gen('leading', lineHeight, (n, v) => `line-height: ${v}`)
 
-const liststyletype_ = gen('list', {
-    none: 'list-style-type: none',
-    disc: 'list-style-type: disc',
-    decimal: 'list-style-type: decimal',
-})
+const liststyletype_ = gen(
+    'list',
+    listStyleType,
+    (n, v) => `list-style-type: ${v}`
+)
 
 const liststyleposition_ = gen('list', {
     inside: 'list-style-position: inside',
@@ -614,25 +583,25 @@ text-overflow: ellipsis;
 white-space: nowrap;`,
 })
 
-// return {
-//     color: color_,
-//     'font-family': fontfamily_,
-//     'font-size': fontsize_,
-//     'font-smoothing': fontsmoothing_,
-//     'font-style': fontstyle_,
-//     'font-weight': fontweight_,
-//     'letter-spacing': letterspacing_,
-//     'line-height': lineheight_,
-//     'list-style-type': liststyletype_,
-//     'list-style-position': liststyleposition_,
-//     '::placeholder color': placeholdercolor_,
-//     'text-align': textalign_,
-//     'text-decoration': textdecoration_,
-//     'text-transform': texttransformation_,
-//     'vertical-align': verticalalign_,
-//     'white-space': whitespace_,
-//     'word-break': wordbreak_,
-// }
+const Typography = {
+    color: color_,
+    'font-family': fontfamily_,
+    'font-size': fontsize_,
+    'font-smoothing': fontsmoothing_,
+    'font-style': fontstyle_,
+    'font-weight': fontweight_,
+    'letter-spacing': letterspacing_,
+    'line-height': lineheight_,
+    'list-style-type': liststyletype_,
+    'list-style-position': liststyleposition_,
+    '::placeholder color': placeholdercolor_,
+    'text-align': textalign_,
+    'text-decoration': textdecoration_,
+    'text-transform': texttransformation_,
+    'vertical-align': verticalalign_,
+    'white-space': whitespace_,
+    'word-break': wordbreak_,
+}
 
 // Backgrounds
 
@@ -669,13 +638,13 @@ const backrepeat_ = gen(
 
 const backsize_ = gen('bg', backgroundSize, (n, v) => `background-size: ${v}`)
 
-// return {
-//     'background-attachment': backattachment_,
-//     'background-color': backcolor_,
-//     'background-position': backposition_,
-//     'background-repeat': backrepeat_,
-//     'background-size': backsize_,
-// }
+const Backgrounds = {
+    'background-attachment': backattachment_,
+    'background-color': backcolor_,
+    'background-position': backposition_,
+    'background-repeat': backrepeat_,
+    'background-size': backsize_,
+}
 
 // Borders
 const bordercolor_ = gen('border', borderColor, (n, v) => `border-color: ${v}`)
@@ -768,28 +737,28 @@ const borderradiusbl_ = gen(
     (n, v) => `border-bottom-left-radius: ${v}`
 )
 
-// return {
-//     'border-color': bordercolor_,
-//     'border-style': borderstyle_,
-//     'border-width': [
-//         ...borderwidth_,
-//         ...borderwidtht_,
-//         ...borderwidthb_,
-//         ...borderwidthr_,
-//         ...borderwidthl_,
-//     ],
-//     'border-radius': [
-//         ...borderradius_,
-//         ...borderradiust_,
-//         ...borderradiusb_,
-//         ...borderradiusr_,
-//         ...borderradiusl_,
-//         ...borderradiustr_,
-//         ...borderradiustl_,
-//         ...borderradiusbr_,
-//         ...borderradiusbl_,
-//     ],
-// }
+const Borders = {
+    'border-color': bordercolor_,
+    'border-style': borderstyle_,
+    'border-width': [
+        ...borderwidth_,
+        ...borderwidtht_,
+        ...borderwidthb_,
+        ...borderwidthr_,
+        ...borderwidthl_,
+    ],
+    'border-radius': [
+        ...borderradius_,
+        ...borderradiust_,
+        ...borderradiusb_,
+        ...borderradiusr_,
+        ...borderradiusl_,
+        ...borderradiustr_,
+        ...borderradiustl_,
+        ...borderradiusbr_,
+        ...borderradiusbl_,
+    ],
+}
 
 // Tables
 
@@ -812,9 +781,37 @@ const tablelayout_ = gen(
 )
 
 // Tables
-// return { 'border-collapse': bordercollapse_, 'table-layout': tablelayout_ }
+const Tables = {
+    'border-collapse': bordercollapse_,
+    'table-layout': tablelayout_,
+}
 
 // Transitions
+
+const transitionproperty_ = gen(
+    'transition',
+    transitionProperty,
+    (n, v) => `transition-property: ${v}`
+)
+
+const transitionduration_ = gen(
+    'duration',
+    transitionDuration,
+    (n, v) => `transition-duration: ${v}`
+)
+
+const transitiontimingfunction_ = gen(
+    'ease',
+    transitionTimingFunction,
+    (n, v) => `transition-timing-function: ${v}`
+)
+
+const Transitions = {
+    'transition-property': transitionproperty_,
+    'transition-duration': transitionduration_,
+    'transition-timing-function': transitiontimingfunction_,
+}
+
 const scale_ = gen(
     'scale',
     scale,
@@ -849,14 +846,13 @@ const transformorigin_ = gen(
     (n, v) => `transform-origin: ${v}`
 )
 
-// //Transforms
-// return {
-//     scale: [...scale_, ...scalex_, ...scaley_],
-//     rotate: rotate_,
-//     translate: [...translatex_, ...translatey_],
-//     skew: [...skewx_, ...skewy_],
-//     'transform-origin': transformorigin_,
-// }
+const Transforms = {
+    scale: [...scale_, ...scalex_, ...scaley_],
+    rotate: rotate_,
+    translate: [...translatex_, ...translatey_],
+    skew: [...skewx_, ...skewy_],
+    'transform-origin': transformorigin_,
+}
 
 // Interactivity
 
@@ -908,15 +904,15 @@ clip: auto;
 whiteSpace: normal;`,
 })
 
-// return {
-//     appearance: appearance_,
-//     cursor: cursor_,
-//     outline: outline_,
-//     'pointer-events': pointerevents_,
-//     resize: resize_,
-//     'user-select': userselect_,
-//     accessibility: accessability_,
-// }
+const Interactivity = {
+    appearance: appearance_,
+    cursor: cursor_,
+    outline: outline_,
+    'pointer-events': pointerevents_,
+    resize: resize_,
+    'user-select': userselect_,
+    accessibility: accessability_,
+}
 
 // Miscellaneous
 
@@ -930,12 +926,28 @@ const stroke_ = gen('stroke', stroke, (n, v) => `stroke: ${v}`)
 
 const strokewidth_ = gen('stroke', strokeWidth, (n, v) => `stroke-width: ${v}`)
 
-return {
+const Miscellaneous = {
     'box-shadow': boxshadow_,
     opacity: opacity_,
     fill: fill_,
     stroke: stroke_,
     'stroke-width': strokewidth_,
+}
+
+return {
+    Miscellaneous,
+    Interactivity,
+    Transforms,
+    Transitions,
+    Tables,
+    Borders,
+    Backgrounds,
+    Typography,
+    Sizing,
+    Spacing,
+    Grid,
+    Flexbox,
+    Layout,
 }
 
 // .text-{size}
@@ -962,23 +974,3 @@ return {
 // .opacity-{name}
 // .fill-{name}
 // .stroke-{name}
-
-// console.log(Object.keys(themes))
-const variants = config.variants
-
-// Object.entries(themes)
-//     .filter((val, index) => (index > 1 ? false : true))
-//     .map(([name, theme]) => {
-//         if (typeof theme === 'object') {
-//             Object.entries(theme).map(([variable, value]) => {
-//                 if (typeof value === 'object') {
-//                     Object.entries(value).map(([parameter, paramvalue]) => {
-//                         console.log(
-//                             `TODO ${name}-${variable}-${parameter}: ${paramvalue}`
-//                         )
-//                     })
-//                 } else console.log(`TODO ${name}-${variable}: ${value}`)
-//             })
-//         }
-//         return
-//     })
