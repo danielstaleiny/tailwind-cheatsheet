@@ -908,14 +908,34 @@ clip: auto;
 whiteSpace: normal;`,
 })
 
+// return {
+//     appearance: appearance_,
+//     cursor: cursor_,
+//     outline: outline_,
+//     'pointer-events': pointerevents_,
+//     resize: resize_,
+//     'user-select': userselect_,
+//     accessibility: accessability_,
+// }
+
+// Miscellaneous
+
+const boxshadow_ = gen('shadow', boxShadow, (n, v) => `box-shadow: ${v}`)
+
+const opacity_ = gen('opacity', opacity, (n, v) => `opacity: ${v}`)
+
+const fill_ = gen('fill', fill, (n, v) => `fill: ${v}`)
+
+const stroke_ = gen('stroke', stroke, (n, v) => `stroke: ${v}`)
+
+const strokewidth_ = gen('stroke', strokeWidth, (n, v) => `stroke-width: ${v}`)
+
 return {
-    appearance: appearance_,
-    cursor: cursor_,
-    outline: outline_,
-    'pointer-events': pointerevents_,
-    resize: resize_,
-    'user-select': userselect_,
-    accessibility: accessability_,
+    'box-shadow': boxshadow_,
+    opacity: opacity_,
+    fill: fill_,
+    stroke: stroke_,
+    'stroke-width': strokewidth_,
 }
 
 // .text-{size}
