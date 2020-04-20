@@ -79,13 +79,33 @@ const breakpoint = Object.entries(screens).map(([name, value]) => {
 })
 
 const gen = (prefix, data, fn = (n, v) => v) =>
-    Object.entries(data).map(([name, value]) => {
-        return {
-            [`.${prefix}${
-                name == 'default' ? '' : prefix != '' ? '-' + name : name
-            }`]: fn(name, value),
-        }
-    })
+    Object.entries(data)
+        .map(([name, value]) => {
+            if (typeof value === 'object') {
+                return Object.entries(value).map(([name2, value2]) => {
+                    return {
+                        [`.${prefix}${
+                            name2 == 'default'
+                                ? `-${name}`
+                                : prefix != ''
+                                ? '-' + name + '-' + name2
+                                : name
+                        }`]: fn(name, value2),
+                    }
+                })
+            } else {
+                return {
+                    [`.${prefix}${
+                        name == 'default'
+                            ? ''
+                            : prefix != ''
+                            ? '-' + name
+                            : name
+                    }`]: fn(name, value),
+                }
+            }
+        })
+        .reduce((acc, val) => acc.concat(val), [])
 
 const container_ = gen('', {
     container: `None 	width: 100%;
@@ -480,6 +500,141 @@ const maxheight_ = gen('max-h', maxHeight, (n, v) => `max-height: ${v}`)
 //     'min-height': minheight_,
 //     'max-height': maxheight_,
 // }
+
+// TYPOGRAPHY
+
+const color_ = gen('text', colors, (n, v) => `color: ${v}`)
+const fontfamily_ = Object.entries(fontFamily).map(([name, value]) => {
+    return {
+        [`font-${name}`]: `font-family: ${value.join(', ')}`,
+    }
+})
+const fontsize_ = gen('text', fontSize, (n, v) => `font-size: ${v}`)
+
+const fontsmoothing_ = gen('', {
+    antialiased: `-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;`,
+    'subpixel-antialiased': `-webkit-font-smoothing: auto;
+-moz-osx-font-smoothing: auto;`,
+})
+
+const fontstyle_ = gen('', {
+    italic: 'font-style: italic',
+    'not-italic': 'font-style: normal',
+})
+
+const fontweight_ = gen('font', fontWeight, (n, v) => `font-weight: ${v}`)
+
+const letterspacing_ = gen(
+    'tracking',
+    letterSpacing,
+    (n, v) => `letter-spacing: ${v}`
+)
+
+const lineheight_ = gen('leading', lineHeight, (n, v) => `line-height: ${v}`)
+
+const liststyletype_ = gen('list', {
+    none: 'list-style-type: none',
+    disc: 'list-style-type: disc',
+    decimal: 'list-style-type: decimal',
+})
+
+const liststyleposition_ = gen('list', {
+    inside: 'list-style-position: inside',
+    outside: 'list-style-position: outside',
+})
+
+const placeholdercolor_ = gen(
+    'placeholder',
+    placeholderColor,
+    (n, v) => `color: ${v}`
+)
+
+const textalign_ = gen(
+    'text',
+    { left: 'left', center: 'center', right: 'right', justify: 'jutify' },
+    (n, v) => `text-align: ${v}`
+)
+
+const textdecoration_ = gen(
+    '',
+    {
+        underline: 'underline',
+        'line-through': 'line-through',
+        'no-underline': 'none',
+    },
+    (n, v) => `text-decoration: ${v}`
+)
+
+const texttransformation_ = gen(
+    '',
+    {
+        uppercase: 'uppercase',
+        lowercase: 'lowercase',
+        capitalize: 'capitalize',
+        'normal-case': 'none',
+    },
+    (n, v) => `text-transform: ${v}`
+)
+
+const verticalalign_ = gen(
+    'align',
+    {
+        baseline: 'baseline',
+        top: 'top',
+        middle: 'middle',
+        bottom: 'bottom',
+        'text-top': 'text-top',
+        'text-bottom': 'text-bottom',
+    },
+    (n, v) => `vertical-align: ${v}`
+)
+
+const whitespace_ = gen(
+    'whitespace',
+    {
+        normal: 'normal',
+        'no-wrap': 'no-wrap',
+        pre: 'pre',
+        'pre-line': 'pre-line',
+        'pre-wrap': 'pre-wrap',
+    },
+    (n, v) => `white-space: ${v}`
+)
+
+const wordbreak_ = gen('', {
+    'break-normal': `overflow-wrap: normal;
+word-break: normal;`,
+    'break-words': 'overflow-wrap: break-word;',
+    'break-all': 'word-break: break-all;',
+    truncate: `overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;`,
+})
+
+// fontWeight,
+
+return {
+    color: color_,
+    'font-family': fontfamily_,
+    'font-size': fontsize_,
+    'font-smoothing': fontsmoothing_,
+    'font-style': fontstyle_,
+    'font-weight': fontweight_,
+    'letter-spacing': letterspacing_,
+    'line-height': lineheight_,
+    'list-style-type': liststyletype_,
+    'list-style-position': liststyleposition_,
+    '::placeholder color': placeholdercolor_,
+    'text-align': textalign_,
+    'text-decoration': textdecoration_,
+    'text-transform': texttransformation_,
+    'vertical-align': verticalalign_,
+    'white-space': whitespace_,
+    'word-break': wordbreak_,
+}
+
+// console.log(color_)
 
 // .font-{name}
 // const font = gen('font', fontSize)
