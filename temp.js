@@ -405,13 +405,13 @@ const gridflow_ = gen('grid-flow', {
 
 // return {
 //     'grid-tempate-columns': gridtemplatecolumn_,
-//     'grid-column, start/end': {
+//     'grid-column, start/end': [
 //         ...gridcolumn_,
 //         ...gridcolumnstart_,
 //         ...gridcolumnend_,
-//     },
+//     ],
 //     'grid-temptale-rows': gridtemplate_,
-//     'grid-row, start/end': { ...gridrow_, ...gridrowstart_, ...gridrowend_ },
+//     'grid-row, start/end': [ ...gridrow_, ...gridrowstart_, ...gridrowend_ ],
 //     gap: gap_,
 //     'grid-auto-flow': gridflow_,
 // }
@@ -460,7 +460,7 @@ const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
 
 // Spacing
 // return {
-//     padding: {
+//     padding: [
 //         ...padding_,
 //         ...paddingx_,
 //         ...paddingy_,
@@ -468,8 +468,8 @@ const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
 //         ...paddingl_,
 //         ...paddingt_,
 //         ...paddingb_,
-//     },
-//     margin: {
+//     ],
+//     margin: [
 //         ...margin_,
 //         ...marginx_,
 //         ...marginy_,
@@ -481,7 +481,7 @@ const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
 //         ...marginlminus_,
 //         ...margintminus_,
 //         ...marginbminus_,
-//     },
+//     ],
 // }
 
 // Sizing
@@ -667,15 +667,126 @@ const backrepeat_ = gen(
 
 const backsize_ = gen('bg', backgroundSize, (n, v) => `background-size: ${v}`)
 
-// backgroundSize,
+// return {
+//     'background-attachment': backattachment_,
+//     'background-color': backcolor_,
+//     'background-position': backposition_,
+//     'background-repeat': backrepeat_,
+//     'background-size': backsize_,
+// }
 
-// console.log(backsize_)
+// Borders
+const bordercolor_ = gen('border', borderColor, (n, v) => `border-color: ${v}`)
+
+const borderstyle_ = gen(
+    'border',
+    {
+        solid: 'solid',
+        dashed: 'dashed',
+        dotted: 'dotted',
+        double: 'double',
+        none: 'none',
+    },
+    (n, v) => `border-style: ${v}`
+)
+
+const borderwidth_ = gen('border', borderWidth, (n, v) => `border-width: ${v}`)
+const borderwidtht_ = gen(
+    'border-t',
+    borderWidth,
+    (n, v) => `border-top-width: ${v}`
+)
+const borderwidthb_ = gen(
+    'border-b',
+    borderWidth,
+    (n, v) => `border-bottom-width: ${v}`
+)
+const borderwidthl_ = gen(
+    'border-l',
+    borderWidth,
+    (n, v) => `border-left-width: ${v}`
+)
+const borderwidthr_ = gen(
+    'border-r',
+    borderWidth,
+    (n, v) => `border-right-width: ${v}`
+)
+
+const borderradius_ = gen(
+    'rounded',
+    borderRadius,
+    (n, v) => `border-radius: ${v}`
+)
+
+const borderradiust_ = gen(
+    'rounded-t',
+    borderRadius,
+    (n, v) => `border-top-radius: ${v}`
+)
+
+const borderradiusb_ = gen(
+    'rounded-b',
+    borderRadius,
+    (n, v) => `border-bottom-radius: ${v}`
+)
+
+const borderradiusr_ = gen(
+    'rounded-r',
+    borderRadius,
+    (n, v) => `border-right-radius: ${v}`
+)
+
+const borderradiusl_ = gen(
+    'rounded-l',
+    borderRadius,
+    (n, v) => `border-left-radius: ${v}`
+)
+
+const borderradiustr_ = gen(
+    'rounded-tr',
+    borderRadius,
+    (n, v) => `border-top-right-radius: ${v}`
+)
+
+const borderradiustl_ = gen(
+    'rounded-tl',
+    borderRadius,
+    (n, v) => `border-top-left-radius: ${v}`
+)
+
+const borderradiusbr_ = gen(
+    'rounded-br',
+    borderRadius,
+    (n, v) => `border-bottom-right-radius: ${v}`
+)
+
+const borderradiusbl_ = gen(
+    'rounded-bl',
+    borderRadius,
+    (n, v) => `border-bottom-left-radius: ${v}`
+)
+
 return {
-    'background-attachment': backattachment_,
-    'background-color': backcolor_,
-    'background-position': backposition_,
-    'background-repeat': backrepeat_,
-    'background-size': backsize_,
+    'border-color': bordercolor_,
+    'border-style': borderstyle_,
+    'border-width': [
+        ...borderwidth_,
+        ...borderwidtht_,
+        ...borderwidthb_,
+        ...borderwidthr_,
+        ...borderwidthl_,
+    ],
+    'border-radius': [
+        ...borderradius_,
+        ...borderradiust_,
+        ...borderradiusb_,
+        ...borderradiusr_,
+        ...borderradiusl_,
+        ...borderradiustr_,
+        ...borderradiustl_,
+        ...borderradiusbr_,
+        ...borderradiusbl_,
+    ],
 }
 
 // console.log(color_)
