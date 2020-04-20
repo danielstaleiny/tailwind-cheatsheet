@@ -10,7 +10,7 @@ const config = resolve(tailwindConfig)
 
 const {
     screens,
-    colors,
+    // colors,
     // spacing,
     backgroundColor,
     backgroundPosition,
@@ -226,18 +226,21 @@ const zindex_ = gen('z', zIndex, (n, v) => `z-index: ${v}`)
 //
 
 const Layout = {
-    container: container_,
-    'box-sizing': boxsizing_,
-    display: display_,
-    float: float_,
-    clear: clear_,
-    'object-fit': objectfit_,
-    'object-position': objectposition_,
-    overflow: overflow_,
-    position: position_,
-    'top,right,bottom,left': [...trbl_, ...trblx_, ...trbly_],
-    visibility: visibility_,
-    'z-index': zindex_,
+    container: { value: container_, desc: '' },
+    'box-sizing': { value: boxsizing_, desc: '' },
+    display: { value: display_, desc: '' },
+    float: { value: float_, desc: '' },
+    clear: { value: clear_, desc: '' },
+    'object-fit': { value: objectfit_, desc: '' },
+    'object-position': { value: objectposition_, desc: '' },
+    overflow: { value: overflow_, desc: '' },
+    position: { value: position_, desc: '' },
+    'top,right,bottom,left': {
+        value: [...trbl_, ...trblx_, ...trbly_],
+        desc: '',
+    },
+    visibility: { value: visibility_, desc: '' },
+    'z-index': { value: zindex_, desc: '' },
 }
 
 // Flexbox
@@ -306,17 +309,17 @@ const order_ = gen('order', order, (n, v) => `order: ${v}`)
 
 // Flexbox
 const Flexbox = {
-    display: displayflex_,
-    'flex-direction': flexdirection_,
-    'flex-wrap': flexwrap_,
-    'align-items': alignitems_,
-    'align-content': aligncontent_,
-    'align-self': alignself_,
-    'justify-content': justifycontent_,
-    flex: flex_,
-    'flex-grow': flexgrow_,
-    'flex-shrink': flexshrink_,
-    order: order_,
+    display: { value: displayflex_, desc: '' },
+    'flex-direction': { value: flexdirection_, desc: '' },
+    'flex-wrap': { value: flexwrap_, desc: '' },
+    'align-items': { value: alignitems_, desc: '' },
+    'align-content': { value: aligncontent_, desc: '' },
+    'align-self': { value: alignself_, desc: '' },
+    'justify-content': { value: justifycontent_, desc: '' },
+    flex: { value: flex_, desc: '' },
+    'flex-grow': { value: flexgrow_, desc: '' },
+    'flex-shrink': { value: flexshrink_, desc: '' },
+    order: { value: order_, desc: '' },
 }
 
 // Grid
@@ -375,16 +378,18 @@ const gridflow_ = gen('grid-flow', {
 // console.log(gridflow_)
 
 const Grid = {
-    'grid-tempate-columns': gridtemplatecolumn_,
-    'grid-column, start/end': [
-        ...gridcolumn_,
-        ...gridcolumnstart_,
-        ...gridcolumnend_,
-    ],
-    'grid-temptale-rows': gridtemplate_,
-    'grid-row, start/end': [...gridrow_, ...gridrowstart_, ...gridrowend_],
-    gap: gap_,
-    'grid-auto-flow': gridflow_,
+    'grid-tempate-columns': { value: gridtemplatecolumn_, desc: '' },
+    'grid-column, start/end': {
+        value: [...gridcolumn_, ...gridcolumnstart_, ...gridcolumnend_],
+        desc: '',
+    },
+    'grid-temptale-rows': { value: gridtemplate_, desc: '' },
+    'grid-row, start/end': {
+        value: [...gridrow_, ...gridrowstart_, ...gridrowend_],
+        desc: '',
+    },
+    gap: { value: gap_, desc: '' },
+    'grid-auto-flow': { value: gridflow_, desc: '' },
 }
 
 //Spacing
@@ -431,28 +436,34 @@ const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
 
 // Spacing
 const Spacing = {
-    padding: [
-        ...padding_,
-        ...paddingx_,
-        ...paddingy_,
-        ...paddingr_,
-        ...paddingl_,
-        ...paddingt_,
-        ...paddingb_,
-    ],
-    margin: [
-        ...margin_,
-        ...marginx_,
-        ...marginy_,
-        ...marginr_,
-        ...marginl_,
-        ...margint_,
-        ...marginb_,
-        ...marginrminus_,
-        ...marginlminus_,
-        ...margintminus_,
-        ...marginbminus_,
-    ],
+    padding: {
+        value: [
+            ...padding_,
+            ...paddingx_,
+            ...paddingy_,
+            ...paddingr_,
+            ...paddingl_,
+            ...paddingt_,
+            ...paddingb_,
+        ],
+        desc: '',
+    },
+    margin: {
+        value: [
+            ...margin_,
+            ...marginx_,
+            ...marginy_,
+            ...marginr_,
+            ...marginl_,
+            ...margint_,
+            ...marginb_,
+            ...marginrminus_,
+            ...marginlminus_,
+            ...margintminus_,
+            ...marginbminus_,
+        ],
+        desc: '',
+    },
 }
 
 // Sizing
@@ -464,12 +475,12 @@ const minheight_ = gen('min-h', minHeight, (n, v) => `min-height: ${v}`)
 const maxheight_ = gen('max-h', maxHeight, (n, v) => `max-height: ${v}`)
 
 const Sizing = {
-    width: width_,
-    'min-width': minwidth_,
-    'max-width': maxwidth_,
-    height: height_,
-    'min-height': minheight_,
-    'max-height': maxheight_,
+    width: { value: width_, desc: '' },
+    'min-width': { value: minwidth_, desc: '' },
+    'max-width': { value: maxwidth_, desc: '' },
+    height: { value: height_, desc: '' },
+    'min-height': { value: minheight_, desc: '' },
+    'max-height': { value: maxheight_, desc: '' },
 }
 
 // TYPOGRAPHY
@@ -584,23 +595,23 @@ white-space: nowrap;`,
 })
 
 const Typography = {
-    color: color_,
-    'font-family': fontfamily_,
-    'font-size': fontsize_,
-    'font-smoothing': fontsmoothing_,
-    'font-style': fontstyle_,
-    'font-weight': fontweight_,
-    'letter-spacing': letterspacing_,
-    'line-height': lineheight_,
-    'list-style-type': liststyletype_,
-    'list-style-position': liststyleposition_,
-    '::placeholder color': placeholdercolor_,
-    'text-align': textalign_,
-    'text-decoration': textdecoration_,
-    'text-transform': texttransformation_,
-    'vertical-align': verticalalign_,
-    'white-space': whitespace_,
-    'word-break': wordbreak_,
+    color: { value: color_, desc: '' },
+    'font-family': { value: fontfamily_, desc: '' },
+    'font-size': { value: fontsize_, desc: '' },
+    'font-smoothing': { value: fontsmoothing_, desc: '' },
+    'font-style': { value: fontstyle_, desc: '' },
+    'font-weight': { value: fontweight_, desc: '' },
+    'letter-spacing': { value: letterspacing_, desc: '' },
+    'line-height': { value: lineheight_, desc: '' },
+    'list-style-type': { value: liststyletype_, desc: '' },
+    'list-style-position': { value: liststyleposition_, desc: '' },
+    '::placeholder color': { value: placeholdercolor_, desc: '' },
+    'text-align': { value: textalign_, desc: '' },
+    'text-decoration': { value: textdecoration_, desc: '' },
+    'text-transform': { value: texttransformation_, desc: '' },
+    'vertical-align': { value: verticalalign_, desc: '' },
+    'white-space': { value: whitespace_, desc: '' },
+    'word-break': { value: wordbreak_, desc: '' },
 }
 
 // Backgrounds
@@ -639,11 +650,11 @@ const backrepeat_ = gen(
 const backsize_ = gen('bg', backgroundSize, (n, v) => `background-size: ${v}`)
 
 const Backgrounds = {
-    'background-attachment': backattachment_,
-    'background-color': backcolor_,
-    'background-position': backposition_,
-    'background-repeat': backrepeat_,
-    'background-size': backsize_,
+    'background-attachment': { value: backattachment_, desc: '' },
+    'background-color': { value: backcolor_, desc: '' },
+    'background-position': { value: backposition_, desc: '' },
+    'background-repeat': { value: backrepeat_, desc: '' },
+    'background-size': { value: backsize_, desc: '' },
 }
 
 // Borders
@@ -738,26 +749,32 @@ const borderradiusbl_ = gen(
 )
 
 const Borders = {
-    'border-color': bordercolor_,
-    'border-style': borderstyle_,
-    'border-width': [
-        ...borderwidth_,
-        ...borderwidtht_,
-        ...borderwidthb_,
-        ...borderwidthr_,
-        ...borderwidthl_,
-    ],
-    'border-radius': [
-        ...borderradius_,
-        ...borderradiust_,
-        ...borderradiusb_,
-        ...borderradiusr_,
-        ...borderradiusl_,
-        ...borderradiustr_,
-        ...borderradiustl_,
-        ...borderradiusbr_,
-        ...borderradiusbl_,
-    ],
+    'border-color': { value: bordercolor_, desc: '' },
+    'border-style': { value: borderstyle_, desc: '' },
+    'border-width': {
+        value: [
+            ...borderwidth_,
+            ...borderwidtht_,
+            ...borderwidthb_,
+            ...borderwidthr_,
+            ...borderwidthl_,
+        ],
+        desc: '',
+    },
+    'border-radius': {
+        value: [
+            ...borderradius_,
+            ...borderradiust_,
+            ...borderradiusb_,
+            ...borderradiusr_,
+            ...borderradiusl_,
+            ...borderradiustr_,
+            ...borderradiustl_,
+            ...borderradiusbr_,
+            ...borderradiusbl_,
+        ],
+        desc: '',
+    },
 }
 
 // Tables
@@ -782,8 +799,8 @@ const tablelayout_ = gen(
 
 // Tables
 const Tables = {
-    'border-collapse': bordercollapse_,
-    'table-layout': tablelayout_,
+    'border-collapse': { value: bordercollapse_, desc: '' },
+    'table-layout': { value: tablelayout_, desc: '' },
 }
 
 // Transitions
@@ -807,9 +824,12 @@ const transitiontimingfunction_ = gen(
 )
 
 const Transitions = {
-    'transition-property': transitionproperty_,
-    'transition-duration': transitionduration_,
-    'transition-timing-function': transitiontimingfunction_,
+    'transition-property': { value: transitionproperty_, desc: '' },
+    'transition-duration': { value: transitionduration_, desc: '' },
+    'transition-timing-function': {
+        value: transitiontimingfunction_,
+        desc: '',
+    },
 }
 
 const scale_ = gen(
@@ -847,11 +867,11 @@ const transformorigin_ = gen(
 )
 
 const Transforms = {
-    scale: [...scale_, ...scalex_, ...scaley_],
-    rotate: rotate_,
-    translate: [...translatex_, ...translatey_],
-    skew: [...skewx_, ...skewy_],
-    'transform-origin': transformorigin_,
+    scale: { value: [...scale_, ...scalex_, ...scaley_], desc: '' },
+    rotate: { value: rotate_, desc: '' },
+    translate: { value: [...translatex_, ...translatey_], desc: '' },
+    skew: { value: [...skewx_, ...skewy_], desc: '' },
+    'transform-origin': { value: transformorigin_, desc: '' },
 }
 
 // Interactivity
@@ -905,13 +925,13 @@ whiteSpace: normal;`,
 })
 
 const Interactivity = {
-    appearance: appearance_,
-    cursor: cursor_,
-    outline: outline_,
-    'pointer-events': pointerevents_,
-    resize: resize_,
-    'user-select': userselect_,
-    accessibility: accessability_,
+    appearance: { value: appearance_, desc: '' },
+    cursor: { value: cursor_, desc: '' },
+    outline: { value: outline_, desc: '' },
+    'pointer-events': { value: pointerevents_, desc: '' },
+    resize: { value: resize_, desc: '' },
+    'user-select': { value: userselect_, desc: '' },
+    accessibility: { value: accessability_, desc: '' },
 }
 
 // Miscellaneous
@@ -927,11 +947,11 @@ const stroke_ = gen('stroke', stroke, (n, v) => `stroke: ${v}`)
 const strokewidth_ = gen('stroke', strokeWidth, (n, v) => `stroke-width: ${v}`)
 
 const Miscellaneous = {
-    'box-shadow': boxshadow_,
-    opacity: opacity_,
-    fill: fill_,
-    stroke: stroke_,
-    'stroke-width': strokewidth_,
+    'box-shadow': { value: boxshadow_, desc: '' },
+    opacity: { value: opacity_, desc: '' },
+    fill: { value: fill_, desc: '' },
+    stroke: { value: stroke_, desc: '' },
+    'stroke-width': { value: strokewidth_, desc: '' },
 }
 
 return {
