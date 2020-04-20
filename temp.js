@@ -849,12 +849,73 @@ const transformorigin_ = gen(
     (n, v) => `transform-origin: ${v}`
 )
 
+// //Transforms
+// return {
+//     scale: [...scale_, ...scalex_, ...scaley_],
+//     rotate: rotate_,
+//     translate: [...translatex_, ...translatey_],
+//     skew: [...skewx_, ...skewy_],
+//     'transform-origin': transformorigin_,
+// }
+
+// Interactivity
+
+const appearance_ = gen(
+    'appearance',
+    { none: 'none' },
+    (n, v) => `appearance: ${v}`
+)
+
+const cursor_ = gen('cursor', cursor, (n, v) => `cursor: ${v}`)
+
+const outline_ = gen('outline', { none: '0' }, (n, v) => `outline: ${v}`)
+
+const pointerevents_ = gen(
+    'pointer-events',
+    { none: 'none', auto: 'auto' },
+    (n, v) => `pointer-events: ${v}`
+)
+
+const resize_ = gen(
+    'resize',
+    { none: 'none', default: 'both', y: 'vertical', x: 'horizontal' },
+    (n, v) => `resize: ${v}`
+)
+
+const userselect_ = gen(
+    'select',
+    { none: 'none', text: 'text', all: 'all', auto: 'auto' },
+    (n, v) => `user-select: ${v}`
+)
+
+const accessability_ = gen('', {
+    'sr-only': `position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+whiteSpace: nowrap;
+borderWidth: 0;`,
+    'not-sr-only': `position: static;
+width: auto;
+height: auto;
+padding: 0;
+margin: 0;
+overflow: visible;
+clip: auto;
+whiteSpace: normal;`,
+})
+
 return {
-    scale: [...scale_, ...scalex_, ...scaley_],
-    rotate: rotate_,
-    translate: [...translatex_, ...translatey_],
-    skew: [...skewx_, ...skewy_],
-    'transform-origin': transformorigin_,
+    appearance: appearance_,
+    cursor: cursor_,
+    outline: outline_,
+    'pointer-events': pointerevents_,
+    resize: resize_,
+    'user-select': userselect_,
+    accessibility: accessability_,
 }
 
 // .text-{size}
