@@ -766,28 +766,51 @@ const borderradiusbl_ = gen(
     (n, v) => `border-bottom-left-radius: ${v}`
 )
 
-return {
-    'border-color': bordercolor_,
-    'border-style': borderstyle_,
-    'border-width': [
-        ...borderwidth_,
-        ...borderwidtht_,
-        ...borderwidthb_,
-        ...borderwidthr_,
-        ...borderwidthl_,
-    ],
-    'border-radius': [
-        ...borderradius_,
-        ...borderradiust_,
-        ...borderradiusb_,
-        ...borderradiusr_,
-        ...borderradiusl_,
-        ...borderradiustr_,
-        ...borderradiustl_,
-        ...borderradiusbr_,
-        ...borderradiusbl_,
-    ],
-}
+// return {
+//     'border-color': bordercolor_,
+//     'border-style': borderstyle_,
+//     'border-width': [
+//         ...borderwidth_,
+//         ...borderwidtht_,
+//         ...borderwidthb_,
+//         ...borderwidthr_,
+//         ...borderwidthl_,
+//     ],
+//     'border-radius': [
+//         ...borderradius_,
+//         ...borderradiust_,
+//         ...borderradiusb_,
+//         ...borderradiusr_,
+//         ...borderradiusl_,
+//         ...borderradiustr_,
+//         ...borderradiustl_,
+//         ...borderradiusbr_,
+//         ...borderradiusbl_,
+//     ],
+// }
+
+// Tables
+
+const bordercollapse_ = gen(
+    'border',
+    {
+        collapse: 'collapse',
+        separate: 'separate',
+    },
+    (n, v) => `border-collapse: ${v}`
+)
+
+const tablelayout_ = gen(
+    'table',
+    {
+        auto: 'auto',
+        fixed: 'fixed',
+    },
+    (n, v) => `table-layout: ${v}`
+)
+
+// Tables
+// return { 'border-collapse': bordercollapse_, 'table-layout': tablelayout_ }
 
 // console.log(color_)
 
