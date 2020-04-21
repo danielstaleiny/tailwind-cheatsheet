@@ -4,7 +4,7 @@ const config = resolve(tailwindConfig)
 
 // console.log(config.prefix) // global prefix, I am ignoring this, it is easy to remember your own prefix
 // console.log(config.important) // I don't care about important
-// console.log(config.separator) // (:) default, I don't care about this info.
+// console.log(config.separator) // (:) default
 // console.log(config.plugins) // undefined
 
 const {
