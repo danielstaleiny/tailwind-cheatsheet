@@ -35,7 +35,7 @@
         "purescript:watch": "spago build --watch  --clear-screen --no-share-output  --purs-args '--output pages/assets/js/pure '",
         "storybook": "start-storybook",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "demon": "nodemon temp.js"
+        "demon": "nodemon tailwindcheatsheet.js"
     },
     "alias": {
         "pages": "./pages",
