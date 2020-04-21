@@ -309,7 +309,9 @@ const Layout = {
     'z-index': {
         value: zindex_,
         isAllowed: resolvePlugin('zIndex'),
-        desc: 'Sets the z-order ("stack order") of a positioned element.',
+
+        desc: `.z-{index}
+Sets the z-order ("stack order") of a positioned element.`,
     },
 }
 
@@ -598,7 +600,9 @@ const Spacing = {
             ...paddingb_,
         ],
         isAllowed: resolvePlugin('padding'),
-        desc: 'Controls padding in 0.25rem increments.',
+
+        desc: `.p{side?}-{size}
+Controls padding in 0.25rem increments.`,
     },
     margin: {
         value: [
@@ -615,7 +619,9 @@ const Spacing = {
             ...marginbminus_,
         ],
         isAllowed: resolvePlugin('margin'),
-        desc: 'Controls margin (and negative margin) in 0.25rem increments.',
+        desc: `.m{side?}-{size}
+.-m{side?}-{size}
+Controls margin (and negative margin) in 0.25rem increments.`,
     },
 }
 
@@ -631,32 +637,39 @@ const Sizing = {
     width: {
         value: width_,
         isAllowed: resolvePlugin('width'),
-        desc: 'Sets width of an element.',
+        desc: `.w-{size}
+Sets width of an element.`,
     },
     'min-width': {
         value: minwidth_,
         isAllowed: resolvePlugin('minWidth'),
-        desc: 'Sets the minimum width of an element.',
+        desc: `.min-w-{size}
+Sets the minimum width of an element.`,
     },
     'max-width': {
         value: maxwidth_,
         isAllowed: resolvePlugin('maxWidth'),
-        desc: 'Sets the maxiumum width of an element.',
+        desc: `.max-w-{size}
+Sets the maxiumum width of an element.`,
     },
     height: {
         value: height_,
         isAllowed: resolvePlugin('height'),
-        desc: 'Sets height of an element.',
+        desc: `.h-{size}
+Sets height of an element.`,
     },
+
     'min-height': {
         value: minheight_,
         isAllowed: resolvePlugin('minHeight'),
-        desc: 'Sets the minimum height of an element.',
+        desc: `.min-h-{size}
+Sets the minimum height of an element.`,
     },
     'max-height': {
         value: maxheight_,
         isAllowed: resolvePlugin('maxHeight'),
-        desc: 'Sets the maxiumum height of an element.',
+        desc: `.max-h-{size}
+Sets the maxiumum height of an element.`,
     },
 }
 
@@ -775,7 +788,8 @@ const Typography = {
     color: {
         value: color_,
         isAllowed: resolvePlugin('color'),
-        desc: 'Sets the text color.',
+        desc: `.text-{color}
+Sets the text color.`,
     },
     'font-family': {
         value: fontfamily_,
@@ -785,7 +799,8 @@ const Typography = {
     'font-size': {
         value: fontsize_,
         isAllowed: resolvePlugin('fontSize'),
-        desc: 'Sets the font size.',
+        desc: `.text-{size}
+Sets the font size.`,
     },
     'font-smoothing': {
         value: fontsmoothing_,
@@ -800,17 +815,20 @@ const Typography = {
     'font-weight': {
         value: fontweight_,
         isAllowed: resolvePlugin('fontWeight'),
-        desc: 'Sets the font weight.',
+        desc: `.font-{weight}
+Sets the font weight.`,
     },
     'letter-spacing': {
         value: letterspacing_,
         isAllowed: resolvePlugin('letterSpacing'),
-        desc: 'Sets the spacing between letters.',
+        desc: `.tracking-{size}
+Sets the spacing between letters.`,
     },
     'line-height': {
         value: lineheight_,
         isAllowed: resolvePlugin('lineHeight'),
-        desc: 'Sets the line height.',
+        desc: `.leading-{size}
+Sets the line height.`,
     },
     'list-style-type': {
         value: liststyletype_,
@@ -904,7 +922,8 @@ const Backgrounds = {
     'background-color': {
         value: backcolor_,
         isAllowed: resolvePlugin('backgroundColor'),
-        desc: 'Sets background color.',
+        desc: `.bg-{color}
+Sets background color.`,
     },
     'background-position': {
         value: backposition_,
@@ -919,7 +938,8 @@ const Backgrounds = {
     'background-size': {
         value: backsize_,
         isAllowed: resolvePlugin('backgroundSize'),
-        desc: 'Sets background size of a background image.',
+        desc: `.bg-{size}
+Sets background size of a background image.`,
     },
 }
 
@@ -1018,7 +1038,8 @@ const Borders = {
     'border-color': {
         value: bordercolor_,
         isAllowed: resolvePlugin('borderColor'),
-        desc: 'Sets color for borders.',
+        desc: `.border-{color}
+Sets color for borders.`,
     },
     'border-style': {
         value: borderstyle_,
@@ -1034,7 +1055,8 @@ const Borders = {
             ...borderwidthl_,
         ],
         isAllowed: resolvePlugin('borderWidth'),
-        desc: 'Sets width for borders in increments of 1px.',
+        desc: `.border{-side?}{-width?}
+Sets width for borders in increments of 1px.`,
     },
     'border-radius': {
         value: [
@@ -1049,7 +1071,8 @@ const Borders = {
             ...borderradiusbl_,
         ],
         isAllowed: resolvePlugin('borderRadius'),
-        desc: 'Sets border radius.',
+        desc: `.rounded{-side?}{-size?}
+Sets border radius.`,
     },
 }
 
@@ -1295,22 +1318,26 @@ const Miscellaneous = {
     'box-shadow': {
         value: boxshadow_,
         isAllowed: resolvePlugin('boxShadow'),
-        desc: 'Sets shadow of an element.',
+        desc: `.shadow-{size?}
+Sets shadow of an element.`,
     },
     opacity: {
         value: opacity_,
         isAllowed: resolvePlugin('opacity'),
-        desc: 'Sets opacity of an element.',
+        desc: `.opacity-{name}
+Sets opacity of an element.`,
     },
     fill: {
         value: fill_,
         isAllowed: resolvePlugin('fill'),
-        desc: 'Set SVG fill style.',
+        desc: `.fill-{name}
+Set SVG fill style.`,
     },
     stroke: {
         value: stroke_,
         isAllowed: resolvePlugin('stroke'),
-        desc: 'Set SVG stroke style.',
+        desc: `.stroke-{name}
+Set SVG stroke style.`,
     },
     'stroke-width': {
         value: strokewidth_,
@@ -1320,42 +1347,17 @@ const Miscellaneous = {
 }
 
 return {
-    Miscellaneous,
-    Interactivity,
-    Transforms,
-    Transitions,
-    Tables,
-    Borders,
-    Backgrounds,
-    Typography,
-    Sizing,
-    Spacing,
-    Grid,
-    Flexbox,
     Layout,
+    Flexbox,
+    Grid,
+    Spacing,
+    Sizing,
+    Typography,
+    Backgrounds,
+    Borders,
+    Tables,
+    Transitions,
+    Transforms,
+    Interactivity,
+    Miscellaneous,
 }
-
-// .text-{size}
-// .font-{weight}
-// .leading-{size}
-// .tracking-{size}
-// .text-{color}
-// .bg-{color}
-// .bg-{size}
-// .border{-side?}{-width?}
-// .border-{color}
-// .rounded{-side?}{-size?}
-// .w-{size}
-// .h-{size}
-// .min-w-{size}
-// .min-h-{size}
-// .max-w-{size}
-// .max-h-{size}
-// .p{side?}-{size}
-// .m{side?}-{size}
-// .-m{side?}-{size}
-// .shadow-{size?}
-// .z-{index}
-// .opacity-{name}
-// .fill-{name}
-// .stroke-{name}
