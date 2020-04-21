@@ -31,8 +31,8 @@
         "parcel:watch": "ELEVENTY_ENV=development parcel watch .tmp/parcel/*.html --no-hmr --out-dir _site --cache-dir .tmp/.cache",
         "purescript:repl": "spago repl",
         "purescript:install": "spago install",
-        "purescript:build": "spago build --no-share-output --purs-args '--output pages/assets/js/pure '",
-        "purescript:watch": "spago build --watch  --clear-screen --no-share-output  --purs-args '--output pages/assets/js/pure '",
+        "purescript:build": "spago build --purs-args '--output pages/assets/js/pure '",
+        "purescript:watch": "spago build --watch  --clear-screen  --purs-args '--output pages/assets/js/pure '",
         "storybook": "start-storybook",
         "test": "echo \"Error: no test specified\" && exit 1",
         "demon": "nodemon tailwindcheatsheet.js"

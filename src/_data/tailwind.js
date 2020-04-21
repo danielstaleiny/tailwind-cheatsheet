@@ -163,9 +163,9 @@ const float_ = gen('', {
     'float-left': 'float: left',
     'float-none': 'float: none',
     clearfix: `&::after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }`,
 })
 

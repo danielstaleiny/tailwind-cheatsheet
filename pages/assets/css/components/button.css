@@ -36,10 +36,9 @@
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 15rem;
   background-color: black;
   color: #fff;
-  text-align: center;
+  text-align: left;
   padding: 5px 5px;
   border-radius: 6px;
 

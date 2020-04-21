@@ -20,7 +20,7 @@ title: Tailwind CSS Cheatsheet!
             {% for attr, code  in item %}
             <li class="li">
                 <div class="tooltip">
-                    <span class="tooltiptext">{{code}}</span>
+                    <span class="tooltiptext w-auto truncate">{{code | newline | safe }}</span>
                     {{attr}}
                 </div>
             </li>
