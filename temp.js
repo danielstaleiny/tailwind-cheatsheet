@@ -5,7 +5,6 @@ const config = resolve(tailwindConfig)
 // console.log(config.prefix) // global prefix, I am ignoring this, it is easy to remember your own prefix
 // console.log(config.important) // I don't care about important
 // console.log(config.separator) // (:) default, I don't care about this info.
-// console.log(config.corePlugins) // empty {} // MAYBE in the future
 // console.log(config.plugins) // undefined
 
 const {
@@ -66,6 +65,27 @@ const {
     transitionTimingFunction,
     transitionDuration,
 } = config.theme
+
+const isEmpty = (obj) => (Object.keys(obj).length > 0 ? false : true)
+
+// console.log(config.corePlugins) // empty {} // MAYBE in the future
+// resolveCore: String -> Bool
+const resolveCore = (cfg) => (plugin) => {
+    if (Array.isArray(cfg)) return cfg.includes(plugin)
+    else if (isEmpty(cfg)) return true
+    else if (!Object.keys(cfg).includes(plugin)) return true
+    else {
+        return cfg[plugin]
+    }
+}
+
+// TEST
+// console.log(resolveCore({})('anything'))
+// console.log(resolveCore([])('anything'))
+// console.log(resolveCore({ float: false })('anything'))
+// console.log(resolveCore({ float: false })('float'))
+// console.log(resolveCore(['float'])('anything'))
+// console.log(resolveCore(['float'])('float'))
 
 // Layout
 const breakpoint_names = Object.keys(screens)
