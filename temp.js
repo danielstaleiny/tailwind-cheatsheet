@@ -2,16 +2,17 @@ const resolve = require('tailwindcss/resolveConfig')
 const tailwindConfig = require('./pages/assets/css/tailwind.config.js')
 const config = resolve(tailwindConfig)
 
-// console.log(config.prefix)
-// console.log(config.important)
-// console.log(config.separator)
-// console.log(config.corePlugins)
-// console.log(config.plugins)
+// console.log(config.prefix) // global prefix, I am ignoring this, it is easy to remember your own prefix
+// console.log(config.important) // I don't care about important
+// console.log(config.separator) // (:) default, I don't care about this info.
+// console.log(config.corePlugins) // empty {} // MAYBE in the future
+// console.log(config.plugins) // undefined
 
 const {
     screens,
     // colors,
     // spacing,
+    // container, this modifies defaults, it doesn't create classes
     backgroundColor,
     backgroundPosition,
     backgroundSize,
@@ -19,7 +20,6 @@ const {
     borderRadius,
     borderWidth,
     boxShadow,
-    // container, this modifies defaults, it doesn't create classes
     cursor,
     fill,
     flex,
