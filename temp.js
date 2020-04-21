@@ -1429,6 +1429,22 @@ Set SVG stroke style.`,
 }
 
 return {
+    variants: {
+        responsive: Object.keys(screens).map(
+            (it) => `${config.separator}${it}`
+        ),
+        'group-hover': `${config.separator}group-hover`,
+        'focus-within': `${config.separator}focus-within`,
+        first: `${config.separator}first`,
+        last: `${config.separator}last`,
+        odd: `${config.separator}odd`,
+        even: `${config.separator}even`,
+        hover: `${config.separator}hover`,
+        focus: `${config.separator}focus`,
+        active: `${config.separator}active`,
+        visited: `${config.separator}visited`,
+        disabled: `${config.separator}disabled`,
+    },
     Layout,
     Flexbox,
     Grid,
