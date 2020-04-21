@@ -78,6 +78,7 @@ const resolveCore = (cfg) => (plugin) => {
         return cfg[plugin]
     }
 }
+const resolvePlugin = resolveCore(config.corePlugins)
 
 // TEST
 // console.log(resolveCore({})('anything'))
@@ -255,45 +256,53 @@ const Layout = {
     'box-sizing': {
         value: boxsizing_,
         isAllowed: resolvePlugin('boxSizing'),
+        variant: config.variants.boxSizing || [],
         desc:
             'Sets how the total width and height of an element is calculated.',
     },
     display: {
         value: display_,
         isAllowed: resolvePlugin('display'),
+        variant: config.variants.display || [],
         desc: 'Sets the display box type of an element.',
     },
     float: {
         value: float_,
         isAllowed: resolvePlugin('float'),
+        variant: config.variants.float || [],
         desc:
             "Sets an element's placement to a side of its container and allows content to wrap around it.",
     },
     clear: {
         value: clear_,
         isAllowed: resolvePlugin('clear'),
+        variant: config.variants.clear || [],
         desc:
             'Sets whether an element is moved below preceding floated elements.',
     },
     'object-fit': {
         value: objectfit_,
         isAllowed: resolvePlugin('objectFit'),
+        variant: config.variants.objectFit || [],
         desc:
             'Sets how the content of a replaced element (img or video tag) should be resized.',
     },
     'object-position': {
         value: objectposition_,
         isAllowed: resolvePlugin('objectPosition'),
+        variant: config.variants.objectPosition || [],
         desc: 'Sets the alignment of the selected replaced element.',
     },
     overflow: {
         value: overflow_,
         isAllowed: resolvePlugin('overflow'),
+        variant: config.variants.overflow || [],
         desc: "Sets how to handle content that's too big for its container.",
     },
     position: {
         value: position_,
         isAllowed: resolvePlugin('position'),
+        variant: config.variants.position || [],
         desc: "Sets an element's position.",
     },
     'top,right,bottom,left': {
@@ -304,11 +313,13 @@ const Layout = {
     visibility: {
         value: visibility_,
         isAllowed: resolvePlugin('visibility'),
+        variant: config.variants.visibility || [],
         desc: 'Show or hide without affecting the layout of the document.',
     },
     'z-index': {
         value: zindex_,
         isAllowed: resolvePlugin('zIndex'),
+        variant: config.variants.zIndex || [],
 
         desc: `.z-{index}
 Sets the z-order ("stack order") of a positioned element.`,
@@ -384,59 +395,70 @@ const Flexbox = {
     display: {
         value: displayflex_,
         isAllowed: resolvePlugin('display'),
+        variant: config.variants.display || [],
         desc: 'Sets element to be a flex container.',
     },
     'flex-direction': {
         value: flexdirection_,
         isAllowed: resolvePlugin('flexDirection'),
+        variant: config.variants.flexDirection || [],
         desc: 'Sets direction of flex items.',
     },
     'flex-wrap': {
         value: flexwrap_,
         isAllowed: resolvePlugin('flexWrap'),
+        variant: config.variants.flexWrap || [],
         desc: 'Creates how flex items wrap.',
     },
     'align-items': {
         value: alignitems_,
         isAllowed: resolvePlugin('alignItems'),
+        variant: config.variants.alignItems || [],
         desc: "Sets flex items position along a contrainer's cross axis.",
     },
     'align-content': {
         value: aligncontent_,
         isAllowed: resolvePlugin('alignContent'),
+        variant: config.variants.alignContent || [],
         desc:
             'Controls how lines are positioned in multi-line flex containers.',
     },
     'align-self': {
         value: alignself_,
         isAllowed: resolvePlugin('alignSelf'),
+        variant: config.variants.alignSelf || [],
         desc:
             "Controls how an individual flex item is positioned along container's cross axis.",
     },
     'justify-content': {
         value: justifycontent_,
         isAllowed: resolvePlugin('justifyContent'),
+        variant: config.variants.justifyContent || [],
         desc:
             "Controls how flex items are positioned along container's main axis.",
     },
     flex: {
         value: flex_,
         isAllowed: resolvePlugin('flex'),
+        variant: config.variants.flex || [],
         desc: 'Controls how flex items grow and shrink.',
     },
     'flex-grow': {
         value: flexgrow_,
         isAllowed: resolvePlugin('flexGrow'),
+        variant: config.variants.flexGrow || [],
         desc: 'Controls how flex items grow.',
     },
     'flex-shrink': {
         value: flexshrink_,
         isAllowed: resolvePlugin('flexShrink'),
+        variant: config.variants.flexShrink || [],
         desc: 'Controls how flex items shrink.',
     },
     order: {
         value: order_,
         isAllowed: resolvePlugin('order'),
+        variant: config.variants.order || [],
         desc: 'Controls how flex items are ordered.',
     },
 }
@@ -500,6 +522,7 @@ const Grid = {
     'grid-tempate-columns': {
         value: gridtemplatecolumn_,
         isAllowed: resolvePlugin('gridTemplateColumns'),
+        variant: config.variants.gridTemplateColumns || [],
         desc: 'Defines columns for grid layout.',
     },
     'grid-column, start/end': {
@@ -518,6 +541,7 @@ const Grid = {
     'grid-temptale-rows': {
         value: gridtemplate_,
         isAllowed: resolvePlugin('gridTemplateRows'),
+        variant: config.variants.gridTemplateRows || [],
         desc: 'Defines rows for grid layout.',
     },
     'grid-row, start/end': {
@@ -536,11 +560,13 @@ const Grid = {
     gap: {
         value: gap_,
         isAllowed: resolvePlugin('gap'),
+        variant: config.variants.gap || [],
         desc: 'Sets the gaps (gutters) between rows and columns.',
     },
     'grid-auto-flow': {
         value: gridflow_,
         isAllowed: resolvePlugin('gridAutoFlow'),
+        variant: config.variants.gridAutoFlow || [],
         desc: 'Controls the auto placement of grid elements.',
     },
 }
@@ -600,6 +626,7 @@ const Spacing = {
             ...paddingb_,
         ],
         isAllowed: resolvePlugin('padding'),
+        variant: config.variants.padding || [],
 
         desc: `.p{side?}-{size}
 Controls padding in 0.25rem increments.`,
@@ -619,6 +646,7 @@ Controls padding in 0.25rem increments.`,
             ...marginbminus_,
         ],
         isAllowed: resolvePlugin('margin'),
+        variant: config.variants.margin || [],
         desc: `.m{side?}-{size}
 .-m{side?}-{size}
 Controls margin (and negative margin) in 0.25rem increments.`,
@@ -637,24 +665,28 @@ const Sizing = {
     width: {
         value: width_,
         isAllowed: resolvePlugin('width'),
+        variant: config.variants.width || [],
         desc: `.w-{size}
 Sets width of an element.`,
     },
     'min-width': {
         value: minwidth_,
         isAllowed: resolvePlugin('minWidth'),
+        variant: config.variants.minWidth || [],
         desc: `.min-w-{size}
 Sets the minimum width of an element.`,
     },
     'max-width': {
         value: maxwidth_,
         isAllowed: resolvePlugin('maxWidth'),
+        variant: config.variants.maxWidth || [],
         desc: `.max-w-{size}
 Sets the maxiumum width of an element.`,
     },
     height: {
         value: height_,
         isAllowed: resolvePlugin('height'),
+        variant: config.variants.height || [],
         desc: `.h-{size}
 Sets height of an element.`,
     },
@@ -662,12 +694,14 @@ Sets height of an element.`,
     'min-height': {
         value: minheight_,
         isAllowed: resolvePlugin('minHeight'),
+        variant: config.variants.minHeight || [],
         desc: `.min-h-{size}
 Sets the minimum height of an element.`,
     },
     'max-height': {
         value: maxheight_,
         isAllowed: resolvePlugin('maxHeight'),
+        variant: config.variants.maxHeight || [],
         desc: `.max-h-{size}
 Sets the maxiumum height of an element.`,
     },
@@ -788,92 +822,109 @@ const Typography = {
     color: {
         value: color_,
         isAllowed: resolvePlugin('color'),
+        variant: config.variants.color || [],
         desc: `.text-{color}
 Sets the text color.`,
     },
     'font-family': {
         value: fontfamily_,
         isAllowed: resolvePlugin('fontFamily'),
+        variant: config.variants.fontFamily || [],
         desc: 'Sets the font family.',
     },
     'font-size': {
         value: fontsize_,
         isAllowed: resolvePlugin('fontSize'),
+        variant: config.variants.fontSize || [],
         desc: `.text-{size}
 Sets the font size.`,
     },
     'font-smoothing': {
         value: fontsmoothing_,
         isAllowed: resolvePlugin('fontSmoothing'),
+        variant: config.variants.fontSmoothing || [],
         desc: 'Sets the smoothing for font',
     },
     'font-style': {
         value: fontstyle_,
         isAllowed: resolvePlugin('fontStyle'),
+        variant: config.variants.fontStyle || [],
         desc: 'Sets style of the font',
     },
     'font-weight': {
         value: fontweight_,
         isAllowed: resolvePlugin('fontWeight'),
+        variant: config.variants.fontWeight || [],
         desc: `.font-{weight}
 Sets the font weight.`,
     },
     'letter-spacing': {
         value: letterspacing_,
         isAllowed: resolvePlugin('letterSpacing'),
+        variant: config.variants.letterSpacing || [],
         desc: `.tracking-{size}
 Sets the spacing between letters.`,
     },
     'line-height': {
         value: lineheight_,
         isAllowed: resolvePlugin('lineHeight'),
+        variant: config.variants.lineHeight || [],
         desc: `.leading-{size}
 Sets the line height.`,
     },
     'list-style-type': {
         value: liststyletype_,
         isAllowed: resolvePlugin('listStyleType'),
+        variant: config.variants.listStyleType || [],
         desc: 'Sets the bullet style of a list.',
     },
     'list-style-position': {
         value: liststyleposition_,
         isAllowed: resolvePlugin('listStylePosition'),
+        variant: config.variants.listStylePosition || [],
         desc: "Sets the position of a list's bullets.",
     },
     '::placeholder color': {
         value: placeholdercolor_,
         isAllowed: resolvePlugin('color'),
+        variant: config.variants.color || [],
         desc:
             'Sets the placeholder color using the ::placeholder pseudo element.',
     },
     'text-align': {
         value: textalign_,
         isAllowed: resolvePlugin('textAlign'),
+        variant: config.variants.textAlign || [],
         desc: 'Sets the alignment of text.',
     },
     'text-decoration': {
         value: textdecoration_,
         isAllowed: resolvePlugin('textDecoration'),
+        variant: config.variants.textDecoration || [],
         desc: 'Sets the decoration of the text.',
     },
     'text-transform': {
         value: texttransformation_,
         isAllowed: resolvePlugin('textTransform'),
+        variant: config.variants.textTransform || [],
         desc: 'Sets the transform attributes of the text.',
     },
     'vertical-align': {
         value: verticalalign_,
         isAllowed: resolvePlugin('verticalAlign'),
+        variant: config.variants.verticalAlign || [],
         desc: 'Sets the vertical alignment of an inline or table-cell box.',
     },
     'white-space': {
         value: whitespace_,
         isAllowed: resolvePlugin('whiteSpace'),
+        variant: config.variants.whiteSpace || [],
         desc: 'Sets the whitespace of an element.',
     },
     'word-break': {
         value: wordbreak_,
         isAllowed: resolvePlugin('wordBreak'),
+        variant: config.variants.wordBreak || [],
         desc: 'Sets the word breaks of an element.',
     },
 }
@@ -917,27 +968,32 @@ const Backgrounds = {
     'background-attachment': {
         value: backattachment_,
         isAllowed: resolvePlugin('backgroundAttachment'),
+        variant: config.variants.backgroundAttachment || [],
         desc: 'Sets behavior of background images when scrolling.',
     },
     'background-color': {
         value: backcolor_,
         isAllowed: resolvePlugin('backgroundColor'),
+        variant: config.variants.backgroundColor || [],
         desc: `.bg-{color}
 Sets background color.`,
     },
     'background-position': {
         value: backposition_,
         isAllowed: resolvePlugin('backgroundPosition'),
+        variant: config.variants.backgroundPosition || [],
         desc: 'Sets position of a background image.',
     },
     'background-repeat': {
         value: backrepeat_,
         isAllowed: resolvePlugin('backgroundRepeat'),
+        variant: config.variants.backgroundRepeat || [],
         desc: 'Sets repetition of a background image.',
     },
     'background-size': {
         value: backsize_,
         isAllowed: resolvePlugin('backgroundSize'),
+        variant: config.variants.backgroundSize || [],
         desc: `.bg-{size}
 Sets background size of a background image.`,
     },
@@ -1038,12 +1094,14 @@ const Borders = {
     'border-color': {
         value: bordercolor_,
         isAllowed: resolvePlugin('borderColor'),
+        variant: config.variants.borderColor || [],
         desc: `.border-{color}
 Sets color for borders.`,
     },
     'border-style': {
         value: borderstyle_,
         isAllowed: resolvePlugin('borderStyle'),
+        variant: config.variants.borderStyle || [],
         desc: 'Sets style for borders.',
     },
     'border-width': {
@@ -1055,6 +1113,7 @@ Sets color for borders.`,
             ...borderwidthl_,
         ],
         isAllowed: resolvePlugin('borderWidth'),
+        variant: config.variants.borderWidth || [],
         desc: `.border{-side?}{-width?}
 Sets width for borders in increments of 1px.`,
     },
@@ -1071,6 +1130,7 @@ Sets width for borders in increments of 1px.`,
             ...borderradiusbl_,
         ],
         isAllowed: resolvePlugin('borderRadius'),
+        variant: config.variants.borderRadius || [],
         desc: `.rounded{-side?}{-size?}
 Sets border radius.`,
     },
@@ -1101,11 +1161,13 @@ const Tables = {
     'border-collapse': {
         value: bordercollapse_,
         isAllowed: resolvePlugin('borderCollapse'),
+        variant: config.variants.borderCollapse || [],
         desc: 'Collapse or separate table borders.',
     },
     'table-layout': {
         value: tablelayout_,
         isAllowed: resolvePlugin('tableLayout'),
+        variant: config.variants.tableLayout || [],
         desc:
             'Defines the algorithm used to lay out table cells, rows, and columns.',
     },
@@ -1135,17 +1197,20 @@ const Transitions = {
     'transition-property': {
         value: transitionproperty_,
         isAllowed: resolvePlugin('transitionProperty'),
+        variant: config.variants.transitionProperty || [],
         desc: 'Sets the CSS properties affected by transition animations.',
     },
     'transition-duration': {
         value: transitionduration_,
         isAllowed: resolvePlugin('transitionDuration'),
+        variant: config.variants.transitionDuration || [],
         desc:
             'Sets the length of time for a transition animations to complete.',
     },
     'transition-timing-function': {
         value: transitiontimingfunction_,
         isAllowed: resolvePlugin('transitionTimingFunction'),
+        variant: config.variants.transitionTimingFunction || [],
         desc: 'Sets the easing function of transition animations.',
     },
 }
@@ -1188,26 +1253,31 @@ const Transforms = {
     scale: {
         value: [...scale_, ...scalex_, ...scaley_],
         isAllowed: resolvePlugin('scale'),
+        variant: config.variants.scale || [],
         desc: 'Scales an element that has transform applied.',
     },
     rotate: {
         value: rotate_,
         isAllowed: resolvePlugin('rotate'),
+        variant: config.variants.rotate || [],
         desc: 'Rotates an element that has transform applied.',
     },
     translate: {
         value: [...translatex_, ...translatey_],
         isAllowed: resolvePlugin('translate'),
+        variant: config.variants.translate || [],
         desc: 'Translates an element that has transform applied.',
     },
     skew: {
         value: [...skewx_, ...skewy_],
         isAllowed: resolvePlugin('skew'),
+        variant: config.variants.skew || [],
         desc: 'Skews an element that has transform applied.',
     },
     'transform-origin': {
         value: transformorigin_,
         isAllowed: resolvePlugin('tranformOrigin'),
+        variant: config.variants.tranformOrigin || [],
         desc:
             "Sets the origin of an element's transforms. Think of the origin as pushing a thumbtack into the element at the specified position.",
     },
@@ -1267,36 +1337,43 @@ const Interactivity = {
     appearance: {
         value: appearance_,
         isAllowed: resolvePlugin('appearance'),
+        variant: config.variants.appearance || [],
         desc: "Disables native styling based on the operating system's theme.",
     },
     cursor: {
         value: cursor_,
         isAllowed: resolvePlugin('cursor'),
+        variant: config.variants.cursor || [],
         desc: 'Changes the cursor when hovering over an element.',
     },
     outline: {
         value: outline_,
         isAllowed: resolvePlugin('outline'),
+        variant: config.variants.outline || [],
         desc: 'Changes outline of an element.',
     },
     'pointer-events': {
         value: pointerevents_,
         isAllowed: resolvePlugin('pointerEvents'),
+        variant: config.variants.pointerEvents || [],
         desc: 'Specifies whether an element is the target of mouse events.',
     },
     resize: {
         value: resize_,
         isAllowed: resolvePlugin('resize'),
+        variant: config.variants.resize || [],
         desc: 'Sets whether an element is resizable, along with direction.',
     },
     'user-select': {
         value: userselect_,
         isAllowed: resolvePlugin('userSelect'),
+        variant: config.variants.userSelect || [],
         desc: 'Controls whether the user can select text.',
     },
     accessibility: {
         value: accessability_,
         isAllowed: resolvePlugin('accessibility'),
+        variant: config.variants.accessibility || [],
         desc:
             'Controls whether an element is visually hidden but still accessible to screen readers.',
     },
@@ -1318,30 +1395,35 @@ const Miscellaneous = {
     'box-shadow': {
         value: boxshadow_,
         isAllowed: resolvePlugin('boxShadow'),
+        variant: config.variants.boxShadow || [],
         desc: `.shadow-{size?}
 Sets shadow of an element.`,
     },
     opacity: {
         value: opacity_,
         isAllowed: resolvePlugin('opacity'),
+        variant: config.variants.opacity || [],
         desc: `.opacity-{name}
 Sets opacity of an element.`,
     },
     fill: {
         value: fill_,
         isAllowed: resolvePlugin('fill'),
+        variant: config.variants.fill || [],
         desc: `.fill-{name}
 Set SVG fill style.`,
     },
     stroke: {
         value: stroke_,
         isAllowed: resolvePlugin('stroke'),
+        variant: config.variants.stroke || [],
         desc: `.stroke-{name}
 Set SVG stroke style.`,
     },
     'stroke-width': {
         value: strokewidth_,
         isAllowed: resolvePlugin('strokeWidth'),
+        variant: config.variants.strokeWidth || [],
         desc: 'Set SVG stroke width.',
     },
 }
