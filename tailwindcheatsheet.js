@@ -321,8 +321,8 @@ const Layout = {
         isAllowed: resolvePlugin('zIndex'),
         variant: config.variants.zIndex || [],
 
-        desc: `.z-{index}
-Sets the z-order ("stack order") of a positioned element.`,
+        tip: '.z-{index}',
+        desc: `Sets the z-order ("stack order") of a positioned element.`,
     },
 }
 
@@ -504,7 +504,7 @@ const gridflow_ = gen('grid-flow', {
     row: 'grid-auto-flow: row',
     col: 'grid-auto-flow: column',
     'row-dense': 'grid-auto-flow: row dense',
-    'col-dense': 'grid-auto-flow: column dens',
+    'col-dense': 'grid-auto-flow: column dense',
 })
 
 // Grid
@@ -608,10 +608,10 @@ const marginr_ = gen('mr', margin, (n, v) => `margin-right: ${v}`)
 const marginl_ = gen('ml', margin, (n, v) => `margin-left: ${v}`)
 const margint_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
 const marginb_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
-const marginrminus_ = gen('-mr', margin, (n, v) => `margin-right: -${v}`)
-const marginlminus_ = gen('-ml', margin, (n, v) => `margin-left: -${v}`)
-const margintminus_ = gen('-mt', margin, (n, v) => `margin-top: -${v}`)
-const marginbminus_ = gen('-mb', margin, (n, v) => `margin-bottom: -${v}`)
+const marginrminus_ = gen('mr', margin, (n, v) => `margin-right: ${v}`)
+const marginlminus_ = gen('ml', margin, (n, v) => `margin-left: ${v}`)
+const margintminus_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
+const marginbminus_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
 
 // Spacing
 const Spacing = {
@@ -628,8 +628,8 @@ const Spacing = {
         isAllowed: resolvePlugin('padding'),
         variant: config.variants.padding || [],
 
-        desc: `.p{side?}-{size}
-Controls padding in 0.25rem increments.`,
+        tip: '.p{side?}-{size}',
+        desc: 'Controls padding in 0.25rem increments.',
     },
     margin: {
         value: [
@@ -647,9 +647,8 @@ Controls padding in 0.25rem increments.`,
         ],
         isAllowed: resolvePlugin('margin'),
         variant: config.variants.margin || [],
-        desc: `.m{side?}-{size}
-.-m{side?}-{size}
-Controls margin (and negative margin) in 0.25rem increments.`,
+        tip: '.m{side?}-{size}',
+        desc: 'Controls margin (and negative margin) in 0.25rem increments.',
     },
 }
 
@@ -666,44 +665,44 @@ const Sizing = {
         value: width_,
         isAllowed: resolvePlugin('width'),
         variant: config.variants.width || [],
-        desc: `.w-{size}
-Sets width of an element.`,
+        tip: '.w-{size}',
+        desc: 'Sets width of an element.',
     },
     'min-width': {
         value: minwidth_,
         isAllowed: resolvePlugin('minWidth'),
         variant: config.variants.minWidth || [],
-        desc: `.min-w-{size}
-Sets the minimum width of an element.`,
+        tip: '.min-w-{size}',
+        desc: 'Sets the minimum width of an element.',
     },
     'max-width': {
         value: maxwidth_,
         isAllowed: resolvePlugin('maxWidth'),
         variant: config.variants.maxWidth || [],
-        desc: `.max-w-{size}
-Sets the maxiumum width of an element.`,
+        tip: '.max-w-{size}',
+        desc: 'Sets the maxiumum width of an element.',
     },
     height: {
         value: height_,
         isAllowed: resolvePlugin('height'),
         variant: config.variants.height || [],
-        desc: `.h-{size}
-Sets height of an element.`,
+        tip: '.h-{size}',
+        desc: `Sets height of an element.`,
     },
 
     'min-height': {
         value: minheight_,
         isAllowed: resolvePlugin('minHeight'),
         variant: config.variants.minHeight || [],
-        desc: `.min-h-{size}
-Sets the minimum height of an element.`,
+        tip: '.min-h-{size}',
+        desc: `Sets the minimum height of an element.`,
     },
     'max-height': {
         value: maxheight_,
         isAllowed: resolvePlugin('maxHeight'),
         variant: config.variants.maxHeight || [],
-        desc: `.max-h-{size}
-Sets the maxiumum height of an element.`,
+        tip: '.max-h-{size}',
+        desc: `Sets the maxiumum height of an element.`,
     },
 }
 
@@ -823,8 +822,8 @@ const Typography = {
         value: color_,
         isAllowed: resolvePlugin('color'),
         variant: config.variants.color || [],
-        desc: `.text-{color}
-Sets the text color.`,
+        tip: '.text-{color}',
+        desc: `Sets the text color.`,
     },
     'font-family': {
         value: fontfamily_,
@@ -836,8 +835,8 @@ Sets the text color.`,
         value: fontsize_,
         isAllowed: resolvePlugin('fontSize'),
         variant: config.variants.fontSize || [],
-        desc: `.text-{size}
-Sets the font size.`,
+        tip: '.text-{size}',
+        desc: `Sets the font size.`,
     },
     'font-smoothing': {
         value: fontsmoothing_,
@@ -855,22 +854,22 @@ Sets the font size.`,
         value: fontweight_,
         isAllowed: resolvePlugin('fontWeight'),
         variant: config.variants.fontWeight || [],
-        desc: `.font-{weight}
-Sets the font weight.`,
+        tip: '.font-{weight}',
+        desc: `Sets the font weight.`,
     },
     'letter-spacing': {
         value: letterspacing_,
         isAllowed: resolvePlugin('letterSpacing'),
         variant: config.variants.letterSpacing || [],
-        desc: `.tracking-{size}
-Sets the spacing between letters.`,
+        tip: '.tracking-{size}',
+        desc: `Sets the spacing between letters.`,
     },
     'line-height': {
         value: lineheight_,
         isAllowed: resolvePlugin('lineHeight'),
         variant: config.variants.lineHeight || [],
-        desc: `.leading-{size}
-Sets the line height.`,
+        tip: '.leading-{size}',
+        desc: `Sets the line height.`,
     },
     'list-style-type': {
         value: liststyletype_,
@@ -975,8 +974,8 @@ const Backgrounds = {
         value: backcolor_,
         isAllowed: resolvePlugin('backgroundColor'),
         variant: config.variants.backgroundColor || [],
-        desc: `.bg-{color}
-Sets background color.`,
+        tip: '.bg-{color}',
+        desc: `Sets background color.`,
     },
     'background-position': {
         value: backposition_,
@@ -994,8 +993,8 @@ Sets background color.`,
         value: backsize_,
         isAllowed: resolvePlugin('backgroundSize'),
         variant: config.variants.backgroundSize || [],
-        desc: `.bg-{size}
-Sets background size of a background image.`,
+        tip: '.bg-{size}',
+        desc: `Sets background size of a background image.`,
     },
 }
 
@@ -1095,8 +1094,8 @@ const Borders = {
         value: bordercolor_,
         isAllowed: resolvePlugin('borderColor'),
         variant: config.variants.borderColor || [],
-        desc: `.border-{color}
-Sets color for borders.`,
+        tip: '.border-{color}',
+        desc: `Sets color for borders.`,
     },
     'border-style': {
         value: borderstyle_,
@@ -1114,8 +1113,8 @@ Sets color for borders.`,
         ],
         isAllowed: resolvePlugin('borderWidth'),
         variant: config.variants.borderWidth || [],
-        desc: `.border{-side?}{-width?}
-Sets width for borders in increments of 1px.`,
+        tip: '.border{-side?}{-width?}',
+        desc: `Sets width for borders in increments of 1px.`,
     },
     'border-radius': {
         value: [
@@ -1131,8 +1130,8 @@ Sets width for borders in increments of 1px.`,
         ],
         isAllowed: resolvePlugin('borderRadius'),
         variant: config.variants.borderRadius || [],
-        desc: `.rounded{-side?}{-size?}
-Sets border radius.`,
+        tip: '.rounded{-side?}{-size?}',
+        desc: `Sets border radius.`,
     },
 }
 
@@ -1396,29 +1395,29 @@ const Miscellaneous = {
         value: boxshadow_,
         isAllowed: resolvePlugin('boxShadow'),
         variant: config.variants.boxShadow || [],
-        desc: `.shadow-{size?}
-Sets shadow of an element.`,
+        tip: '.shadow-{size?}',
+        desc: `Sets shadow of an element.`,
     },
     opacity: {
         value: opacity_,
         isAllowed: resolvePlugin('opacity'),
         variant: config.variants.opacity || [],
-        desc: `.opacity-{name}
-Sets opacity of an element.`,
+        tip: '.opacity-{name}',
+        desc: `Sets opacity of an element.`,
     },
     fill: {
         value: fill_,
         isAllowed: resolvePlugin('fill'),
         variant: config.variants.fill || [],
-        desc: `.fill-{name}
-Set SVG fill style.`,
+        tip: '.fill-{name}',
+        desc: `Set SVG fill style.`,
     },
     stroke: {
         value: stroke_,
         isAllowed: resolvePlugin('stroke'),
         variant: config.variants.stroke || [],
-        desc: `.stroke-{name}
-Set SVG stroke style.`,
+        tip: '.stroke-{name}',
+        desc: `Set SVG stroke style.`,
     },
     'stroke-width': {
         value: strokewidth_,
@@ -1428,7 +1427,7 @@ Set SVG stroke style.`,
     },
 }
 
-return {
+module.exports = {
     variants: {
         responsive: Object.keys(screens).map(
             (it) => `${config.separator}${it}`
@@ -1445,17 +1444,19 @@ return {
         visited: `${config.separator}visited`,
         disabled: `${config.separator}disabled`,
     },
-    Layout,
-    Flexbox,
-    Grid,
-    Spacing,
-    Sizing,
-    Typography,
-    Backgrounds,
-    Borders,
-    Tables,
-    Transitions,
-    Transforms,
-    Interactivity,
-    Miscellaneous,
+    cheatsheet: {
+        Layout,
+        Flexbox,
+        Grid,
+        Spacing,
+        Sizing,
+        Typography,
+        Backgrounds,
+        Borders,
+        Tables,
+        Transitions,
+        Transforms,
+        Interactivity,
+        Miscellaneous,
+    },
 }

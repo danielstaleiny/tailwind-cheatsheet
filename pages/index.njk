@@ -6,33 +6,31 @@ title: Tailwind CSS Cheatsheet!
     <section class="mx-auto max-w-md">
     <h1 class="h1">{{ title }}</h1>
 
-    <!-- <h2>All pages</h2> -->
-    <!-- <ul> -->
-    <!--     {% for page in collections.all %} -->
-    <!--         <li> -->
-    <!--             <a href="{{ page.url }}"> -->
-    <!--                 {{ page.data.title | default(page.url) }} -->
-    <!--             </a> -->
-    <!--         </li> -->
-    <!--     {% endfor %} -->
-    <!-- </ul> -->
 
     <section class="container">
-        {% for sec,obj  in tailwind %}
+        {% for sec,obj  in tailwind.cheatsheet %}
         <h3 class="h3"> {{sec}} </h3>
-        <ul class="ul">
+        {% for name,obj2  in obj %}
 
-        {% for item  in obj %}
-        {% for name,code  in item %}
-        <li class="li">
-            <div class="tooltip">
-            <span class="tooltiptext">{{code}}</span>
-                {{name}}
-            </div>
-        </li>
-        {% endfor %}
-        {% endfor %}
+        {% if obj2.isAllowed %}
+        <h4 class="h4"> {{name}}  <small>{{obj2.tip}}</small></h4>
+        <p>{{obj2.desc}}</p>
+        <ul class="ul">
+            {% for item  in obj2.value %}
+            {% for attr, code  in item %}
+            <li class="li">
+                <div class="tooltip">
+                    <span class="tooltiptext">{{code}}</span>
+                    {{attr}}
+                </div>
+            </li>
+            {% endfor %}
+            {% endfor %}
         </ul>
+        {% else %}
+        NADA
+        {% endif %}
+        {% endfor %}
         {% endfor %}
     </section>
 
