@@ -19,8 +19,8 @@ title: Tailwind CSS Cheatsheet!
             {% for item  in obj2.value %}
             {% for attr, code  in item %}
             <li class="li">
-                <div class="tooltip">
-                    <span class="tooltiptext w-auto truncate">{{code | newline | safe }}</span>
+                <div class="tooltip group">
+                    <span class="tooltiptext w-auto truncate group-hover:visible">{{code | newline | safe }}</span>
                     {{attr}}
                 </div>
             </li>

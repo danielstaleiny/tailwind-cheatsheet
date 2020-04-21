@@ -24,32 +24,13 @@
 }
 
 .tooltip {
-    @apply cursor-pointer relative;
+    @apply cursor-pointer relative inline-block border-b border-dotted;
+
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  padding: 5px 5px;
-  border-radius: 6px;
-
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
+.tooltiptext {
+  @apply invisible bg-black text-white text-left p-0.5 rounded-lg absolute ;
   left: 105%;
   bottom: 105%;
   z-index: 1;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
 }
