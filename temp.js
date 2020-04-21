@@ -226,21 +226,56 @@ const zindex_ = gen('z', zIndex, (n, v) => `z-index: ${v}`)
 //
 
 const Layout = {
-    container: { value: container_, desc: '' },
-    'box-sizing': { value: boxsizing_, desc: '' },
-    display: { value: display_, desc: '' },
-    float: { value: float_, desc: '' },
-    clear: { value: clear_, desc: '' },
-    'object-fit': { value: objectfit_, desc: '' },
-    'object-position': { value: objectposition_, desc: '' },
-    overflow: { value: overflow_, desc: '' },
-    position: { value: position_, desc: '' },
+    container: {
+        value: container_,
+        desc:
+            'Sets the max-width to match the min-width of the current breakpoint.',
+    },
+    'box-sizing': {
+        value: boxsizing_,
+        desc:
+            'Sets how the total width and height of an element is calculated.',
+    },
+    display: {
+        value: display_,
+        desc: 'Sets the display box type of an element.',
+    },
+    float: {
+        value: float_,
+        desc:
+            "Sets an element's placement to a side of its container and allows content to wrap around it.",
+    },
+    clear: {
+        value: clear_,
+        desc:
+            'Sets whether an element is moved below preceding floated elements.',
+    },
+    'object-fit': {
+        value: objectfit_,
+        desc:
+            'Sets how the content of a replaced element (img or video tag) should be resized.',
+    },
+    'object-position': {
+        value: objectposition_,
+        desc: 'Sets the alignment of the selected replaced element.',
+    },
+    overflow: {
+        value: overflow_,
+        desc: "Sets how to handle content that's too big for its container.",
+    },
+    position: { value: position_, desc: "Sets an element's position." },
     'top,right,bottom,left': {
         value: [...trbl_, ...trblx_, ...trbly_],
-        desc: '',
+        desc: 'Sets the placement of a positioned element.',
     },
-    visibility: { value: visibility_, desc: '' },
-    'z-index': { value: zindex_, desc: '' },
+    visibility: {
+        value: visibility_,
+        desc: 'Show or hide without affecting the layout of the document.',
+    },
+    'z-index': {
+        value: zindex_,
+        desc: 'Sets the z-order ("stack order") of a positioned element.',
+    },
 }
 
 // Flexbox
@@ -309,17 +344,41 @@ const order_ = gen('order', order, (n, v) => `order: ${v}`)
 
 // Flexbox
 const Flexbox = {
-    display: { value: displayflex_, desc: '' },
-    'flex-direction': { value: flexdirection_, desc: '' },
-    'flex-wrap': { value: flexwrap_, desc: '' },
-    'align-items': { value: alignitems_, desc: '' },
-    'align-content': { value: aligncontent_, desc: '' },
-    'align-self': { value: alignself_, desc: '' },
-    'justify-content': { value: justifycontent_, desc: '' },
-    flex: { value: flex_, desc: '' },
-    'flex-grow': { value: flexgrow_, desc: '' },
-    'flex-shrink': { value: flexshrink_, desc: '' },
-    order: { value: order_, desc: '' },
+    display: {
+        value: displayflex_,
+        desc: 'Sets element to be a flex container.',
+    },
+    'flex-direction': {
+        value: flexdirection_,
+        desc: 'Sets direction of flex items.',
+    },
+    'flex-wrap': { value: flexwrap_, desc: 'Creates how flex items wrap.' },
+    'align-items': {
+        value: alignitems_,
+        desc: "Sets flex items position along a contrainer's cross axis.",
+    },
+    'align-content': {
+        value: aligncontent_,
+        desc:
+            'Controls how lines are positioned in multi-line flex containers.',
+    },
+    'align-self': {
+        value: alignself_,
+        desc:
+            "Controls how an individual flex item is positioned along container's cross axis.",
+    },
+    'justify-content': {
+        value: justifycontent_,
+        desc:
+            "Controls how flex items are positioned along container's main axis.",
+    },
+    flex: { value: flex_, desc: 'Controls how flex items grow and shrink.' },
+    'flex-grow': { value: flexgrow_, desc: 'Controls how flex items grow.' },
+    'flex-shrink': {
+        value: flexshrink_,
+        desc: 'Controls how flex items shrink.',
+    },
+    order: { value: order_, desc: 'Controls how flex items are ordered.' },
 }
 
 // Grid
@@ -378,18 +437,30 @@ const gridflow_ = gen('grid-flow', {
 // console.log(gridflow_)
 
 const Grid = {
-    'grid-tempate-columns': { value: gridtemplatecolumn_, desc: '' },
+    'grid-tempate-columns': {
+        value: gridtemplatecolumn_,
+        desc: 'Defines columns for grid layout.',
+    },
     'grid-column, start/end': {
         value: [...gridcolumn_, ...gridcolumnstart_, ...gridcolumnend_],
-        desc: '',
+        desc: 'Sets a grid item size and location within the grid column.',
     },
-    'grid-temptale-rows': { value: gridtemplate_, desc: '' },
+    'grid-temptale-rows': {
+        value: gridtemplate_,
+        desc: 'Defines rows for grid layout.',
+    },
     'grid-row, start/end': {
         value: [...gridrow_, ...gridrowstart_, ...gridrowend_],
-        desc: '',
+        desc: 'Sets a grid item size and location within the grid row.',
     },
-    gap: { value: gap_, desc: '' },
-    'grid-auto-flow': { value: gridflow_, desc: '' },
+    gap: {
+        value: gap_,
+        desc: 'Sets the gaps (gutters) between rows and columns.',
+    },
+    'grid-auto-flow': {
+        value: gridflow_,
+        desc: 'Controls the auto placement of grid elements.',
+    },
 }
 
 //Spacing
@@ -446,7 +517,7 @@ const Spacing = {
             ...paddingt_,
             ...paddingb_,
         ],
-        desc: '',
+        desc: 'Controls padding in 0.25rem increments.',
     },
     margin: {
         value: [
@@ -462,7 +533,7 @@ const Spacing = {
             ...margintminus_,
             ...marginbminus_,
         ],
-        desc: '',
+        desc: 'Controls margin (and negative margin) in 0.25rem increments.',
     },
 }
 
@@ -475,12 +546,24 @@ const minheight_ = gen('min-h', minHeight, (n, v) => `min-height: ${v}`)
 const maxheight_ = gen('max-h', maxHeight, (n, v) => `max-height: ${v}`)
 
 const Sizing = {
-    width: { value: width_, desc: '' },
-    'min-width': { value: minwidth_, desc: '' },
-    'max-width': { value: maxwidth_, desc: '' },
-    height: { value: height_, desc: '' },
-    'min-height': { value: minheight_, desc: '' },
-    'max-height': { value: maxheight_, desc: '' },
+    width: { value: width_, desc: 'Sets width of an element.' },
+    'min-width': {
+        value: minwidth_,
+        desc: 'Sets the minimum width of an element.',
+    },
+    'max-width': {
+        value: maxwidth_,
+        desc: 'Sets the maxiumum width of an element.',
+    },
+    height: { value: height_, desc: 'Sets height of an element.' },
+    'min-height': {
+        value: minheight_,
+        desc: 'Sets the minimum height of an element.',
+    },
+    'max-height': {
+        value: maxheight_,
+        desc: 'Sets the maxiumum height of an element.',
+    },
 }
 
 // TYPOGRAPHY
@@ -595,23 +678,54 @@ white-space: nowrap;`,
 })
 
 const Typography = {
-    color: { value: color_, desc: '' },
-    'font-family': { value: fontfamily_, desc: '' },
-    'font-size': { value: fontsize_, desc: '' },
-    'font-smoothing': { value: fontsmoothing_, desc: '' },
-    'font-style': { value: fontstyle_, desc: '' },
-    'font-weight': { value: fontweight_, desc: '' },
-    'letter-spacing': { value: letterspacing_, desc: '' },
-    'line-height': { value: lineheight_, desc: '' },
-    'list-style-type': { value: liststyletype_, desc: '' },
-    'list-style-position': { value: liststyleposition_, desc: '' },
-    '::placeholder color': { value: placeholdercolor_, desc: '' },
-    'text-align': { value: textalign_, desc: '' },
-    'text-decoration': { value: textdecoration_, desc: '' },
-    'text-transform': { value: texttransformation_, desc: '' },
-    'vertical-align': { value: verticalalign_, desc: '' },
-    'white-space': { value: whitespace_, desc: '' },
-    'word-break': { value: wordbreak_, desc: '' },
+    color: { value: color_, desc: 'Sets the text color.' },
+    'font-family': { value: fontfamily_, desc: 'Sets the font family.' },
+    'font-size': { value: fontsize_, desc: 'Sets the font size.' },
+    'font-smoothing': {
+        value: fontsmoothing_,
+        desc: 'Sets the smoothing for font',
+    },
+    'font-style': { value: fontstyle_, desc: 'Sets style of the font' },
+    'font-weight': { value: fontweight_, desc: 'Sets the font weight.' },
+    'letter-spacing': {
+        value: letterspacing_,
+        desc: 'Sets the spacing between letters.',
+    },
+    'line-height': { value: lineheight_, desc: 'Sets the line height.' },
+    'list-style-type': {
+        value: liststyletype_,
+        desc: 'Sets the bullet style of a list.',
+    },
+    'list-style-position': {
+        value: liststyleposition_,
+        desc: "Sets the position of a list's bullets.",
+    },
+    '::placeholder color': {
+        value: placeholdercolor_,
+        desc:
+            'Sets the placeholder color using the ::placeholder pseudo element.',
+    },
+    'text-align': { value: textalign_, desc: 'Sets the alignment of text.' },
+    'text-decoration': {
+        value: textdecoration_,
+        desc: 'Sets the decoration of the text.',
+    },
+    'text-transform': {
+        value: texttransformation_,
+        desc: 'Sets the transform attributes of the text.',
+    },
+    'vertical-align': {
+        value: verticalalign_,
+        desc: 'Sets the vertical alignment of an inline or table-cell box.',
+    },
+    'white-space': {
+        value: whitespace_,
+        desc: 'Sets the whitespace of an element.',
+    },
+    'word-break': {
+        value: wordbreak_,
+        desc: 'Sets the word breaks of an element.',
+    },
 }
 
 // Backgrounds
@@ -650,11 +764,23 @@ const backrepeat_ = gen(
 const backsize_ = gen('bg', backgroundSize, (n, v) => `background-size: ${v}`)
 
 const Backgrounds = {
-    'background-attachment': { value: backattachment_, desc: '' },
-    'background-color': { value: backcolor_, desc: '' },
-    'background-position': { value: backposition_, desc: '' },
-    'background-repeat': { value: backrepeat_, desc: '' },
-    'background-size': { value: backsize_, desc: '' },
+    'background-attachment': {
+        value: backattachment_,
+        desc: 'Sets behavior of background images when scrolling.',
+    },
+    'background-color': { value: backcolor_, desc: 'Sets background color.' },
+    'background-position': {
+        value: backposition_,
+        desc: 'Sets position of a background image.',
+    },
+    'background-repeat': {
+        value: backrepeat_,
+        desc: 'Sets repetition of a background image.',
+    },
+    'background-size': {
+        value: backsize_,
+        desc: 'Sets background size of a background image.',
+    },
 }
 
 // Borders
@@ -749,8 +875,8 @@ const borderradiusbl_ = gen(
 )
 
 const Borders = {
-    'border-color': { value: bordercolor_, desc: '' },
-    'border-style': { value: borderstyle_, desc: '' },
+    'border-color': { value: bordercolor_, desc: 'Sets color for borders.' },
+    'border-style': { value: borderstyle_, desc: 'Sets style for borders.' },
     'border-width': {
         value: [
             ...borderwidth_,
@@ -759,7 +885,7 @@ const Borders = {
             ...borderwidthr_,
             ...borderwidthl_,
         ],
-        desc: '',
+        desc: 'Sets width for borders in increments of 1px.',
     },
     'border-radius': {
         value: [
@@ -773,7 +899,7 @@ const Borders = {
             ...borderradiusbr_,
             ...borderradiusbl_,
         ],
-        desc: '',
+        desc: 'Sets border radius.',
     },
 }
 
@@ -799,8 +925,15 @@ const tablelayout_ = gen(
 
 // Tables
 const Tables = {
-    'border-collapse': { value: bordercollapse_, desc: '' },
-    'table-layout': { value: tablelayout_, desc: '' },
+    'border-collapse': {
+        value: bordercollapse_,
+        desc: 'Collapse or separate table borders.',
+    },
+    'table-layout': {
+        value: tablelayout_,
+        desc:
+            'Defines the algorithm used to lay out table cells, rows, and columns.',
+    },
 }
 
 // Transitions
@@ -824,11 +957,18 @@ const transitiontimingfunction_ = gen(
 )
 
 const Transitions = {
-    'transition-property': { value: transitionproperty_, desc: '' },
-    'transition-duration': { value: transitionduration_, desc: '' },
+    'transition-property': {
+        value: transitionproperty_,
+        desc: 'Sets the CSS properties affected by transition animations.',
+    },
+    'transition-duration': {
+        value: transitionduration_,
+        desc:
+            'Sets the length of time for a transition animations to complete.',
+    },
     'transition-timing-function': {
         value: transitiontimingfunction_,
-        desc: '',
+        desc: 'Sets the easing function of transition animations.',
     },
 }
 
@@ -867,11 +1007,27 @@ const transformorigin_ = gen(
 )
 
 const Transforms = {
-    scale: { value: [...scale_, ...scalex_, ...scaley_], desc: '' },
-    rotate: { value: rotate_, desc: '' },
-    translate: { value: [...translatex_, ...translatey_], desc: '' },
-    skew: { value: [...skewx_, ...skewy_], desc: '' },
-    'transform-origin': { value: transformorigin_, desc: '' },
+    scale: {
+        value: [...scale_, ...scalex_, ...scaley_],
+        desc: 'Scales an element that has transform applied.',
+    },
+    rotate: {
+        value: rotate_,
+        desc: 'Rotates an element that has transform applied.',
+    },
+    translate: {
+        value: [...translatex_, ...translatey_],
+        desc: 'Translates an element that has transform applied.',
+    },
+    skew: {
+        value: [...skewx_, ...skewy_],
+        desc: 'Skews an element that has transform applied.',
+    },
+    'transform-origin': {
+        value: transformorigin_,
+        desc:
+            "Sets the origin of an element's transforms. Think of the origin as pushing a thumbtack into the element at the specified position.",
+    },
 }
 
 // Interactivity
@@ -925,13 +1081,32 @@ whiteSpace: normal;`,
 })
 
 const Interactivity = {
-    appearance: { value: appearance_, desc: '' },
-    cursor: { value: cursor_, desc: '' },
-    outline: { value: outline_, desc: '' },
-    'pointer-events': { value: pointerevents_, desc: '' },
-    resize: { value: resize_, desc: '' },
-    'user-select': { value: userselect_, desc: '' },
-    accessibility: { value: accessability_, desc: '' },
+    appearance: {
+        value: appearance_,
+        desc: "Disables native styling based on the operating system's theme.",
+    },
+    cursor: {
+        value: cursor_,
+        desc: 'Changes the cursor when hovering over an element.',
+    },
+    outline: { value: outline_, desc: 'Changes outline of an element.' },
+    'pointer-events': {
+        value: pointerevents_,
+        desc: 'Specifies whether an element is the target of mouse events.',
+    },
+    resize: {
+        value: resize_,
+        desc: 'Sets whether an element is resizable, along with direction.',
+    },
+    'user-select': {
+        value: userselect_,
+        desc: 'Controls whether the user can select text.',
+    },
+    accessibility: {
+        value: accessability_,
+        desc:
+            'Controls whether an element is visually hidden but still accessible to screen readers.',
+    },
 }
 
 // Miscellaneous
@@ -947,11 +1122,11 @@ const stroke_ = gen('stroke', stroke, (n, v) => `stroke: ${v}`)
 const strokewidth_ = gen('stroke', strokeWidth, (n, v) => `stroke-width: ${v}`)
 
 const Miscellaneous = {
-    'box-shadow': { value: boxshadow_, desc: '' },
-    opacity: { value: opacity_, desc: '' },
-    fill: { value: fill_, desc: '' },
-    stroke: { value: stroke_, desc: '' },
-    'stroke-width': { value: strokewidth_, desc: '' },
+    'box-shadow': { value: boxshadow_, desc: 'Sets shadow of an element.' },
+    opacity: { value: opacity_, desc: 'Sets opacity of an element.' },
+    fill: { value: fill_, desc: 'Set SVG fill style.' },
+    stroke: { value: stroke_, desc: 'Set SVG stroke style.' },
+    'stroke-width': { value: strokewidth_, desc: 'Set SVG stroke width.' },
 }
 
 return {
