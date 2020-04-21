@@ -71,6 +71,7 @@ generated-docs/
 .psc*
 .purs*
 .psa*
+.spago/
 
 output/
 pages/assets/js/pure/
