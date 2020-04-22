@@ -608,10 +608,10 @@ const marginr_ = gen('mr', margin, (n, v) => `margin-right: ${v}`)
 const marginl_ = gen('ml', margin, (n, v) => `margin-left: ${v}`)
 const margint_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
 const marginb_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
-const marginrminus_ = gen('mr', margin, (n, v) => `margin-right: ${v}`)
-const marginlminus_ = gen('ml', margin, (n, v) => `margin-left: ${v}`)
-const margintminus_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
-const marginbminus_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
+// const marginrminus_ = gen('mr', margin, (n, v) => `margin-right: ${v}`)
+// const marginlminus_ = gen('ml', margin, (n, v) => `margin-left: ${v}`)
+// const margintminus_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
+// const marginbminus_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
 
 // Spacing
 const Spacing = {
@@ -640,10 +640,10 @@ const Spacing = {
             ...marginl_,
             ...margint_,
             ...marginb_,
-            ...marginrminus_,
-            ...marginlminus_,
-            ...margintminus_,
-            ...marginbminus_,
+            // ...marginrminus_,
+            // ...marginlminus_,
+            // ...margintminus_,
+            // ...marginbminus_,
         ],
         isAllowed: resolvePlugin('margin'),
         variant: config.variants.margin || [],
