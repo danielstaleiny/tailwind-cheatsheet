@@ -64,6 +64,10 @@ const {
     transitionProperty,
     transitionTimingFunction,
     transitionDuration,
+    transitionDelay,
+    space,
+    divideWidth,
+    divideColor
 } = config.theme
 
 const isEmpty = (obj) => (Object.keys(obj).length > 0 ? false : true)
@@ -613,6 +617,13 @@ const marginb_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
 // const margintminus_ = gen('mt', margin, (n, v) => `margin-top: ${v}`)
 // const marginbminus_ = gen('mb', margin, (n, v) => `margin-bottom: ${v}`)
 
+const spacex_ = gen('space-x', space, (n, v) => `margin-left: ${v}`)
+const spacey_ = gen('space-y', space, (n, v) => `margin-top: ${v}`)
+const spacereverse_ = gen('space', {
+    'x-reverse': '--space-x-reverse: 1',
+    'y-reverse': '--space-y-reverse: 1',
+                                   })
+
 // Spacing
 const Spacing = {
     padding: {
@@ -649,6 +660,17 @@ const Spacing = {
         variant: config.variants.margin || [],
         tip: '.m{side?}-{size}',
         desc: 'Controls margin (and negative margin) in 0.25rem increments.',
+    },
+    space: {
+        value: [
+            ...spacex_,
+            ...spacey_,
+            ...spacereverse_,
+        ],
+        isAllowed: resolvePlugin('space'),
+        variant: config.variants.space || [],
+        tip: '.space-{x|y}-{size}',
+        desc: 'Controls spacing between components.',
     },
 }
 
@@ -1089,6 +1111,31 @@ const borderradiusbl_ = gen(
     (n, v) => `border-bottom-left-radius: ${v}`
 )
 
+
+const dividex_ = gen(
+    'divide-x',
+    divideWidth,
+    (n, v) => `border-left-width: ${v}`
+)
+const dividey_ = gen(
+    'divide-y',
+    divideWidth,
+    (n, v) => `border-top-width: ${v}`
+)
+
+const dividereverse_ = gen(
+    'divide',
+    {'x-reverse': '--divide-x-reverse: 1' ,
+    'y-reverse': '--divide-y-reverse: 1' },
+)
+
+
+const dividecolor_ = gen(
+    'divide',
+    divideColor,
+    (n, v) => `border-color: ${v}`
+)
+
 const Borders = {
     'border-color': {
         value: bordercolor_,
@@ -1132,6 +1179,24 @@ const Borders = {
         variant: config.variants.borderRadius || [],
         tip: '.rounded{-side?}{-size?}',
         desc: `Sets border radius.`,
+    },
+    'divide-width': {
+        value: [
+            ...dividex_,
+            ...dividey_,
+            ...dividereverse_,
+        ],
+        isAllowed: resolvePlugin('divideWidth'),
+        variant: config.variants.divideWidth || [],
+        tip: '.divide-{x|y}{-size?}',
+        desc: `Sets divide with.`,
+    },
+    'divide-color': {
+        value: dividecolor_,
+        isAllowed: resolvePlugin('divideColor'),
+        variant: config.variants.divideColor || [],
+        tip: '.divide-{color}',
+        desc: `Sets divide color.`,
     },
 }
 
@@ -1186,6 +1251,12 @@ const transitionduration_ = gen(
     (n, v) => `transition-duration: ${v}`
 )
 
+const transitiondelay_ = gen(
+    'delay',
+    transitionDelay,
+    (n, v) => `transition-delay: ${v}`
+)
+
 const transitiontimingfunction_ = gen(
     'ease',
     transitionTimingFunction,
@@ -1205,6 +1276,13 @@ const Transitions = {
         variant: config.variants.transitionDuration || [],
         desc:
             'Sets the length of time for a transition animations to complete.',
+    },
+    'transition-delay': {
+        value: transitiondelay_,
+        isAllowed: resolvePlugin('transitionDelay'),
+        variant: config.variants.transitionDelay || [],
+        desc:
+            'Sets the length of time for a transition delay.',
     },
     'transition-timing-function': {
         value: transitiontimingfunction_,
@@ -1433,6 +1511,7 @@ module.exports = {
             .map((it) => `${config.separator}${it}`)
             .join(' '),
         'group-hover': `${config.separator}group-hover`,
+        'group-focus': `${config.separator}group-focus`,
         'focus-within': `${config.separator}focus-within`,
         first: `${config.separator}first`,
         last: `${config.separator}last`,
