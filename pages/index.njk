@@ -4,76 +4,76 @@ title: Tailwind CSS Cheatsheet!
 ---
 <main class="container">
     <section class="mx-auto max-w-md">
-    <h1 class="h1">{{ title }}</h1>
+        <h1 class="h1">{{ title }}</h1>
 
 
-    <section class="container">
-        {% for sec,obj  in tailwind.cheatsheet %}
-        <h3 class="h3"> {{sec}} </h3>
-        {% for name,obj2  in obj %}
+        <section class="container">
+            {% for sec,obj  in tailwind.cheatsheet %}
+                <h3 class="h3"> {{sec}} </h3>
+                {% for name,obj2  in obj %}
 
-        {% if obj2.isAllowed %}
-        <h4 class="h4"> {{name}}  <small>{{obj2.tip}}</small></h4>
-        <p>{{obj2.desc}}</p>
-        <ul class="ul">
-            {% for item  in obj2.value %}
-            {% for attr, code  in item %}
-            <li class="li">
-                <div class="tooltip group">
-                    <span class="tooltiptext w-auto truncate group-hover:visible">{{code | newline | safe }}</span>
-                    {{attr}}
-                </div>
-            </li>
+                    {% if obj2.isAllowed %}
+                        <h4 class="h4"> {{name}}  <small>{{obj2.tip}}</small></h4>
+                        <p>{{obj2.desc}}</p>
+                        <ul class="ul">
+                            {% for item  in obj2.value %}
+                                {% for attr, code  in item %}
+                                    <li class="li">
+                                        <div class="tooltip group">
+                                            <span class="tooltiptext w-auto truncate group-hover:visible">{{code | newline | safe }}</span>
+                                            {{attr}}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        NADA
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-            {% endfor %}
-        </ul>
-        {% else %}
-        NADA
-        {% endif %}
-        {% endfor %}
-        {% endfor %}
-    </section>
+        </section>
 
 
 
 
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.theme | json}} -->
-    <!-- </div> -->
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.variants }} -->
-    <!-- </div> -->
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.prefix }} -->
-    <!-- </div> -->
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.important }} -->
-    <!-- </div> -->
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.separator }} -->
-    <!-- </div> -->
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.corePlugins }} -->
-    <!-- </div> -->
-    <!-- <div class="text"> -->
-    <!--     {{ tailwind.plugins }} -->
-    <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.theme | json}} -->
+        <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.variants }} -->
+        <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.prefix }} -->
+        <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.important }} -->
+        <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.separator }} -->
+        <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.corePlugins }} -->
+        <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {{ tailwind.plugins }} -->
+        <!-- </div> -->
 
 
-    <!-- <div class="text"> -->
-    <!--     {% for name, value in tailwind.theme %} -->
-    <!--     <span class="block">{{name}}: {{value}};</span> -->
-    <!--     {% endfor %} -->
-    <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     {% for name, value in tailwind.theme %} -->
+        <!--     <span class="block">{{name}}: {{value}};</span> -->
+        <!--     {% endfor %} -->
+        <!-- </div> -->
 
-    <!-- <div class="text"> -->
-    <!--     <p> -->
-    <!--         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl. -->
-    <!--     </p> -->
-    <!--     <p> -->
-    <!--         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl. -->
-    <!--     </p> -->
-    <!-- </div> -->
+        <!-- <div class="text"> -->
+        <!--     <p> -->
+        <!--         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl. -->
+        <!--     </p> -->
+        <!--     <p> -->
+        <!--         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl. -->
+        <!--     </p> -->
+        <!-- </div> -->
 
     </section>
 </main>
