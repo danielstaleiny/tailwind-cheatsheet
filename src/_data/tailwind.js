@@ -1429,9 +1429,9 @@ const Miscellaneous = {
 
 module.exports = {
     variants: {
-        responsive: Object.keys(screens).map(
-            (it) => `${config.separator}${it}`
-        ),
+        responsive: Object.keys(screens)
+            .map((it) => `${config.separator}${it}`)
+            .join(' '),
         'group-hover': `${config.separator}group-hover`,
         'focus-within': `${config.separator}focus-within`,
         first: `${config.separator}first`,

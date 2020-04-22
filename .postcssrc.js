@@ -1,3 +1,4 @@
+// console.log('.postcssrc.js: ', process.env.NODE_ENV);
 module.exports = {
     plugins: [
         require('postcss-easy-import'),
@@ -7,14 +8,15 @@ module.exports = {
                   content: ['./.tmp/parcel/**/*.html'],
                   extractors: [
                       {
-                          extractor: content => content.match(/[A-Za-z0-9-_:\.\/]+/g) || [],
-                          extensions: ['html', 'js']
-                      }
-                  ]
+                          extractor: (content) =>
+                              content.match(/[A-Za-z0-9-_:\.\/]+/g) || [],
+                          extensions: ['html', 'js'],
+                      },
+                  ],
               })
-            : function() {
+            : function () {
                   return []
               },
-        require('autoprefixer')
-    ]
+        require('autoprefixer'),
+    ],
 }

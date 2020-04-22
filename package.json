@@ -18,7 +18,8 @@
         "repl": "run-p purescript:repl",
         "prebuild": "run-p clean",
         "build": "run-s build:*",
-        "develop:server": "browser-sync start --config .bs-config.js",
+        "develop:server": "serve -l 3000 _site",
+        "removed_develop:server": "browser-sync start --config .bs-config.js",
         "build:generate": "run-s purescript:install purescript:build 11ty:build parcel:build",
         "develop:generate": "run-p purescript:watch 11ty:watch parcel:watch",
         "clean": "run-p clean:*",
@@ -75,6 +76,7 @@
         "js-beautify": "^1.11.0",
         "nodemon": "^2.0.3",
         "npm-check-updates": "^4.1.2",
-        "prettier": "^2.0.4"
+        "prettier": "^2.0.4",
+        "serve": "^11.3.0"
     }
 }
