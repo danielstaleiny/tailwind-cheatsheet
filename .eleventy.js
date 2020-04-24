@@ -32,12 +32,19 @@ module.exports = eleventyConfig => {
     )
 
     // Add all found shortcodes
-    shortcodes.forEach(shortcode =>
-        eleventyConfig.addShortcode(
-            resolveNameFromPath(shortcode),
-            require(shortcode)
-        )
-    )
+    shortcodes.forEach(shortcode =>{
+        const name = resolveNameFromPath(shortcode)
+        if(name.endsWith('_ctx'))
+            return eleventyConfig.addPairedShortcode(
+                name,
+                require(shortcode)
+            )
+        else 
+            return eleventyConfig.addShortcode(
+                name,
+                require(shortcode)
+            )
+    })
 
     // Add all found transforms
     transforms.forEach(transform =>
