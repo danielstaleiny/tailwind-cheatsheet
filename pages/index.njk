@@ -8,12 +8,9 @@ title: Tailwind CSS Cheatsheet!
 
 
         <h2 class="h2">Sections</h2>
-        {#% test "Hello test" %#}
-        <!-- <p>this is context</p> -->
-        {#% endtest %#}
-        {% testo_ctx "testo" %}
-        oky
-        {% endtesto_ctx %}
+        {% toggle_ctx "test-id", "Show me more" %}
+        <p> anything really </p>
+        {% endtoggle_ctx %}
 
 
         <!--

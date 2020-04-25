@@ -34,3 +34,16 @@
   bottom: 105%;
   z-index: 1;
 }
+
+.toggle-input:not(checked) ~ .toggle-content{
+  @apply hidden;
+}
+
+
+.toggle-input:checked ~ .toggle-content{
+  @apply block;
+}
+
+.toggle-input:checked ~ .toggle-label{
+  @apply text-red-300;
+}
