@@ -39,11 +39,19 @@
   @apply hidden;
 }
 
-
 .toggle-input:checked ~ .toggle-content{
   @apply block;
 }
 
 .toggle-input:checked ~ .toggle-label{
   @apply text-red-300;
+}
+
+.toggle-input:checked ~ .toggle-label:after {
+  content: "+";
+}
+
+
+.toggle-label:after {
+  content: "-";
 }
