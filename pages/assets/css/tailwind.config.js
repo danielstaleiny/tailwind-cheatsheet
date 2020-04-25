@@ -19,10 +19,8 @@ module.exports = {
         },
         colors: {
             transparent: 'transparent',
-
             black: '#000',
             white: '#fff',
-
             gray: {
                 100: '#f7fafc',
                 200: '#edf2f7',
@@ -137,13 +135,15 @@ module.exports = {
         spacing: {
             auto: 'auto',
             '0': '0px',
-            '0.25': '0.25rem',
-            '0.5': '0.5rem',
-            '0.75': '0.75rem',
-            '1': '1rem',
-            '1.25': '1.25rem',
-            '1.5': '1.5rem',
-            '2': '2rem',
+            '2-px': '2px', // 2px
+            '0.125': '0.125rem', // 2px
+            '0.25': '0.25rem', // 4px
+            '0.5': '0.5rem', // 8px
+            '0.75': '0.75rem', // 12px
+            '1': '1rem', // 16px
+            '1.25': '1.25rem', // 20px
+            '1.5': '1.5rem', // 24px
+            '2': '2rem', // 32px
             '2.5': '2.5rem',
             '3': '3rem',
             '4': '4rem',
@@ -153,6 +153,15 @@ module.exports = {
             '12': '12rem',
             '14': '14rem',
             '16': '16rem',
+            '0.125-em': '0.125em', // 2px
+            '0.25-em': '0.25em', // 4px
+            '0.5-em': '0.5em', // 8px
+            '0.75-em': '0.75em', // 12px
+            '1-em': '1em', // 16px
+            '1.25-em': '1.25em', // 20px
+            '1.5-em': '1.5em', // 24px
+            '2-em': '2em', // 32px
+            '2.5-em': '2.5em',
         },
         backgroundColor: (theme) => theme('colors'),
         backgroundPosition: {
@@ -185,7 +194,17 @@ module.exports = {
         borderWidth: {
             default: '1px',
             '0': '0',
+            '0.125': '0.125rem',
+            '0.25': '0.25rem',
+            '0.375': '0.375rem',
+            '0.5': '0.5rem',
+            '0.125-em': '0.125em',
+            '0.25-em': '0.25em',
+            '0.375-em': '0.375em',
+            '0.5-em': '0.5em',
             '2': '2px',
+            '4': '4px',
+            '8': '8px',
             '4': '4px',
             '8': '8px',
         },
