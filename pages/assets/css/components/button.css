@@ -39,6 +39,23 @@
   @apply hidden;
 }
 
+.toggle-all-input:checked ~ .toggle-all-content .toggle-content{
+  @apply block;
+}
+
+.toggle-all-input:checked ~ .toggle-all-label{
+  @apply text-red-300;
+}
+
+.toggle-all-input:checked ~ .toggle-all-label:after {
+  content: "+";
+}
+
+.toggle-all-label:after {
+  content: "-";
+}
+
+
 .toggle-input:checked ~ .toggle-content{
   @apply block;
 }
@@ -50,7 +67,6 @@
 .toggle-input:checked ~ .toggle-label:after {
   content: "+";
 }
-
 
 .toggle-label:after {
   content: "-";

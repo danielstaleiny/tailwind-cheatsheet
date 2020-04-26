@@ -6,9 +6,36 @@ title: Tailwind CSS Cheatsheet!
     <section class="mx-auto max-w-md">
         <h1 class="h1">{{ title }}</h1>
         <h2 class="h2">Sections</h2>
-        {% toggle_ctx "test-id", "Show me more" %}
-        <p> anything really </p>
-        {% endtoggle_ctx %}
+
+        <div class="">
+            <input type="checkbox" value="selected" id="show-all" class="toggle-all-input hidden">
+            <label for="show-all" class="toggle-all-label pointer">
+                Show me all of them
+            </label>
+
+            <div class="toggle-all-content">
+                <input type="checkbox" value="selected" id="show-1" class="toggle-input hidden">
+                <label for="show-1" class="toggle-label pointer">
+                    Show me 1 of them
+                </label>
+
+                <div role="toggle" class="toggle-content">
+                    Things to show 1
+                </div>
+            </div>
+
+            <div class="toggle-all-content">
+
+                <input type="checkbox" value="selected" id="show-2" class="toggle-input hidden">
+                <label for="show-2" class="toggle-label pointer">
+                    Show me 2 of them
+                </label>
+
+                <div role="toggle" class="toggle-all-content toggle-content">
+                    Things to show 2
+                </div>
+            </div>
+        </div>
 
 
         <!--
