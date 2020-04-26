@@ -5,94 +5,54 @@ title: Tailwind CSS Cheatsheet!
 <main class="container">
     <section class="mx-auto max-w-md">
         <h1 class="h1">{{ title }}</h1>
-        <h2 class="h2">Sections</h2>
+        <!-- <h2 class="h2">Sections</h2> -->
 
         <div class="">
             <input type="checkbox" value="selected" id="show-all" class="toggle-all-input hidden">
-            <label for="show-all" class="toggle-all-label pointer">
-                Show me all of them
-            </label>
+            <label for="show-all" class="toggle-all-label pointer">Show All</label>
+            {% for sec,obj  in tailwind.cheatsheet %}
 
-            <div class="toggle-all-content">
-                <input type="checkbox" value="selected" id="show-1" class="toggle-input hidden">
-                <label for="show-1" class="toggle-label pointer">
-                    Show me 1 of them
-                </label>
+                <div class="toggle-all-content">
+                    <input type="checkbox" value="selected" id="show-{{sec}}" class="toggle-input hidden">
+                    <label for="show-{{sec}}" class="toggle-label pointer">
+                        <h3 class="h3"> {{sec}} </h3>
+                    </label>
 
-                <div role="toggle" class="toggle-content">
-                    Things to show 1
-                </div>
-            </div>
-
-            <div class="toggle-all-content">
-
-                <input type="checkbox" value="selected" id="show-2" class="toggle-input hidden">
-                <label for="show-2" class="toggle-label pointer">
-                    Show me 2 of them
-                </label>
-
-                <div role="toggle" class="toggle-all-content toggle-content">
-                    Things to show 2
-                </div>
-            </div>
-        </div>
-
-
-        <!--
-             {% for sec,obj  in tailwind.cheatsheet %}
-             <h3 class="h3">{{sec}}</h3>
-             <p>
-             {% for name,obj2  in obj %}
-             <a class="m-1" href="#{{name}}">{{name}}</a>
-             {% endfor %}
-             <p/>
-             {% endfor %} -->
-
-        {% for sec,obj  in tailwind.cheatsheet %}
-            <h3 class="h3">{{sec}}</h3>
-            <p class="">
-                {% for name,obj2  in obj %}
-                    <a class="mx-1 truncate px-0.25" href="#{{name}}">{{name}}
-                        <small class="text-gray-800 truncate">{{obj2.tip}}</small>
-                    </a>
-                {% endfor %}
-                <p/>
-        {% endfor %}
-        <h2 class="h2 mt-4">Classes</h2>
-        {% for sec,obj  in tailwind.cheatsheet %}
-            <!-- <h3 class="h3"> {{sec}} </h3> -->
-            {% for name,obj2 in obj %}
-                {% if obj2.isAllowed %}
-                    <h4 class="h4" id="{{name}}"> {{name}}
-                        {% for variant in obj2.variant %}
-                            {% for n,v  in tailwind.variants %}
-                                {% if n == variant %}
-                                    <small class="text-red-700">{{v}}</small>
-                                {% endif %}
-                            {% endfor %}
+                    <div role="toggle" class="toggle-content">
+                        {% for name,obj2 in obj %}
+                            {% if obj2.isAllowed %}
+                                <h4 class="h4" id="{{name}}"> {{name}}
+                                    {% for variant in obj2.variant %}
+                                        {% for n,v  in tailwind.variants %}
+                                            {% if n == variant %}
+                                                <small class="text-red-700">{{v}}</small>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                </h4>
+                                <ul class="ul">
+                                    {% for item  in obj2.value %}
+                                        {% for attr, code  in item %}
+                                            <li class="li">
+                                                <div class="tooltip group">
+                                                    <!-- <span class="tooltiptext w-auto truncate group-hover:visible">{{code | newline | safe }}</span> -->
+                                                    {{attr}}
+                                                    <small class="ml-2">{{code}}</small>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <!-- TODO -->
+                            {% endif %}
                         {% endfor %}
-                    </h4>
-                    <ul class="ul">
-                        {% for item  in obj2.value %}
-                            {% for attr, code  in item %}
-                                <li class="li">
-                                    <!-- <div class="tooltip group">
-                                         <span class="tooltiptext w-auto truncate group-hover:visible">{{code | newline | safe }}</span> -->
-                                    {{attr}}
-                                    <!-- <small class="ml-2">{{code}}</small> -->
-                                    <!-- </div> -->
-                                </li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <!-- TODO -->
-                {% endif %}
+                    </div>
+                </div>
+
             {% endfor %}
-        {% endfor %}
 
-
-
+        </div>
 
         <!-- <div class="text"> -->
         <!--     {{ tailwind.theme | json}} -->
