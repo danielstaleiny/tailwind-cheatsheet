@@ -8,84 +8,77 @@ const path = require('path')
  *
  * For a full list of options, see: https://www.11ty.io/docs/config/
  */
-module.exports = eleventyConfig => {
-    const paths = {
-        filters: path.join(process.cwd(), 'lib/filters/*.js'),
-        shortcodes: path.join(process.cwd(), 'lib/shortcodes/*.js'),
-        transforms: path.join(process.cwd(), 'lib/transforms/*.js')
-    }
-    const dirs = {
-        input: 'pages/',
-        data: `../src/_data/`,
-        includes: `../src/includes/`,
-        layouts: `../src/layouts/`
-    }
-    const files = glob.sync(path.join(process.cwd(), dirs.input, '**/*'))
-    const exts = files.map(file => path.extname(file).replace('.', ''))
-    const filters = glob.sync(paths.filters)
-    const shortcodes = glob.sync(paths.shortcodes)
-    const transforms = glob.sync(paths.transforms)
+module.exports = (eleventyConfig) => {
+  const paths = {
+    filters: path.join(process.cwd(), 'lib/filters/*.js'),
+    shortcodes: path.join(process.cwd(), 'lib/shortcodes/*.js'),
+    transforms: path.join(process.cwd(), 'lib/transforms/*.js'),
+  }
+  const dirs = {
+    input: 'pages/',
+    data: `../src/_data/`,
+    includes: `../src/includes/`,
+    layouts: `../src/layouts/`,
+  }
+  const files = glob.sync(path.join(process.cwd(), dirs.input, '**/*'))
+  const exts = files.map((file) => path.extname(file).replace('.', ''))
+  const filters = glob.sync(paths.filters)
+  const shortcodes = glob.sync(paths.shortcodes)
+  const transforms = glob.sync(paths.transforms)
 
-    // Add all found filters
-    filters.forEach(filter =>
-        eleventyConfig.addFilter(resolveNameFromPath(filter), require(filter))
+  // Add all found filters
+  filters.forEach((filter) =>
+    eleventyConfig.addFilter(resolveNameFromPath(filter), require(filter))
+  )
+
+  // Add all found shortcodes
+  shortcodes.forEach((shortcode) => {
+    const name = resolveNameFromPath(shortcode)
+    if (name.endsWith('_ctx'))
+      return eleventyConfig.addPairedShortcode(name, require(shortcode))
+    else return eleventyConfig.addShortcode(name, require(shortcode))
+  })
+
+  // Add all found transforms
+  transforms.forEach((transform) =>
+    eleventyConfig.addTransform(
+      resolveNameFromPath(transform),
+      require(transform)
     )
+  )
 
-    // Add all found shortcodes
-    shortcodes.forEach(shortcode =>{
-        const name = resolveNameFromPath(shortcode)
-        if(name.endsWith('_ctx'))
-            return eleventyConfig.addPairedShortcode(
-                name,
-                require(shortcode)
-            )
-        else 
-            return eleventyConfig.addShortcode(
-                name,
-                require(shortcode)
-            )
-    })
+  // Make all files pass through to cache
+  eleventyConfig.setTemplateFormats(exts)
+  eleventyConfig.setWatchJavaScriptDependencies(false)
 
-    // Add all found transforms
-    transforms.forEach(transform =>
-        eleventyConfig.addTransform(
-            resolveNameFromPath(transform),
-            require(transform)
-        )
-    )
+  // eleventyConfig.addPassthroughCopy(`${dirs.input}/assets`)
 
-    // Make all files pass through to cache
-    eleventyConfig.setTemplateFormats(exts)
-    eleventyConfig.setWatchJavaScriptDependencies(false)
+  // Because of Purescript pure/ folder we need to ignore it for git but pass it through the 11ty
+  // .eleventyignore Only source of ignoring files for 11ty
+  eleventyConfig.setUseGitIgnore(false)
 
-    // eleventyConfig.addPassthroughCopy(`${dirs.input}/assets`)
+  // eleventyConfig.setBrowserSyncConfig({
+  //     notify: true
+  // });
 
-    // Because of Purescript pure/ folder we need to ignore it for git but pass it through the 11ty
-    // .eleventyignore Only source of ignoring files for 11ty
-    eleventyConfig.setUseGitIgnore(false)
+  return {
+    // Set the path from the root of the deploy domain
+    // i.e, example.com + "/"
+    pathPrefix: '/',
 
-    // eleventyConfig.setBrowserSyncConfig({
-    //     notify: true
-    // });
+    // Set the src and output directories
+    dir: dirs,
 
-    return {
-        // Set the path from the root of the deploy domain
-        // i.e, example.com + "/"
-        pathPrefix: '/',
+    // Set the default template engine from `liquid` to `njk`
+    htmlTemplateEngine: 'njk',
+    markdownTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
 
-        // Set the src and output directories
-        dir: dirs,
-
-        // Set the default template engine from `liquid` to `njk`
-        htmlTemplateEngine: 'njk',
-        markdownTemplateEngine: 'njk',
-        dataTemplateEngine: 'njk',
-
-        // Set up eleventy to pass-through files to be compiled by Parcel
-        passthroughFileCopy: true
-    }
+    // Set up eleventy to pass-through files to be compiled by Parcel
+    passthroughFileCopy: true,
+  }
 }
 
 function resolveNameFromPath(pth) {
-    return path.basename(pth, '.js')
+  return path.basename(pth, '.js')
 }

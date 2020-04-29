@@ -1,4 +1,4 @@
-import('./dynamic').then(js => js.run())
+import('./dynamic').then((js) => js.run())
 
 import pure from './pure/Main'
 import tool from './pure/Tool'
