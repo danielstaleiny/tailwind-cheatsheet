@@ -32,7 +32,8 @@
     "purescript:build": "spago build --purs-args '--output pages/assets/js/pure '",
     "purescript:watch": "spago build --watch  --clear-screen  --purs-args '--output pages/assets/js/pure '",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier:fix": "prettier --write '**/*.js'"
+    "prettier:fix": "prettier --write '**/*.js'",
+    "cheatsheet": "node generate-cheatsheet.js"
   },
   "alias": {
     "pages": "./pages",
